@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
-const PORT = 8489;
+const PORT = Number(process.env.PORT) || 8489;
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -13,7 +13,10 @@ const TYPES = {
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon'
+  '.ico': 'image/x-icon',
+  '.json': 'application/json; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8'
 };
 
 http.createServer((req, res) => {

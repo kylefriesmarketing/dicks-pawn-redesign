@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kylefriesmarketing.github.io/dicks-pawn-redesign/sitemap.xml

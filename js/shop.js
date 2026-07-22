@@ -22,7 +22,8 @@
   };
   const NEW_DAYS = 21 * 86400000;
   const BATCH = 48;
-  const PRODUCT_URL = 'https://dickspawn.com/products/';
+  const PRODUCT_URL = 'https://dickspawn.com/products/';   // their live Shopify checkout
+  const PAGE_URL = 'p/';                                    // our own indexable product page
 
   const fmt = n => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -34,11 +35,14 @@
       : p.cp ? '<span class="p-badge deal">Deal</span>'
       : isNew ? '<span class="p-badge new">New</span>' : '';
     const was = p.cp ? '<s>' + fmt(p.cp) + '</s>' : '';
+    // The title is a real link to the product's own page — that's what makes the
+    // 1,565 generated pages crawlable, and lets people open items in a new tab.
+    const href = PAGE_URL + encodeURIComponent(p.h) + '.html';
     return '<div class="p-card' + (p.a ? '' : ' is-sold') + '" data-h="' + esc(p.h) + '">'
-      + '<div class="p-img">' + badge
-      + '<img loading="lazy" src="' + esc(p.i) + '" alt="' + esc(p.t) + '"></div>'
+      + '<a class="p-img" href="' + href + '">' + badge
+      + '<img loading="lazy" src="' + esc(p.i) + '" alt="' + esc(p.t) + '"></a>'
       + '<div class="p-body">'
-      + '<div class="p-title">' + esc(p.t) + '</div>'
+      + '<a class="p-title" href="' + href + '">' + esc(p.t) + '</a>'
       + '<div class="p-price">' + fmt(p.p) + was + '</div>'
       + '<button class="p-cta" type="button" data-qv="' + esc(p.h) + '">'
       + (p.a ? 'Quick View <span class="arrow">→</span>' : 'Sold Out') + '</button>'
@@ -115,7 +119,9 @@
           ? '<a class="btn btn-red" href="' + PRODUCT_URL + esc(p.h) + '" target="_blank" rel="noopener">Buy Online <span class="arrow">→</span></a>'
             + '<a class="btn btn-outline" href="tel:8436467166">📞 Call to Hold</a>'
           : '<a class="btn btn-outline" href="tel:8436467166">📞 Ask About Similar</a>')
-      + '</div></div>';
+      + '</div>'
+      + '<a class="qv-full" href="' + PAGE_URL + encodeURIComponent(p.h) + '.html">See full details &amp; similar items <span class="arrow">→</span></a>'
+      + '</div>';
 
     box.querySelector('.qv-close').addEventListener('click', closeQV);
     back.classList.add('open');
@@ -153,15 +159,13 @@
     });
   }
 
-  /* Delegated so it covers every grid on the page, including lazily rendered ones. */
+  /* Delegated so it covers every grid on the page, including lazily rendered ones.
+     Only the Quick View button opens the modal — the image and title are real
+     links to the product page, so normal click / middle-click / open-in-new-tab
+     all behave the way people expect. */
   document.addEventListener('click', e => {
     const btn = e.target.closest('[data-qv]');
-    if (btn) { e.preventDefault(); openQV(btn.dataset.qv); return; }
-    const img = e.target.closest('.p-card .p-img, .p-card .p-title');
-    if (img) {
-      const card = img.closest('.p-card');
-      if (card && card.dataset.h) { e.preventDefault(); openQV(card.dataset.h); }
-    }
+    if (btn) { e.preventDefault(); openQV(btn.dataset.qv); }
   });
 
   /* ---------- homepage strips ---------- */
