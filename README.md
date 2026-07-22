@@ -22,11 +22,30 @@ Static HTML/CSS/JS — no build step, no dependencies.
 
 ```
 assets/style.css      all styling (one file, CSS custom properties for theming)
-assets/dp-logo.png    the real Dick's Pawn diamond logo
-js/products.js        catalog snapshot — 1,565 real products
-js/shop.js            rendering, search, filter, sort logic
+assets/dp-logo.png    the real Dick's Pawn diamond logo (also the favicon)
+js/products.js        catalog snapshot — 1,565 real products (453KB / 111KB gzipped)
+js/details.json       galleries + descriptions, fetched only on first quick-view
+js/shop.js            grid rendering, search, filters, sort, quick-view modal
+gen-products.mjs      rebuilds both data files from their Shopify feed
 serve.mjs             local dev server (node serve.mjs → localhost:8489)
 ```
+
+## Features
+
+- **Quick View** — click any product for a modal with the full photo gallery
+  (up to 5 images), the real product description, SKU, and Buy / Call-to-Hold CTAs.
+  Detail data is lazily fetched so the grid stays fast. Closes on Esc, backdrop
+  click, or the X; restores focus and scroll.
+- **Category + subcategory filters** — jewelry is ~64% of the catalog, so it
+  subdivides into Rings / Necklaces / Pendants / Bracelets / Earrings / Watches.
+- **Deep links** — `shop.html?cat=jewelry&sub=ring`, shareable and back-button safe.
+- **Live search** across every title, price sorting, in-stock toggle.
+- **Real product photography** on the homepage category tiles, pulled from the
+  catalog at runtime — no stock photos, no generated art.
+- **SEO** — `PawnShop` structured data for all 5 locations with hours and phone
+  numbers, canonical URLs, Open Graph + Twitter cards on every page.
+- **Accessibility** — skip links, `<main>` landmarks, `aria-pressed` filter state,
+  live-region result counts, visible focus rings, labelled search.
 
 ## Brand
 
@@ -43,8 +62,27 @@ Pulled from the live site so it feels like *them*, not a generic template:
 storefront (`dickspawn.com/products.json`) — real titles, real prices, real photos
 (served from Shopify's CDN), real product links.
 
-Category breakdown: Jewelry & Gold 994 · Musical Instruments 140 · Tools 130 ·
-Video Games 110 · Sporting Goods & Golf 78 · Electronics 50 · Designer 25 · Sneakers 22
+Category breakdown (in stock): Jewelry & Gold 991 · Musical Instruments 131 ·
+Video Games 101 · Tools 90 · Sporting Goods & Golf 74 · Designer & Handbags 57 ·
+Electronics 50 · Sneakers 17 · Collectibles 6 · More Finds 10
+
+### Their tag taxonomy (worth knowing before you touch `gen-products.mjs`)
+
+Dick's staff tag products with short codes, and several are easy to misread —
+getting them wrong silently files products under the wrong department:
+
+| Code | Means | Not |
+|---|---|---|
+| `HW` | **H**andbags & **W**allets | ~~Hardware~~ |
+| `SH` | **S**peakers & **H**eadphones | ~~Shoes~~ |
+| `FH` | **F**ishing & outdoor | ~~Fine goods~~ |
+| `FW` | Fine **W**atches & fashion accessories | ~~Footwear~~ |
+| `OT` / `LG` | Other Tools / Lawn & Garden | |
+| `G_` / `A_` | Gold / sterling silver jewelry, 2nd letter = **R**ing, **P**endant, **B**racelet, **E**arring, **N**ecklace | |
+
+Reading `HW` as "hardware" put Louis Vuitton bags under Tools; reading `SH` as a
+jewelry code put BOSE headphones under Jewelry. Both are fixed — see the comments
+in `gen-products.mjs`.
 
 **To refresh the catalog**, re-run the generator (see git history for `gen-products.mjs`),
 or — better for production — swap `js/products.js` for a live fetch of

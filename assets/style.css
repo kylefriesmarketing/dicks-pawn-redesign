@@ -323,3 +323,56 @@ nav.main a.active{color:var(--navy);border-color:var(--red)}
 .band-stats{display:flex;gap:44px;justify-content:center;flex-wrap:wrap;text-align:center;margin-top:40px}
 .band-stats .big{font-size:2.6rem;font-weight:800;color:var(--navy)}
 .band-stats .lbl{color:var(--grey);font-weight:600}
+
+/* ================= A11Y ================= */
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--navy);color:#fff;padding:12px 20px;border-radius:0 0 10px 0;font-weight:700}
+.skip:focus{left:0}
+:focus-visible{outline:3px solid var(--red-bright);outline-offset:2px;border-radius:4px}
+.p-card a:focus-visible{outline-offset:-3px}
+
+/* ================= SUB-CATEGORY PILLS ================= */
+.subpills{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 10px;padding-left:2px}
+.subpill{font-family:inherit;font-size:.85rem;font-weight:600;color:var(--grey);background:transparent;border:none;border-bottom:2px solid transparent;padding:5px 3px;cursor:pointer;transition:color .14s,border-color .14s}
+.subpill:hover{color:var(--navy-dark)}
+.subpill.on{color:var(--navy-dark);border-color:var(--red)}
+.subpill small{opacity:.6;margin-left:3px}
+
+/* ================= CATEGORY TILES WITH REAL PHOTOS ================= */
+.cat-card{background-size:cover;background-position:center}
+.cat-card::before{background:linear-gradient(180deg,rgba(8,26,51,.30) 0%,rgba(8,26,51,.42) 40%,rgba(8,26,51,.86) 100%)}
+.cat-card .cat-emoji{font-size:1.7rem;background:rgba(255,255,255,.16);backdrop-filter:blur(3px);width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;top:16px;left:16px}
+
+/* ================= QUICK VIEW MODAL ================= */
+.qv-back{position:fixed;inset:0;z-index:100;background:rgba(8,26,51,.62);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .18s}
+.qv-back.open{opacity:1;pointer-events:auto}
+.qv{background:#fff;border-radius:18px;max-width:940px;width:100%;max-height:88vh;overflow:auto;box-shadow:0 30px 80px rgba(8,26,51,.45);display:grid;grid-template-columns:1.05fr .95fr;transform:translateY(12px) scale(.99);transition:transform .18s}
+.qv-back.open .qv{transform:none}
+.qv-media{background:#f4f7fa;padding:26px;display:flex;flex-direction:column;gap:12px}
+.qv-main{aspect-ratio:1/1;background:#fff;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.qv-main img{width:100%;height:100%;object-fit:contain}
+.qv-thumbs{display:flex;gap:8px;flex-wrap:wrap}
+.qv-thumb{width:58px;height:58px;border-radius:8px;overflow:hidden;border:2px solid transparent;background:#fff;cursor:pointer;padding:0}
+.qv-thumb img{width:100%;height:100%;object-fit:cover}
+.qv-thumb.on{border-color:var(--navy)}
+.qv-body{padding:32px 30px 30px;display:flex;flex-direction:column;gap:12px;position:relative}
+.qv-close{position:absolute;top:14px;right:16px;width:36px;height:36px;border-radius:50%;border:none;background:#eef3f8;color:var(--navy-dark);font-size:1.3rem;line-height:1;cursor:pointer;font-family:inherit;transition:background .14s}
+.qv-close:hover{background:#dde7f1}
+.qv-cat{font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.qv h3{font-size:1.32rem;font-weight:700;color:var(--navy-dark);line-height:1.28;padding-right:36px}
+.qv-price{font-size:1.9rem;font-weight:800;color:var(--navy-dark)}
+.qv-price s{font-size:1rem;color:var(--grey);font-weight:600;margin-left:10px}
+.qv-stock{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:.9rem;width:fit-content;border-radius:999px;padding:5px 13px}
+.qv-stock.in{background:#e6f6ec;color:#127a3d}
+.qv-stock.out{background:#eef1f4;color:#5b6570}
+.qv-desc{color:var(--grey);font-size:.96rem;line-height:1.6;flex:1}
+.qv-meta{font-size:.82rem;color:var(--grey);border-top:1px solid var(--line);padding-top:12px}
+.qv-ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.qv-ctas .btn{flex:1;min-width:150px}
+@media(max-width:780px){
+  .qv{grid-template-columns:1fr;max-height:92vh}
+  .qv-media{padding:18px}
+  .qv-body{padding:22px 20px 24px}
+  .qv-back{padding:0;align-items:flex-end}
+  .qv{border-radius:18px 18px 0 0}
+}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
