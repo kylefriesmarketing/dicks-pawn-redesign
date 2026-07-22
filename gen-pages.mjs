@@ -296,7 +296,7 @@ function locationPage(s) {
   const ld = {
     '@context': 'https://schema.org', '@type': 'PawnShop',
     '@id': canonical + '#store', name: s.name, url: canonical,
-    image: `${BASE}assets/dp-logo.png`, telephone: '+1' + s.phone,
+    image: `${BASE}assets/og-card.jpg`, telephone: '+1' + s.phone,
     priceRange: '$'.repeat(2), email: 'dickspawnsuperstore@gmail.com',
     parentOrganization: { '@type': 'Organization', name: "Dick's Pawn Superstore", url: BASE },
     address: { '@type': 'PostalAddress', streetAddress: s.street, addressLocality: s.city.replace(/\s*\(.*\)/, ''),
@@ -310,7 +310,7 @@ function locationPage(s) {
   const title = `Pawn Shop in ${s.city.replace(/\s*\(.*\)/, '')}, SC | ${s.name}`;
   const desc = `${s.name} at ${s.street}, ${s.city.replace(/\s*\(.*\)/, '')} SC. Buy, sell and pawn — jewelry, electronics, tools and more. Open Mon–Sat 9–6. Call ${s.phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')}.`;
 
-  return head({ title, desc, canonical, image: `${BASE}assets/dp-logo.png`, depth: 1, ld })
+  return head({ title, desc, canonical, image: `${BASE}assets/og-card.jpg`, depth: 1, ld })
   + `
 <div class="page-hero">
   <div class="wrap">
