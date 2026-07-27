@@ -188,6 +188,28 @@
     el.innerHTML = picks.map(cardHTML).join('');
   };
 
+  /* Newest items, but capped per department.
+     Jewelry is ~64% of the catalogue and arrives in batches, so a straight
+     newest-first slice returned eight jewelry pieces and made a superstore look
+     like a jeweller. The cap keeps everything genuinely recent (it only ever
+     reorders real arrivals) while showing the actual breadth of the floor. */
+  window.renderLatest = function (elId, n, capPerCat) {
+    const el = document.getElementById(elId);
+    if (!el || typeof CATALOG === 'undefined') return;
+    indexCatalog();
+    const cap = capPerCat || 3;
+    const used = {};
+    const picks = [];
+    for (const p of CATALOG) {                   // already sorted newest-first
+      if (!p.a) continue;
+      if ((used[p.c] || 0) >= cap) continue;
+      used[p.c] = (used[p.c] || 0) + 1;
+      picks.push(p);
+      if (picks.length >= n) break;
+    }
+    el.innerHTML = picks.map(cardHTML).join('');
+  };
+
   /* Paint each category tile with a real product photo from that category. */
   window.paintCategoryTiles = function () {
     if (typeof CATALOG === 'undefined') return;

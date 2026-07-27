@@ -7,6 +7,8 @@
  *   node gen-pages.mjs
  */
 import fs from 'fs';
+import { createRequire } from 'module';
+const { icon } = createRequire(import.meta.url)('./js/icons.js');
 
 const BASE = 'https://kylefriesmarketing.github.io/dicks-pawn-redesign/';
 const PHONE_MAIN = '8436467166';
@@ -87,11 +89,11 @@ ${JSON.stringify(ld, null, 1)}
 <div class="topbar">
   <div class="wrap">
     <div class="topbar-left">
-      <span><span class="star">★</span> <b>4.9</b> · 2,000+ Google Reviews</span>
-      <span class="hide-m">📍 <b>5 Locations</b> on the Grand Strand</span>
-      <span class="hide-m">🕘 Mon–Sat 9am–6pm</span>
+      <span>${icon('star','ic-star')} <b>4.9</b> · 2,000+ Google Reviews</span>
+      <span class="hide-m">${icon('pin')} <b>5 Locations</b> on the Grand Strand</span>
+      <span class="hide-m">${icon('clock')} Mon–Sat 9am–6pm</span>
     </div>
-    <div class="topbar-right"><a href="tel:${PHONE_MAIN}">📞 (843) 646-7166</a></div>
+    <div class="topbar-right"><a href="tel:${PHONE_MAIN}">${icon('phone')} (843) 646-7166</a></div>
   </div>
 </div>
 
@@ -161,11 +163,12 @@ ${STORES.map(s => `          <li><a href="${up}locations/${s.slug}.html">${esc(s
 </footer>
 
 <div class="mob-cta">
-  <a class="btn btn-navy" href="tel:${PHONE_MAIN}">📞 Call Now</a>
-  <a class="btn btn-red" href="${up}sell.html">💰 Get Cash</a>
+  <a class="btn btn-navy" href="tel:${PHONE_MAIN}">${icon('phone')} Call Now</a>
+  <a class="btn btn-red" href="${up}sell.html">${icon('cash')} Get Cash</a>
 </div>
 
 <script src="${up}js/nav.js"></script>
+<script src="${up}js/enhance.js"></script>
 </body>
 </html>
 `;
@@ -221,21 +224,21 @@ function productPage(p) {
       <span class="qv-cat">${esc(CATS[p.c] || 'Item')}</span>
       <h1>${esc(p.t)}</h1>
       <div class="qv-price">${money(p.p)}${p.cp ? `<s>${money(p.cp)}</s>` : ''}</div>
-      <span class="qv-stock ${p.a ? 'in' : 'out'}">${p.a ? '✔ In stock now' : 'Sold out'}</span>
+      <span class="qv-stock ${p.a ? 'in' : 'out'}">${p.a ? `${icon('check','ic-tick')} In stock now` : 'Sold out'}</span>
       <p class="qv-desc">${esc(desc)}</p>
       ${d.sku ? `<div class="qv-meta">SKU ${esc(d.sku)}${d.v ? ' · Sold by ' + esc(d.v) : ''}</div>` : ''}
       <div class="qv-ctas">
         ${p.a
           ? `<a class="btn btn-red btn-lg" href="https://dickspawn.com/products/${esc(p.h)}" target="_blank" rel="noopener">Buy Online <span class="arrow">→</span></a>
-             <a class="btn btn-outline btn-lg" href="tel:${PHONE_MAIN}">📞 Call to Hold</a>`
-          : `<a class="btn btn-outline btn-lg" href="tel:${PHONE_MAIN}">📞 Ask About Similar</a>
+             <a class="btn btn-outline btn-lg" href="tel:${PHONE_MAIN}">${icon('phone')} Call to Hold</a>`
+          : `<a class="btn btn-outline btn-lg" href="tel:${PHONE_MAIN}">${icon('phone')} Ask About Similar</a>
              <a class="btn btn-red btn-lg" href="../shop.html?cat=${p.c}">See What's In Stock <span class="arrow">→</span></a>`}
       </div>
       <ul class="pdp-trust">
-        <li>✔ 14-day returns</li>
-        <li>✔ Inspected &amp; tested in store</li>
-        <li>✔ Layaway available</li>
-        <li>✔ Free pickup at any of our 5 stores</li>
+        <li>${icon('check','ic-tick')} 14-day returns</li>
+        <li>${icon('check','ic-tick')} Inspected &amp; tested in store</li>
+        <li>${icon('check','ic-tick')} Layaway available</li>
+        <li>${icon('check','ic-tick')} Free pickup at any of our 5 stores</li>
       </ul>
     </div>
   </div>
@@ -268,8 +271,8 @@ ${related.map(r => `      <div class="p-card">
     <h2>Got something to sell?</h2>
     <p>We buy items like this every day. Bring yours in for a free, no-obligation cash offer.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a class="btn btn-navy btn-lg" href="../sell.html">💰 Get a Free Quote</a>
-      <a class="btn btn-ghost btn-lg" href="../locations.html">📍 Find a Store</a>
+      <a class="btn btn-navy btn-lg" href="../sell.html">${icon('cash')} Get a Free Quote</a>
+      <a class="btn btn-ghost btn-lg" href="../locations.html">${icon('pin')} Find a Store</a>
     </div>
   </div>
 </section>
@@ -318,8 +321,8 @@ function locationPage(s) {
     <h1>Pawn Shop in ${esc(s.city.replace(/\s*\(.*\)/, ''))}, SC</h1>
     <p>${esc(s.blurb)}</p>
     <div class="hero-ctas">
-      <a class="btn btn-red btn-lg" href="tel:${s.phone}">📞 Call This Store</a>
-      <a class="btn btn-ghost btn-lg" href="https://maps.google.com/?q=${mapQ}" target="_blank" rel="noopener">📍 Get Directions</a>
+      <a class="btn btn-red btn-lg" href="tel:${s.phone}">${icon('phone')} Call This Store</a>
+      <a class="btn btn-ghost btn-lg" href="https://maps.google.com/?q=${mapQ}" target="_blank" rel="noopener">${icon('pin')} Get Directions</a>
     </div>
   </div>
 </div>
@@ -353,9 +356,9 @@ function locationPage(s) {
     <span class="kicker">What You Can Do Here</span>
     <h2 class="sec-title">Everything, under one roof</h2>
     <div class="steps-grid">
-      <div class="step"><div class="step-num">💰</div><h3>Sell or Pawn</h3><p>Free appraisals on jewelry, electronics, tools and more. No credit check, cash on the spot.</p></div>
-      <div class="step"><div class="step-num">💎</div><h3>Jewelry Repair</h3><p>An experienced jeweler is on staff here every day — many repairs done while you wait.</p></div>
-      <div class="step"><div class="step-num">🛍️</div><h3>Shop the Floor</h3><p>New items arrive daily. Browse online and pick up here for free.</p></div>
+      <div class="step"><div class="step-num is-ic">${icon('cash')}</div><h3>Sell or Pawn</h3><p>Free appraisals on jewelry, electronics, tools and more. No credit check, cash on the spot.</p></div>
+      <div class="step"><div class="step-num">${icon('gem')}</div><h3>Jewelry Repair</h3><p>An experienced jeweler is on staff here every day — many repairs done while you wait.</p></div>
+      <div class="step"><div class="step-num is-ic">${icon('bag')}</div><h3>Shop the Floor</h3><p>New items arrive daily. Browse online and pick up here for free.</p></div>
     </div>
     <a class="btn btn-red btn-lg" href="../shop.html">Browse 1,500+ Items <span class="arrow">→</span></a>
   </div>
@@ -367,7 +370,7 @@ function locationPage(s) {
     <h2 class="sec-title">Four more along the Grand Strand</h2>
     <div class="loc-grid" style="margin-top:34px">
 ${STORES.filter(o => o.slug !== s.slug).map(o => `      <div class="loc-card">
-        <div class="pin">📍</div>
+        <div class="pin">${icon('pin')}</div>
         <h3>${esc(o.city.replace(/\s*\(.*\)/, ''))}</h3>
         <address>${esc(o.street)}<br>${esc(o.city.replace(/\s*\(.*\)/, ''))}, SC ${o.zip}</address>
         <a class="tel" href="tel:${o.phone}">${o.phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')}</a>
@@ -382,8 +385,8 @@ ${STORES.filter(o => o.slug !== s.slug).map(o => `      <div class="loc-card">
     <h2>Stop by ${esc(s.city.replace(/\s*\(.*\)/, ''))} today</h2>
     <p>Walk-ins always welcome — no appointment needed. Open Monday through Saturday, 9am to 6pm.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-      <a class="btn btn-navy btn-lg" href="tel:${s.phone}">📞 Call ${s.phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')}</a>
-      <a class="btn btn-ghost btn-lg" href="../sell.html">💰 Get a Cash Quote</a>
+      <a class="btn btn-navy btn-lg" href="tel:${s.phone}">${icon('phone')} Call ${s.phone.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')}</a>
+      <a class="btn btn-ghost btn-lg" href="../sell.html">${icon('cash')} Get a Cash Quote</a>
     </div>
   </div>
 </section>

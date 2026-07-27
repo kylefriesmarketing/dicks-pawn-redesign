@@ -12,31 +12,68 @@
   --grey:#5b6570;
   --line:#e3e9f0;
   --radius:14px;
-  --shadow:0 6px 24px rgba(12,37,71,.10);
-  --shadow-lg:0 14px 44px rgba(12,37,71,.18);
+
+  /* Depth: two layers per level — a tight contact shadow that anchors the
+     element plus a wide soft one for ambient light. A single blurred shadow
+     reads as a smudge; the pair reads as an object sitting on a surface. */
+  --shadow-xs:0 1px 2px rgba(12,37,71,.07), 0 1px 3px rgba(12,37,71,.05);
+  --shadow-sm:0 1px 2px rgba(12,37,71,.06), 0 3px 10px rgba(12,37,71,.06);
+  --shadow:0 2px 4px rgba(12,37,71,.05), 0 10px 26px rgba(12,37,71,.09);
+  --shadow-lg:0 4px 8px rgba(12,37,71,.06), 0 18px 46px rgba(12,37,71,.15);
+  --shadow-xl:0 8px 18px rgba(12,37,71,.08), 0 34px 76px rgba(12,37,71,.20);
+  /* Hairline that survives on top of any background, unlike a solid border. */
+  --ring:inset 0 0 0 1px rgba(12,37,71,.09);
+
+  --ease:cubic-bezier(.4,0,.2,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{font-family:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+
+/* ---------- Icons ----------
+   One 24x24 family, sized in em so an icon always matches the text it sits
+   beside. Replaced the emoji that previously did this job. */
+.ic{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:1.85;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.2em}
+.ic-star{fill:currentColor;stroke:none;width:1em;height:1em;vertical-align:-.13em}
+.ic-tick{color:#1f9d55}
+.ic-search{width:1.25em;height:1.25em;color:var(--grey)}
+.btn .ic{width:1.2em;height:1.2em;margin-right:-1px}
+.stars .ic{width:1.05em;height:1.05em;margin-right:1px;vertical-align:-.12em}
+.h-ic .ic{width:1.05em;height:1.05em;color:var(--red)}
+.pin .ic{width:1.35rem;height:1.35rem;color:var(--navy);stroke-width:1.7}
+.dot .ic{width:1.15rem;height:1.15rem}
+.tick .ic{width:1.05em;height:1.05em;color:#1f9d55;vertical-align:-.16em}
+.step-num.is-ic .ic{width:1.35rem;height:1.35rem;stroke-width:1.75}
+.topbar .ic{width:1.02em;height:1.02em;vertical-align:-.17em;opacity:.92}
+.chip .ic{width:1.05em;height:1.05em;vertical-align:-.16em}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
 .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
-section{padding:72px 0}
-h1,h2,h3,h4{line-height:1.15;letter-spacing:-.01em}
-.kicker{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
-.sec-title{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;color:var(--navy-dark);margin-bottom:12px}
-.sec-sub{font-size:1.08rem;color:var(--grey);max-width:640px}
+section{padding:78px 0}
+/* Display type wants negative tracking — at large sizes default spacing reads
+   loose and juvenile. Body copy keeps normal tracking for readability. */
+h1,h2,h3,h4{line-height:1.12;letter-spacing:-.022em}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--red);margin-bottom:13px}
+.kicker::before{content:"";width:22px;height:2px;border-radius:2px;background:currentColor;opacity:.55}
+.center .kicker::before{display:none}
+.sec-title{font-size:clamp(1.75rem,3.4vw,2.55rem);font-weight:800;color:var(--navy-dark);margin-bottom:13px;letter-spacing:-.028em}
+.sec-sub{font-size:1.08rem;color:var(--grey);max-width:640px;line-height:1.6}
 .center{text-align:center}
 .center .sec-sub{margin:0 auto}
 
 /* ---------- Buttons ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:inherit;font-weight:700;font-size:1rem;padding:15px 30px;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease, background .15s ease;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:inherit;font-weight:700;font-size:1rem;letter-spacing:-.005em;padding:15px 30px;border-radius:999px;border:2px solid transparent;cursor:pointer;position:relative;isolation:isolate;overflow:hidden;transition:transform .18s var(--ease-out), box-shadow .18s var(--ease), background .18s var(--ease);white-space:nowrap}
 .btn:hover{transform:translateY(-2px)}
-.btn-red{background:var(--red-bright);color:#fff;box-shadow:0 6px 18px rgba(198,40,45,.35)}
-.btn-red:hover{background:#e04345;box-shadow:0 10px 26px rgba(198,40,45,.42)}
-.btn-navy{background:var(--navy);color:#fff;box-shadow:0 6px 18px rgba(19,53,100,.30)}
-.btn-navy:hover{background:#1a4480}
+.btn:active{transform:translateY(0);transition-duration:.06s}
+/* Top-edge highlight — gives the solid fills a lit, dimensional read instead
+   of looking like flat rectangles of colour. */
+.btn-red::before,.btn-navy::before,.btn-gold::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0) 55%);pointer-events:none}
+.btn-red{background:var(--red-bright);color:#fff;box-shadow:0 1px 2px rgba(140,20,24,.30), 0 7px 20px rgba(198,40,45,.34)}
+.btn-red:hover{background:#e04345;box-shadow:0 2px 4px rgba(140,20,24,.28), 0 12px 30px rgba(198,40,45,.44)}
+.btn-navy{background:var(--navy);color:#fff;box-shadow:0 1px 2px rgba(8,26,51,.32), 0 7px 20px rgba(19,53,100,.30)}
+.btn-navy:hover{background:#1a4480;box-shadow:0 2px 4px rgba(8,26,51,.30), 0 12px 30px rgba(19,53,100,.38)}
 .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
 .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
 .btn-outline{background:#fff;color:var(--navy);border-color:var(--navy)}
@@ -80,7 +117,10 @@ nav.main a:hover{color:var(--navy);border-color:var(--red)}
   radial-gradient(900px 500px at -10% 110%, rgba(193,39,45,.14), transparent 55%),
   linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 58%,#1d4a8a 100%);
   color:#fff;padding:88px 0 96px;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;right:-140px;top:-140px;width:520px;height:520px;background:conic-gradient(from 200deg,rgba(255,255,255,.16),transparent 40%,rgba(255,255,255,.10) 60%,transparent 80%);transform:rotate(45deg);border-radius:80px;pointer-events:none}
+/* Ambient light in the top-right corner. Kept well behind the deal cards and
+   softened — at the original strength it read as a stray grey oval sitting on
+   top of the artwork rather than as lighting. */
+.hero::after{content:"";position:absolute;right:-200px;top:-220px;width:560px;height:560px;background:radial-gradient(circle at 40% 60%,rgba(255,255,255,.13),rgba(255,255,255,.05) 45%,transparent 70%);border-radius:50%;pointer-events:none;z-index:0}
 .hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center;position:relative;z-index:1}
 .hero h1{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:800;margin-bottom:18px}
 .hero h1 em{font-style:normal;color:#ffd166}
@@ -89,7 +129,7 @@ nav.main a:hover{color:var(--navy);border-color:var(--red)}
 .trust-row{display:flex;gap:12px;flex-wrap:wrap}
 .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:8px 16px;font-size:.86rem;font-weight:600;color:#e8f1fb;backdrop-filter:blur(4px)}
 .chip .star{color:#ffc93c}
-.hero-art{display:flex;justify-content:center}
+.hero-art{display:flex;flex-direction:column;align-items:center;justify-content:center}
 .hero-badge{background:rgba(255,255,255,.97);border-radius:26px;padding:38px 34px;text-align:center;box-shadow:var(--shadow-lg);max-width:330px;transform:rotate(2deg)}
 .hero-badge img{width:190px;margin:0 auto 16px}
 .hero-badge .since{font-weight:800;color:var(--navy-dark);font-size:1.16rem}
@@ -101,9 +141,13 @@ nav.main a:hover{color:var(--navy);border-color:var(--red)}
 /* ---------- Action strip ---------- */
 .actions{margin-top:-52px;position:relative;z-index:5;padding:0 0 10px}
 .actions-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.action-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s;display:flex;flex-direction:column;gap:8px}
-.action-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
-.action-ic{width:52px;height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+.action-card{background:#fff;border:none;border-radius:var(--radius);padding:27px 25px;box-shadow:var(--ring),var(--shadow);transition:transform .22s var(--ease-out),box-shadow .22s var(--ease);display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+/* Accent rail that wipes in on hover — signals the card is a destination. */
+.action-card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--red-bright),var(--red));transform:scaleY(0);transform-origin:top;transition:transform .28s var(--ease-out)}
+.action-card:hover{transform:translateY(-5px);box-shadow:var(--ring),var(--shadow-lg)}
+.action-card:hover::after{transform:scaleY(1)}
+.action-ic{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:6px;transition:transform .28s var(--ease-out)}
+.action-card:hover .action-ic{transform:scale(1.07) rotate(-3deg)}
 .action-ic svg{width:26px;height:26px}
 .ic-red{background:#fdecec;color:var(--red)}
 .ic-navy{background:var(--ice);color:var(--navy)}
@@ -236,7 +280,9 @@ footer a:hover{color:#fff;text-decoration:underline}
 
 /* ================= INTERIOR PAGES ================= */
 .page-hero{background:linear-gradient(150deg,var(--navy-deep) 0%,var(--navy) 70%,#1d4a8a 100%);color:#fff;padding:56px 0 60px;position:relative;overflow:hidden}
-.page-hero::after{content:"";position:absolute;right:-120px;top:-160px;width:440px;height:440px;background:conic-gradient(from 200deg,rgba(255,255,255,.14),transparent 45%,rgba(255,255,255,.08) 65%,transparent 85%);transform:rotate(45deg);border-radius:70px;pointer-events:none}
+/* Same soft corner light as the home hero. The conic gradient this replaced
+   rendered as a hard-edged angular slab that looked like a stray graphic. */
+.page-hero::after{content:"";position:absolute;right:-170px;top:-190px;width:480px;height:480px;background:radial-gradient(circle at 40% 60%,rgba(255,255,255,.12),rgba(255,255,255,.045) 45%,transparent 70%);border-radius:50%;pointer-events:none;z-index:0}
 .page-hero .wrap{position:relative;z-index:1}
 .page-hero h1{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;margin-bottom:10px}
 .page-hero p{font-size:1.12rem;color:#d9e6f6;max-width:640px}
@@ -260,15 +306,18 @@ nav.main a.active{color:var(--navy);border-color:var(--red)}
 .pill small{font-weight:600;opacity:.65;margin-left:4px}
 .p-count{color:var(--grey);font-weight:600;font-size:.92rem;margin:8px 0 18px}
 .p-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.p-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 3px 12px rgba(12,37,71,.06);transition:transform .16s,box-shadow .16s;display:flex;flex-direction:column;position:relative}
-.p-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-.p-img{aspect-ratio:1/1;background:#f4f7fa;position:relative;overflow:hidden}
-.p-img img{width:100%;height:100%;object-fit:cover;transition:transform .25s}
-.p-card:hover .p-img img{transform:scale(1.04)}
-.p-badge{position:absolute;top:10px;left:10px;z-index:2;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:4px 9px;color:#fff}
-.p-badge.deal{background:var(--red-bright)}
-.p-badge.sold{background:#5b6570}
-.p-badge.new{background:#1f9d55}
+.p-card{background:#fff;border:none;border-radius:var(--radius);overflow:hidden;box-shadow:var(--ring),var(--shadow-sm);transition:transform .2s var(--ease-out),box-shadow .2s var(--ease);display:flex;flex-direction:column;position:relative}
+.p-card:hover{transform:translateY(-5px);box-shadow:inset 0 0 0 1px rgba(19,53,100,.16),var(--shadow-lg)}
+/* Most catalogue shots are cut out on white, so a flat grey panel makes them
+   look like they're floating in a void. A soft top-down wash gives the product
+   a surface to sit on. */
+.p-img{aspect-ratio:1/1;background:linear-gradient(170deg,#fbfcfe 0%,#eef3f8 100%);position:relative;overflow:hidden}
+.p-img img{width:100%;height:100%;object-fit:cover;transition:transform .38s var(--ease-out)}
+.p-card:hover .p-img img{transform:scale(1.055)}
+.p-badge{position:absolute;top:10px;left:10px;z-index:2;font-size:.68rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;border-radius:7px;padding:5px 10px;color:#fff;box-shadow:0 2px 6px rgba(12,37,71,.22)}
+.p-badge.deal{background:linear-gradient(140deg,#e04345,var(--red))}
+.p-badge.sold{background:linear-gradient(140deg,#6b7480,#4d565f)}
+.p-badge.new{background:linear-gradient(140deg,#26ad60,#12783f)}
 .p-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
 .p-title{font-size:.94rem;font-weight:600;color:var(--ink);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.5em}
 .p-price{font-size:1.14rem;font-weight:800;color:var(--navy-dark);margin-top:auto}
@@ -337,10 +386,20 @@ nav.main a.active{color:var(--navy);border-color:var(--red)}
 .subpill.on{color:var(--navy-dark);border-color:var(--red)}
 .subpill small{opacity:.6;margin-left:3px}
 
-/* ================= CATEGORY TILES WITH REAL PHOTOS ================= */
-.cat-card{background-size:cover;background-position:center}
-.cat-card::before{background:linear-gradient(180deg,rgba(8,26,51,.30) 0%,rgba(8,26,51,.42) 40%,rgba(8,26,51,.86) 100%)}
-.cat-card .cat-emoji{font-size:1.7rem;background:rgba(255,255,255,.16);backdrop-filter:blur(3px);width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;top:16px;left:16px}
+/* ================= CATEGORY TILES WITH REAL PHOTOS =================
+   The tile background is a real product shot pulled from the live catalogue,
+   so the artwork carries the meaning — the emoji badge that used to sit on top
+   was redundant and has been removed. */
+.cat-card{background-size:cover;background-position:center;min-height:196px;box-shadow:var(--shadow);transition:transform .24s var(--ease-out),box-shadow .24s var(--ease),background-size .5s var(--ease-out)}
+/* Bottom-weighted scrim. Most catalogue shots are cut out on white, so an even
+   navy wash over the whole tile just turned them grey and muddy. Keeping the top
+   clear lets the product read at full contrast; the label only needs cover where
+   it actually sits. */
+.cat-card::before{background:linear-gradient(180deg,rgba(8,26,51,0) 0%,rgba(8,26,51,.05) 32%,rgba(8,26,51,.44) 56%,rgba(8,26,51,.88) 74%,rgba(8,26,51,.96) 100%)}
+.cat-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-xl)}
+.cat-card h3{letter-spacing:-.018em;text-shadow:0 1px 3px rgba(8,26,51,.7),0 2px 14px rgba(8,26,51,.55)}
+.cat-card span{color:#ffdcdc;opacity:.94;transition:opacity .2s}
+.cat-card:hover span{opacity:1}
 
 /* ================= QUICK VIEW MODAL ================= */
 .qv-back{position:fixed;inset:0;z-index:100;background:rgba(8,26,51,.62);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .18s}
@@ -446,3 +505,63 @@ a.p-title:hover{color:var(--navy)}
 a.p-img{display:block}
 .qv-full{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:.92rem;color:var(--navy);margin-top:12px}
 .qv-full:hover{color:var(--red-bright);text-decoration:underline}
+
+/* ================= HERO: LIVE DEAL CARDS =================
+   Replaces the tilted logo badge that used to sit here. That badge repeated the
+   logo already in the header and said nothing about the business; these are real
+   items from the catalogue with real prices, so the hero proves the "1,500+
+   deals" claim instead of just asserting it.
+
+   Cards are VISIBLE BY DEFAULT. The entry animation only runs once JS adds
+   .is-anim, so if scripting is off, the animation is blocked, or the document is
+   never composited, the content still shows. Never gate content on an animation. */
+.hero-deals{position:relative;width:364px;height:406px}
+.hero-deal{position:absolute;width:174px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-xl);transition:transform .28s var(--ease-out),box-shadow .28s var(--ease)}
+.hero-deal .hd-img{aspect-ratio:1/1;background:linear-gradient(170deg,#fbfcfe,#eef3f8)}
+.hero-deal .hd-img img{width:100%;height:100%;object-fit:cover}
+.hero-deal .hd-body{padding:11px 13px 13px}
+.hero-deal .hd-title{font-size:.78rem;font-weight:600;color:var(--grey);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.05em}
+.hero-deal .hd-price{font-size:1.1rem;font-weight:800;color:var(--navy-dark);margin-top:3px;letter-spacing:-.02em}
+/* Staggered on opposing diagonals with NO horizontal overlap, so every title
+   and price stays fully legible. An earlier version stacked three cards in a
+   narrower box and they buried each other's prices. */
+.hero-deal:nth-child(1){top:0;left:0;transform:rotate(-4deg)}
+.hero-deal:nth-child(2){top:150px;right:0;transform:rotate(3.5deg)}
+.hero-deal:nth-child(3){display:none}
+.hero-deal:hover{z-index:3;box-shadow:0 12px 24px rgba(12,37,71,.14),0 44px 90px rgba(12,37,71,.28)}
+.hero-deal:nth-child(1):hover{transform:rotate(-4deg) translateY(-6px) scale(1.03)}
+.hero-deal:nth-child(2):hover{transform:rotate(3.5deg) translateY(-6px) scale(1.03)}
+.hero-deals.is-anim .hero-deal{animation:.7s var(--ease-out) backwards}
+.hero-deals.is-anim .hero-deal:nth-child(1){animation-name:dealIn1;animation-delay:.05s}
+.hero-deals.is-anim .hero-deal:nth-child(2){animation-name:dealIn2;animation-delay:.18s}
+@keyframes dealIn1{from{opacity:0;transform:translateY(18px) rotate(0) scale(.96)}}
+@keyframes dealIn2{from{opacity:0;transform:translateY(18px) rotate(0) scale(.96)}}
+
+.hero-seal{display:flex;align-items:center;gap:12px;justify-content:center;margin-top:22px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.20);backdrop-filter:blur(6px);border-radius:999px;padding:9px 20px 9px 11px;width:fit-content;margin-inline:auto}
+.hero-seal img{width:38px;height:auto}
+.hero-seal b{display:block;font-size:.95rem;color:#fff;letter-spacing:-.01em}
+.hero-seal small{display:block;font-size:.78rem;color:#bcd2ec}
+@media(max-width:880px){.hero-deals,.hero-seal{display:none}}
+
+/* ================= SCROLL REVEAL =================
+   Content lifts in once as it enters view. Purely additive: without JS (or with
+   reduced motion) everything is simply visible from the start. */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .hero-deal{animation:none;opacity:1}
+  .hero-deal:nth-child(1){transform:rotate(-4.5deg)}
+  .hero-deal:nth-child(2){transform:rotate(3.5deg)}
+  .hero-deal:nth-child(3){transform:rotate(-1.5deg)}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+/* Header tightens on scroll so the sticky bar takes less of a phone screen. */
+header.site{transition:box-shadow .25s var(--ease),padding .25s var(--ease)}
+header.site.is-stuck{box-shadow:0 4px 22px rgba(12,37,71,.13)}
+header.site.is-stuck .wrap{padding-top:8px;padding-bottom:8px}
+header.site .wrap{transition:padding .25s var(--ease)}
+header.site.is-stuck .brand img{height:44px}
+.brand img{transition:height .25s var(--ease)}
+.big-star .ic{width:.62em;height:.62em;color:#f5a623;vertical-align:.06em;margin-left:.06em}
