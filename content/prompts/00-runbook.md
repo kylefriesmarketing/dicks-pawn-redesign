@@ -12,14 +12,50 @@ observed as a balance delta on a real job.
 | Video clip | `seedance_2_5` | 9:16, 1080p, 15s | **135.00** |
 | Video clip | `seedance_2_5` | 9:16, 720p, 15s | **97.50** |
 | Video clip | `seedance_2_5` | 9:16, 480p, 15s | **45.00** |
+| Video clip | `seedance_2_0_mini` | 9:16, 720p, 15s | **37.50** |
+| Video clip | `seedance_2_0_mini` | 9:16, 480p, 15s | **15.00** |
+| Video clip | `seedance_2_0` (fast) | 9:16, 720p, 15s | **52.50** |
+| Video clip | `seedance_2_0` (std) | 9:16, 1080p, 15s | **165.00** |
 
 Seedance is billed **per second of output**, and resolution is the multiplier:
 
-| Resolution | Credits/sec |
+| Model + resolution | Credits/sec | Full 45s episode |
+|---|---|---|
+| `seedance_2_0_mini` 480p | 1.0 | **45** |
+| `seedance_2_0_mini` 720p | 2.5 | **112.5** |
+| `seedance_2_5` 480p | 3.0 | 135 |
+| `seedance_2_0` fast 720p | 3.5 | 157.5 |
+| `seedance_2_5` 720p | 6.5 | 292.5 |
+| `seedance_2_5` 1080p | 9.0 | 405 |
+| `seedance_2_0` std 1080p | 11.0 | 495 |
+
+**Pick the model before you pick the resolution.** Seedance 2.0 Mini at 720p
+costs less per second than Seedance 2.5 does at 480p — it is cheaper *and*
+higher resolution. A whole 45-second episode on Mini at 720p (112.5) costs less
+than a single 15-second Seedance 2.5 clip at 1080p (135).
+
+The catch is that Mini is a budget model and its output quality here is
+**unverified** — the 5-second motion test validated `seedance_2_5`, not Mini.
+Lip-sync and identity hold are exactly the things a cheaper model degrades
+first, and they are the two things this format cannot survive losing. Spend 15
+credits on one Mini clip and compare it against `content/output/` before
+committing an episode to it.
+
+### Porting a clip prompt from 2.5 to 2.0 Mini
+
+The prompt text carries over unchanged. The params do not:
+
+| 2.5 | 2.0 Mini |
 |---|---|
-| 1080p | 9.0 |
-| 720p | 6.5 |
-| 480p | 3.0 |
+| `mode: "omni_reference"` | *(no `mode` param — remove it)* |
+| `medias[].role: "image"` | `image_references` |
+| `resolution: "1080p"` | 480p / 720p only |
+| `duration` up to 30 | 4-15 |
+
+`generate_audio: true` is the default on both. Mini and `seedance_2_0` also
+carry `supports_unlim`, which `seedance_2_5` does not — so if a free-trial
+unlimited allowance ever applies to this account, it applies to these models and
+never to 2.5.
 
 **Video is ~95% of the budget.** Images are rounding error. Every cost decision
 in this series is a decision about seconds of video, not about image quality.
@@ -28,18 +64,20 @@ in this series is a decision about seconds of video, not about image quality.
 
 | Build | Boards | Clips | Total |
 |---|---|---|---|
-| 45s @ 1080p (the spec) | 19.5 | 405 | **~425** |
-| 45s @ 720p | 19.5 | 292.5 | **~312** |
-| 30s @ 1080p (2 clips) | 13.0 | 270 | **~283** |
-| 15s @ 1080p (1 clip) | 6.5 | 135 | **~142** |
-| 45s @ 480p (proof only) | 19.5 | 135 | **~155** |
+| 45s, Mini @ 480p | 19.5 | 45 | **~65** |
+| 45s, Mini @ 720p | 19.5 | 112.5 | **~132** |
+| 45s, 2.5 @ 480p | 19.5 | 135 | **~155** |
+| 30s, 2.5 @ 1080p (2 clips) | 13.0 | 270 | **~283** |
+| 45s, 2.5 @ 720p | 19.5 | 292.5 | **~312** |
+| 45s, 2.5 @ 1080p (the spec) | 19.5 | 405 | **~425** |
 
-A 500-credit pack covers one full 45s episode at 1080p with change left over.
-2,000 credits covers roughly four.
+A 500-credit pack covers one full 45s episode at 1080p on Seedance 2.5 — or
+roughly **four** episodes at 720p on Mini.
 
-**The cheapest real lever is duration, not resolution.** Dropping 45s to 30s
-saves 135 credits and costs you two myths. Dropping 1080p to 720p saves 112 and
-costs you the thing people actually notice on a phone. Cut the seconds first.
+**Levers in order of value: model, then duration, then resolution.** Switching
+2.5 → Mini at the same 720p saves 60% with an unknown quality cost. Dropping 45s
+to 30s saves a third and costs you two myths. Dropping resolution saves the
+least and costs the thing people actually notice on a phone.
 
 ## Run order
 
