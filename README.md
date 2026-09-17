@@ -89,6 +89,27 @@ or — better for production — swap `js/products.js` for a live fetch of
 `https://dickspawn.com/products.json`, since this is a static snapshot that will drift
 as inventory turns over.
 
+## Video content — "Behind the Counter"
+
+A short-form video series for TikTok / Reels / Shorts, built around a caped host
+("Super Dick", already promised on the About page) running numbered lists from
+behind the jewelry counter.
+
+```
+content/video-series-bible.md   the format, the host bible, the claim allowlist,
+                                and all five episodes scripted
+content/prompts/00-runbook.md   measured generation costs + the run order
+content/prompts/01-character.md the locked host prompt (and why the logo stays off it)
+content/prompts/02-boards.md    the three 8-slot storyboard prompts
+content/prompts/03-clips.md     the three Seedance clip prompts
+content/reference/              the locked host still + board 1
+```
+
+Episode 1 is "5 Myths About Pawn Shops". Every factual line in every script is
+sourced from this site — the SC photo-ID requirement, no credit check, insured
+storage — and the allowlist in the bible is the full set of what the host is
+allowed to say on camera.
+
 ## Before this goes live — action items
 
 1. **Replace the 3 testimonial quotes** on `index.html`. They're clearly labeled
