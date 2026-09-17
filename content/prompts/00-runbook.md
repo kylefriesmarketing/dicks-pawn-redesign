@@ -78,6 +78,21 @@ Steps 1-2 are already done and committed; their IDs are below.
    Never bake text at generation time; it renders as gibberish and cannot be
    edited afterwards.
 
+## Three things that will bite you
+
+**A preset can intercept your submission.** `generate_video_batch` may return
+`submission_failed` saying a preset "was recommended instead of submitting a
+job" — no job is created and nothing is charged. This run got offered a preset
+called "IN THE DARK", which would have thrown a moody night grade over a bright
+daylight pawn shop. Retry the same index with `declined_preset_id` set to the id
+in the error. Never accept a preset you did not choose; it silently overrides
+the whole Style & Mood block.
+
+**Media roles get coerced.** Seedance 2.5 takes `role: "image"` and rewrites it
+to `image_references`, reporting the swap in `adjustments`. Harmless, but it
+means the role you write is not always the role that runs — read `adjustments`
+on every submission rather than assuming your params went through verbatim.
+
 ## The one thing that will bite you
 
 `generate_video_batch` returns `submission_failed` rather than queuing when the
