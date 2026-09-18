@@ -100,8 +100,11 @@ content/video-series-bible.md   the format, the host bible, the claim allowlist,
                                 and all five episodes scripted
 content/prompts/00-runbook.md   measured generation costs + the run order
 content/prompts/01-character.md the locked host prompt (and why the logo stays off it)
-content/prompts/02-boards.md    the three 8-slot storyboard prompts
-content/prompts/03-clips.md     the three Seedance clip prompts
+content/prompts/ep01-boards.md  EP01 storyboard prompts (produced)
+content/prompts/ep01-clips.md   EP01 Seedance clip prompts (produced)
+content/prompts/ep02-boards.md  EP02 storyboard prompts (written, unproduced)
+content/prompts/ep02-clips.md   EP02 Seedance clip prompts (written, unproduced)
+content/prompts/ep02-graphics.md  what changes in the burn for EP02
 content/reference/              the locked host still + board 1
 ```
 

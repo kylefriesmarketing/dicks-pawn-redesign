@@ -66,7 +66,7 @@ Style: CapHigh,Montserrat ExtraBold,64,&H00FFFFFF,&H00FFFFFF,&H00000000,&H640000
 [Events]
 Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
 """
-CTA_ANCHOR = 38.458
+CTA_ANCHOR = CTA          # same cut; keep these two in lockstep per episode
 def style(e): return "CapHigh" if e["e"] > CTA_ANCHOR else "Cap"
 open("caps.ass","w").write(head+"\n".join(
     f"Dialogue: 0,{ts(e['s'])},{ts(e['e'])},{style(e)},,0,0,0,,{e['t']}" for e in ev)+"\n")

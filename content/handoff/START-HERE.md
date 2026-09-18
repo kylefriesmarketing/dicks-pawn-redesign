@@ -1,17 +1,20 @@
-# Dick's Pawn Superstore — "Behind the Counter" video series
-## Handoff packet · everything needed to rebuild or continue the series
+# Dick's Pawn Superstore — "Behind the Counter"
+## Build brief: **Episode 2 — "5 Questions We Get Every Single Day"**
 
 **Prepared by:** Kyle Fries Marketing — Kyle Fries · Kylefriesmarketing@gmail.com · 806-544-8098
 **Client:** Dick's Pawn Superstore, Grand Strand, South Carolina (contact: Jill)
-**Status:** Episode 1 is produced and delivered. Episodes 2–5 are written and unproduced.
 **Date:** 18 September 2026
+
+**Your job is EP02.** Episode 1 is already produced and delivered — it ships in
+this packet as the reference build, so you can see exactly what the target looks
+like before you spend anything. Do not rebuild it. Match it.
 
 ---
 
 ## 0. Read this part first — the tool gap
 
-Episode 1 was generated on **Higgsfield**, using **Seedance 2.5** (ByteDance) for
-the video. That model produces 15-second 9:16 clips with **native synchronised
+EP01 was generated on **Higgsfield**, using **Seedance 2.5** (ByteDance) for the
+video. That model produces 15-second 9:16 clips with **native synchronised
 speech** from a text prompt plus reference images — the host's voice in the
 finished video is not dubbed, not TTS, and not lip-synced afterwards. It comes
 out of the video model itself, in one pass.
@@ -20,16 +23,13 @@ out of the video model itself, in one pass.
 
 | Job | What was used | Closest thing you likely have |
 |---|---|---|
-| Locked host portrait | `soul_2` (Higgsfield) | Any strong image model — this is the easiest piece to reproduce |
-| 21:9 eight-slot storyboards | `gpt_image_2` | Same — image generation is the portable part |
-| 15s talking clip w/ native voice | `seedance_2_5` omni_reference | **Sora, or an equivalent video model.** If yours has no synchronised speech, you must split it: silent video + separate TTS + lip-sync pass, and you will lose the natural mouth timing that makes this format work |
+| Locked host portrait | `soul_2` (Higgsfield) | **Already done — reuse the file in this packet.** Do not regenerate |
+| 21:9 eight-slot storyboards | `gpt_image_2` | Any strong image model — this is the portable part |
+| 15s talking clip w/ native voice | `seedance_2_5` omni_reference | **Sora, or equivalent.** If yours has no synchronised speech you must split it: silent video + separate TTS + lip-sync, and you will lose the natural mouth timing this format runs on |
 | Post-production | ffmpeg + faster-whisper + libass | Same tools, any Linux box |
 
-Everything in sections 1–7 below is **model-agnostic**. The specs, the script,
-the claim rules, the beat structure and the graphics spec all port cleanly.
-Section 8 is the paid-for list of traps — read it before spending a single
-credit anywhere, because most of those traps are properties of diffusion models
-in general, not of Seedance specifically.
+Everything else in this brief is **model-agnostic**. The specs, the script, the
+claim rules, the beat structure and the graphics spec port cleanly.
 
 **One honest warning about the voice.** If your pipeline cannot produce
 synchronised native speech, do not simply generate silent footage and narrate
@@ -43,37 +43,42 @@ worth making, but do not present it as the same thing.
 
 ```
 00-START-HERE.md              ← you are here
-01-series-bible.md            The format, the host, the claim allowlist, all 5 episode scripts
+01-series-bible.md            Format, host, claim allowlist, all 5 episode scripts
+
 02-prompts/
-  00-runbook.md               Costs, run order, defect triage, the three things that bite
-  01-character.md             The locked host prompt + why the logo cannot be prompted
-  02-boards.md                The eight-slot storyboard prompts (all 3 boards, verbatim)
-  03-clips.md                 The three 15s clip prompts (verbatim, cut by cut)
-  04-post-production-notes.md How EP01 was assembled, the two defects, the graphics spec
+  00-runbook.md               Costs, run order, defect triage, the things that bite
+  01-character.md             The locked host + why the logo cannot be prompted
+  ep02-boards.md              ★ BUILD THIS — EP02's three 8-slot storyboards
+  ep02-clips.md               ★ BUILD THIS — EP02's three 15s clip prompts
+  ep02-graphics.md            ★ BUILD THIS — what changes in the burn for EP02
+  ep01-boards.md              Reference: the produced episode's boards
+  ep01-clips.md               Reference: the produced episode's clips
+  post-production-notes.md    How EP01 was assembled, its two defects, its graphics
+
 03-reference/
-  super-dick-host-LOCKED.jpg  THE host. Every frame of the series derives from this one file
-  dicks-pawn-logo.png         The real diamond-D mark. Composite it; never prompt it
-  ep01-board1..3.jpg          The three storyboards actually used
-  ep01-final-frames.jpg       Contact sheet of the finished video
-  ep01-clips-raw.jpg          Contact sheet of the raw clips, before edit
+  super-dick-host-LOCKED.jpg  THE host. Every frame of the series derives from this
+  dicks-pawn-logo.png         The real diamond-D. Composite it; never prompt it
+  ep01-board1..3.jpg          EP01's boards — EP02 board 1 chains board 1 of these
+  ep01-final-frames.jpg       Contact sheet of the finished EP01
+  ep01-clips-raw.jpg          Contact sheet of EP01's raw clips, before edit
   ep01-fact-card.jpg          The designed card that replaced one bad beat
   store-photos/01..04.jpg     Real photographs of the store — the set ground truth
+
 04-build/
-  burn.py                     The graphics burn, exactly as run
+  burn.py                     The graphics burn, as run on EP01
   factcard.py                 The replacement-card generator
-  caps.ass                    The finished caption track
+  caps.ass                    EP01's finished caption track, as a format example
+
 05-full-conversation.md       The complete client conversation, 136 turns, unedited
-06-final-video/
-  ep01-5-myths-720p.mp4       The finished episode (720p reference copy, 5.4 MB)
+06-reference-video/
+  ep01-5-myths-720p.mp4       EP01, finished. **The target. Watch it first**
 07-commercial/
-  dicks-pawn-proposal-and-agreement.pdf   The signed-form proposal + agreement
+  dicks-pawn-proposal-and-agreement.pdf   The proposal + agreement
 ```
 
 `05-full-conversation.md` is the raw record — every client instruction, every
-correction, every reversal, in order. If something in this brief seems
-arbitrary, the reason is in there. Two things worth knowing about it: the client
-changes his mind (the editor's cost was included, then removed), and the later
-half is about the contract, not the video.
+correction, every reversal, in order. If something here seems arbitrary, the
+reason is in there.
 
 ---
 
@@ -86,14 +91,36 @@ of roughly 1.9 seconds. Red numerals burn in on the counting beats.
 
 It works for three reasons, and all three are worth preserving:
 
-1. **The number is a progress bar.** "Five myths" promises an end. Viewers stay
-   for the countdown — that is what carries retention past the 3-second cliff.
-2. **Myth-busting is argument bait.** Half the comments will be people insisting
-   the myth is true. That is the algorithm's favourite signal.
+1. **The number is a progress bar.** "Five questions" promises an end. Viewers
+   stay for the countdown — that is what carries retention past the 3s cliff.
+2. **It is argument bait.** Half the comments will be people insisting they know
+   better. That is the algorithm's favourite signal.
 3. **It costs nothing to repeat.** Same host, same counter, same light. Only the
    list changes. Episode 12 is as cheap as episode 2.
 
-The format is a container. The series bible fills it.
+### What makes EP02 different from EP01
+
+EP01 was a **countdown**. EP02 is a **relay**: each clip ends on a question the
+*next* clip answers.
+
+| | ends on | next clip opens on |
+|---|---|---|
+| Clip 1 | "Two — do I need good credit?" | "You need NO credit." |
+| Clip 2 | "Four — is my stuff safe?" | "Safe and insured, the whole time." |
+
+That is a stronger retention device than a straight count and it costs nothing —
+but it puts real load on four specific beats, and if you get those wrong the
+episode is worse than EP01 rather than better:
+
+- **The last beat of clips 1 and 2 must play as an unanswered question.** Brows
+  up and *staying* up, mouth closing, a beat of waiting. EP01's clips ended on
+  settled, satisfied faces. If these land settled, the relay breaks at the clip
+  boundary — the single most expensive place in the episode to lose a viewer.
+- **The first beat of clips 2 and 3 is an answer landing on frame one.** No
+  windup, no breath, no re-introduction. Already mid-gesture as the frame opens.
+
+The prompts in `ep02-clips.md` say this explicitly, in the cut text. Don't trim
+those sentences to save prompt length — they are the episode's whole structure.
 
 ---
 
@@ -101,7 +128,7 @@ The format is a container. The series bible fills it.
 
 The client's About page already promises him: *"if you spot Super Dick around
 town — that's our promise on the move."* The logo is a diamond cut into a hero
-shield. The brand was already superhero-coded; the series just puts a face on it.
+shield. The brand was already superhero-coded; the series puts a face on it.
 
 **He is a man in a polo with a cape, not a costume.** A foam mascot head cannot
 lip-sync, cannot hold an expression, and reads as uncanny. A real guy working the
@@ -125,6 +152,17 @@ counter who happens to be wearing a cape is funnier, warmer, and renders cleanly
 > A warm, dry-witted counter guy who has heard every myth a thousand times and
 > enjoys knocking them down — easy-going, conversational, never salesy.
 
+### Use the file. Do not regenerate the host.
+
+`03-reference/super-dick-host-LOCKED.jpg` already carries the real logo
+composited at the right size. One image, referenced by every board and every
+clip in every episode. Regenerating it mid-series is how a series quietly loses
+its face between episodes — and EP02's whole job is to look like it was shot the
+same afternoon as EP01.
+
+If you rebuild the host on a different model anyway, you have to rebuild **EP01
+as well**. Do not mix.
+
 ### Three wardrobe findings that cost real money to learn
 
 **The garment decides the realism.** A spandex superhero suit renders as CGI
@@ -136,16 +174,16 @@ version in this series is cotton; every plastic-looking one is spandex.
 
 **No head covering.** A cowl prompted plainly renders as a swim cap; prompted
 with structure it renders as a balaclava with eye holes. Beyond looking wrong, a
-masked figure in a video whose first line is "it's all stolen" is the worst
-available optic. Bare head keeps the whole face readable for lip-sync anyway.
+masked figure in a pawn shop video is the worst available optic. Bare head keeps
+the whole face readable for lip-sync anyway.
 
 **The cape is gold, not red.** Navy + red is Superman's palette and the logo is
 already a shield. Gold ties to Dick's Bullion, catches shop light, and keeps red
 free to mean one thing only — the on-screen numerals and the CTA. Three colours,
-three jobs: navy is the host and the counter world, gold is the hero accent,
-red is numbers and calls to action and nothing else.
+three jobs: navy is the host and the counter world, gold is the hero accent, red
+is numbers and calls to action and nothing else.
 
-### The logo problem, and how it was actually solved
+### The logo problem, and how it was solved
 
 The obvious move is to prompt the diamond onto his chest. **It does not work.**
 Four separate attempts, all failing the same way:
@@ -160,39 +198,29 @@ Four separate attempts, all failing the same way:
 Image models hallucinate lettering into any branded shape, and negating it ("no
 text") makes it worse — the model attends to the noun and drops the negation.
 
-**The fix is compositing, not prompting.** Generate a completely plain polo, then
-composite the real `dicks-pawn-logo.png` onto the chest:
+**The fix is compositing, not prompting.** A completely plain polo, then the real
+`dicks-pawn-logo.png` composited on:
 
 ```bash
 convert dicks-pawn-logo.png -resize 150x150 lg.png
 composite -geometry +455+1155 lg.png host.png super-dick-host.png
 ```
 
-150px at 1536×2048, left chest. Larger crowds the cape; smaller stops reading
-once there is motion. `03-reference/super-dick-host-LOCKED.jpg` is the finished
-result — **use that file directly** rather than rebuilding it.
-
-What this buys and does not buy: the character reference now carries the real
-logo, so every downstream frame renders a far closer likeness than a described
-one would. But a video model still **repaints** it each frame — expect a good
-approximation on screen, not a pixel-exact mark. For a genuinely exact logo,
-trust the persistent corner logo burned in post, which already is exact.
-
-### Never regenerate the host
-
-One image, reused across the entire series, referenced by every board and every
-clip. Regenerating it mid-series is how a series quietly loses its face between
-episodes. If you rebuild the host on a different model, rebuild **all five
-episodes** on that host — do not mix.
+150px at 1536×2048, left chest. This is already done — the packet file is the
+finished result. What it buys: every downstream frame renders a far closer
+likeness than a described mark would. What it does not buy: a video model still
+**repaints** the logo each frame, so expect a good approximation on screen, not a
+pixel-exact mark. For a genuinely exact logo, trust the corner logo burned in
+post — that one already is exact.
 
 ---
 
 ## 4. The set
 
-An early read of the store photos made knotty pine the dominant wall and produced
-rooms that did not look like the shop. The client's exact words: *"the background
-doesn't look enough like the reference photos way to much pine wall."* The real
-ratio is the reverse:
+An early EP01 read made knotty pine the dominant wall and produced rooms that did
+not look like the shop. The client's exact words: *"the background doesn't look
+enough like the reference photos way to much pine wall."* The real ratio is the
+reverse:
 
 - **White horizontal-grooved slatwall is most of the wall**, densely hung with merchandise
 - **Knotty pine is accent columns and trim** between the slatwall panels
@@ -207,7 +235,12 @@ is stocked wall to wall. Say *"cluttered, well-stocked, lived-in — a working s
 not a showroom"* and it lands.
 
 `03-reference/store-photos/` holds four real photographs of the actual store.
-Check every render against them before accepting it.
+Check every render against them.
+
+**EP02 anchors to EP01's room, not to a fresh reading of the photos.** Board 1 of
+EP02 takes EP01's board 1 as a reference image, so the counter, the light
+direction and the guitar wall land where they already are. Two episodes shot in
+visibly different rooms is the failure mode this avoids.
 
 ---
 
@@ -215,8 +248,7 @@ Check every render against them before accepting it.
 
 **Nothing goes on camera that is not on this list.** Every line is sourced from
 the company's own published pages. This is not caution for its own sake — a pawn
-shop making a financial claim it cannot support is a real regulatory problem,
-and "we pay the most in town" is exactly the line that invites one.
+shop making a financial claim it cannot support is a real regulatory problem.
 
 | Claim | Source |
 |---|---|
@@ -234,86 +266,107 @@ and "we pay the most in town" is exactly the line that invites one.
 | Layaway available with no credit needed | services.html |
 | 14-day returns, nationwide shipping | services.html |
 
+**EP02 leans on this list harder than EP01 did.** Four of its five answers are
+direct claims: no credit check, ID required by state law, stored safe and
+insured, free no-obligation appraisal. All four are on the list. Do not let a
+rewrite drift them — "no credit check" must not become "bad credit OK", and
+"stored safe and insured" must not become "guaranteed".
+
 ### Off-limits on camera
 
-- **Firearms or weapons anywhere in frame.** This is written into every board
-  prompt and every clip prompt as an explicit negative, and EP01 shipped with
-  zero firearms in any frame. Real pawn shops carry them; this series does not
-  show them. Platform ad policy and brand safety both point the same way.
-- **Dick's Title Loans.** A legitimate service, but title lending is a regulated
-  high-risk financial product and short-form video is the wrong venue. Website only.
+- **Firearms or weapons anywhere in frame.** Written into every board and clip
+  prompt as an explicit negative; EP01 shipped with zero firearms in any frame.
+  Real pawn shops carry them; this series does not show them.
+- **Dick's Title Loans.** Legitimate, but title lending is a regulated high-risk
+  financial product and short-form video is the wrong venue. Website only.
 - **Interest rates, loan terms, APR, or any "better than a bank" comparison.**
 - **Any specific payout figure, percentage, or "we pay X% of value."**
-- **Invented staff history.** Super Dick is a **host**, not a testimonial. He
-  never says "in my fifteen years here" — he presents facts, not memories.
-- **No other real brand logos** anywhere in frame.
-- **No readable text baked into generation** — see §7.
+  EP02's fifth answer is about *how* value is decided — brand, model, condition,
+  resale. It must never become *how much*.
+- **Invented staff history.** He is a **host**, not a testimonial. He never says
+  "in my fifteen years here" — he presents facts, not memories.
+- **No other real brand logos** anywhere in frame. See §8, the guitar wall.
+- **No readable text baked into generation.** See §7c.
 
 ---
 
-## 6. The script (EP01, as produced) and the four unproduced episodes
+## 6. The EP02 script
 
 Density is tuned to the render: **~30–35 spoken words per 15-second clip.** More
-than that and the model rushes the delivery; less and it ad-libs to fill.
-`CAPS` marks a volume spike. An em-dash marks a hard beat, not a pause.
+and the model rushes; less and it ad-libs to fill. `CAPS` marks a volume spike.
+An em-dash marks a hard beat, not a pause.
 
-### EP01 — 5 Myths About Pawn Shops ✅ produced
-
-> **Clip 1 · myths 1–2**
-> *[incredulous scoff]* Five myths about pawn shops. Number one — it's ALL stolen.
-> South Carolina law: every transaction takes a government photo ID. Number two —
-> it's all junk. We keep real jewelers on staff, every store.
+> **Clip 1 · Q1, and Q2 asked** *(34 words)*
+> Five questions, every day, same five. One — what's the difference between
+> selling and pawning? Sell it, we keep it. Pawn it, we hold it and you come
+> back. Two — do I need good credit?
 >
-> **Clip 2 · myths 3–4**
-> Number three — pawning hurts your credit. It CAN'T. No credit check, and it
-> never touches your score. Number four — your stuff disappears. It's stored safe
-> and insured till you come get it.
+> **Clip 2 · Q2 answered, Q3, Q4 asked** *(37 words)*
+> You need NO credit. Pawn loans run on your item, not your score. Three — what
+> do I bring? Your item and a government photo ID. That's South Carolina law, not
+> our rule. Four — is my stuff safe?
 >
-> **Clip 3 · myth 5 + CTA**
-> Number five — we're hoping you never pay it back. Wrong again. We'd rather see
-> you walk out with your ring than keep it. Family-owned since nineteen
-> eighty-seven. Five stores, Grand Strand.
+> **Clip 3 · Q4 answered, Q5 + CTA** *(31 words)*
+> Safe and insured, the whole time. Five — how do you decide what it's worth?
+> Brand, model, condition, and what it actually resells for. Free look, no
+> obligation. Five stores, Grand Strand.
 
-The bracketed scoff is a clip-1-only opener device. Clips 2 and 3 open
-mid-thought — no greeting, no re-introduction. The viewer never left.
+**Clip 2 is the tightest in the series so far at 37 words.** If the render comes
+back rushed or clips the last question, the pre-authorised trim is *"not our
+rule"*, leaving "That's South Carolina law." That keeps the claim, the
+attribution and the cliffhanger, and buys back three words. Make that call by
+listening to the render, not by pre-emptively cutting it.
 
-**EP02–EP05 are fully written in `01-series-bible.md` §4** — "5 Questions We Get
-Every Single Day", "5 Things You Didn't Know We Take", "5 Things We Do That
-Aren't Pawn", and "5 Mistakes People Make Before Walking In". They are scripted
-to the same density and drawn from the same allowlist. They are ready to shoot.
+EP03–EP05 are written in `01-series-bible.md` §4 and ready when you are.
 
 ---
 
-## 7. How a clip is actually built
+## 7. How a clip is built
 
 ### 7a. The eight-slot storyboard
 
-Each storyboard is **one ultra-wide 21:9 sheet containing exactly eight 9:16
-vertical slots in a single horizontal row**, white gutters, white background.
-Those eight slots become the eight internal hard cuts of one 15-second clip.
-
-Two things about this that matter more than they look:
+One ultra-wide 21:9 sheet, **exactly eight 9:16 vertical slots in a single
+horizontal row**, white gutters, white background. Those eight slots become the
+eight internal hard cuts of one 15-second clip.
 
 **Generate the boards sequentially, never in parallel.** Board K passes board
-K−1 as a trailing reference image, so the counter, the light direction and the
-guitar wall stay put across the whole 45 seconds. Submitting them in parallel
-breaks continuity and you will see the room change between clips.
+K−1 as a trailing reference, so the counter, the light and the guitar wall stay
+put. Parallel submission breaks continuity and you will see the room change.
 
-**Every adjacent pair of slots must differ in both POV and distance band.** A
+EP02's chain, from `ep02-boards.md`:
+
+| Board | medias (in order) |
+|---|---|
+| 1 | character, **EP01 board 1 (de-slopped)** |
+| 2 | character, EP02 board 1 |
+| 3 | character, EP02 board 2 |
+
+**Every adjacent pair of slots must differ in both POV and distance band** — a
 different camera setup (selfie vs. locked-off static), a different distance
-(tight/macro vs. medium vs. wide), and a different action. That is what makes
-each beat boundary read as a crisp hard cut rather than a morph.
+(tight/macro vs. medium vs. wide), a different action. That is what makes each
+beat boundary read as a crisp hard cut rather than a morph.
 
-The full prompts — header block, eight slot lines, footer block, all three
-boards — are in `02-prompts/02-boards.md`, verbatim and ready to copy.
+**Every counting beat is TIGHT or MEDIUM CLOSE-UP. Never wide, never macro.** All
+five of EP01's numerals landed tight or medium-close, which is why each badge
+reads in sync with the counting hand — badge "1" while one finger is up, badge
+"5" while the hand is open. Stage a count wide and the fingers are a few pixels
+across; the badge then looks pasted on, and there is no fixing it in post.
+EP02's counting beats are board 1 slots 2 and 8, board 2 slots 4 and 8, and
+board 3 slot 3.
 
-### 7b. The clip, and the six rules that break it
+The header and footer blocks are shared across every episode and are byte-
+identical in `ep01-boards.md` — copy them from there. They are the most
+drift-prone text in the pipeline.
+
+### 7b. The clip, and the eight rules that break it
 
 Cut timings are fixed for 15 seconds and must sum exactly:
 
 ```
 0-1.9 · 1.9-3.8 · 3.8-5.6 · 5.6-7.5 · 7.5-9.4 · 9.4-11.3 · 11.3-13.1 · 13.1-15
 ```
+
+Six rules carried from EP01:
 
 1. **`Hard cut to.` verbatim at the end of cuts 1–7.** Seven markers, none after
    cut 8. Without them the eight beats melt into one continuous shot.
@@ -324,17 +377,24 @@ Cut timings are fixed for 15 seconds and must sum exactly:
 4. **The voice starts within 0.4s of frame one, and frame one is already
    mid-motion.** A clip that opens at rest is dead before its first sentence.
 5. **Two hands, always.** Count the hand roles in every cut. More than two spawns
-   a third arm — this happens constantly and it is entirely preventable.
+   a third arm — this happens constantly and is entirely preventable.
 6. **Clips 2 and 3 open mid-thought.** No greeting, no re-introduction.
 
-The three complete clip prompts are in `02-prompts/03-clips.md`, cut by cut.
+Two that EP02 adds:
 
-### 7c. Post-production — the part that is fully portable
+7. **Clips 1 and 2 end on a raised, held question.** Brows up and staying up.
+   See §2. This is in the cut text; keep it.
+8. **Every counting beat is tight or medium close-up.** As above.
 
-All of this is ffmpeg, faster-whisper and libass. It runs anywhere.
+The three complete clip prompts are in `ep02-clips.md`, cut by cut, ready to
+paste.
 
-**Assemble in one encode.** Trim, concat and loudness-normalise together —
-and normalise **each clip to −14 LUFS before the concat**, not once at the end.
+### 7c. Post-production — fully portable
+
+All ffmpeg, faster-whisper and libass. Runs anywhere.
+
+**Assemble in one encode.** Trim, concat and loudness-normalise together — and
+normalise **each clip to −14 LUFS before the concat**, not once at the end.
 Clips come back up to 3 dB apart and a global pass leaves that step audible.
 
 One gotcha: `aresample` after `loudnorm` drops the channel layout and the filter
@@ -346,101 +406,113 @@ timed from the real audio of the real edit — never from a pre-edit timing shif
 by arithmetic. **Measure, don't offset.**
 
 This matters more than it sounds. Because the timings come from the real audio,
-each badge also lands in sync with the host's counting hand — badge "1" appears
-while he is holding up one finger, badge "5" while his hand is open with five.
-Timing from the script would drift, because the model distributes its eight beats
-slightly differently every single time.
+each badge lands in sync with the host's counting hand. Timing from the script
+would drift, because the model distributes its eight beats slightly differently
+every single time.
 
-EP01's measured badge cues, post-cut: **1 → 2.72s · 2 → 8.62s · 3 → 13.82s ·
-4 → 21.80s · 5 → 28.82s.**
+**Never bake text into generation.** Numbers, signage, price tags, the logo — all
+of it renders as gibberish lettering and none of it is editable afterwards. Burn
+every piece of text in post. This is also why the polo is generated plain.
 
-**Graphics spec (EP01, as shipped):**
+**Use a subtitle track, not stacked drawtext.** EP01 had 37 caption events; as
+individual `drawtext` filters that is unmanageable and slow. One `.ass` file
+through `subtitles=caps.ass:fontsdir=...` is clean, fast and editable. Captions
+are burned for the full script — most of these views are sound-off.
 
-| Element | Spec |
-|---|---|
-| Numeral badge | Red `#d63031`, 170×170, at (80, 220), Montserrat ExtraBold |
-| Label bar | Navy `#133564`, **fixed 760×170** at (250, 220), 90% opacity |
-| Kicker | Gold `#c9a24b` "MYTH", 32px |
-| Myth text | White, 42px |
-| Hold | 1.9s |
-| Logo | `dicks-pawn-logo.png` at 140px, bottom-left, persistent |
-| Captions | ASS track via libass, two styles: `Cap` MarginV 300, `CapHigh` MarginV 610 |
+**`ep02-graphics.md` has the complete EP02 burn spec.** Three things there are
+not optional:
 
-The label bar is a **fixed width regardless of text length** so the five cards
-read as one system rather than five different widths. Don't let it auto-size.
+- **The card texts and the `QUESTION` kicker** replace EP01's `MYTH` system.
+  Geometry, colours and the fixed 760px bar stay exactly as they are — that fixed
+  width is what makes five cards read as one system rather than five widths.
+- **The cue detector must change or the build dies.** EP01 counted with "Number
+  one"; EP02 counts with bare ordinals. The existing matcher finds nothing and
+  exits on badge 1 — verified, all five fail. A bare-ordinal match is not the fix
+  either, because EP02 says "five" three extra times ("Five questions", "same
+  five", "Five stores"). The working version requires the ordinal to start a
+  sentence. Code and verification output are in `ep02-graphics.md`.
+- **Badges 2 and 4 hold across the clip cut on purpose** (2.7s rather than 1.9s),
+  so the question card is still on screen when the answer lands. That is the
+  relay structure made visible.
 
-**The myths are labelled as myths on purpose.** "ALL STOLEN" in large type on a
-pawn shop's own video is a bad screenshot unless it is unmistakably framed as the
-claim being debunked. The gold "MYTH" kicker does that work. **Do not drop it.**
-
-Captions are burned for the full script — the client asked for this explicitly,
-and it is correct: most of these views are sound-off.
-
-**Use a subtitle track, not stacked drawtext.** Thirty-seven caption events as
-individual `drawtext` filters is unmanageable and slow; one `.ass` file through
-`subtitles=caps.ass:fontsdir=...` is clean, fast and editable.
-
-**Fix the transcriber's proper nouns.** Whisper reliably mangles two words in
-this script: *"pawning"* → "ponching", and *"Grand Strand"* → "grand strain" or
-"grand strad". `burn.py` carries an explicit `FIX` dict for exactly this. Any
-new episode will need its own.
-
-`04-build/burn.py` is the real script, as run. It is ~170 lines and readable.
+**Fix the transcriber's proper nouns.** Whisper reliably mangles *"pawning"* →
+"ponching" and *"Grand Strand"* → "grand strain"/"grand strad". `burn.py` carries
+a `FIX` dict for exactly this. EP02 says both words too.
 
 ---
 
 ## 8. Every trap already paid for
 
-Read this section before generating anything. Most of these are properties of
-diffusion video models in general, not of one vendor's model.
+Read this before generating anything. Most are properties of diffusion video
+models in general, not of one vendor.
 
-### Never bake text into generation
-
-Numbers, signage, price tags, the logo — all of it renders as gibberish lettering
-and none of it is editable afterwards. Burn every piece of text in post, where it
-is crisp, on-brand, and one line of code away from being changed. This is also
-why the host's polo is generated **completely plain**.
-
-### Triage a bad defect before paying to re-render it
+### Triage a bad beat before paying to re-render it
 
 The model ships defects at a fairly steady rate — an ad-lib, a repeated line, a
 cutaway to something irrelevant. **Almost none of them need a re-render.** A
 re-roll is expensive *and* non-deterministic: it may hand you a different defect,
-and it will certainly hand you different timings, invalidating every cue you measured.
+and it will certainly hand you different timings, invalidating every cue you
+measured.
 
-The eight-slot structure is what makes defects cheap to fix. Eight beats means
-eight hard cuts the model has already made, and a defect inside one beat can be
-removed or replaced on those boundaries with no visible seam.
-
-Work it in this order:
+The eight-slot structure is what makes defects cheap. Eight beats means eight
+hard cuts the model has already made, and a defect inside one beat can be removed
+or replaced on those boundaries with no visible seam.
 
 1. **Transcribe the raw clip** and read it against the script. This catches
-   repeated lines, ad-libs and dropped words that a contact sheet never will.
-2. **List the scene cuts** — `select=gt(scene,0.35)` finds the model's own beat boundaries.
+   repeated lines, ad-libs and dropped words a contact sheet never will.
+2. **List the scene cuts** — `select=gt(scene,0.35)` finds the model's own beats.
 3. **Is the defect bounded by two cuts?** Cut that beat out. Free, seamless.
 4. **Is the audio over it worth keeping?** If the picture is bad but the line is a
    claim you want, keep the track and replace only the *picture* for that beat
-   with a designed full-bleed card. Free, and usually better than what it replaced.
-5. **Only then consider a re-render.** By this point you will rarely need one.
+   with a designed full-bleed card. Free, and usually better.
+5. **Only then consider a re-render.** By now you will rarely need one.
 
-**EP01 hit cases 3 and 4 in the same build and shipped without re-rendering either:**
+**EP01 hit cases 3 and 4 in the same build and shipped without re-rendering:**
 
-- *Clip 1 delivered "Number two, it's all junk" twice* — at 8.46–9.72 and again at
+- *Clip 1 delivered "Number two, it's all junk" twice* — 8.46–9.72 and again
   10.26–12.10. The duplicate sat entirely inside one beat bounded by the model's
   own hard cuts, so `8.333 → 10.083` came out losslessly. The *second* delivery
   was kept, because the beat after it is the two-finger close-up.
 - *Clip 2 put a blank gold card beside a padded shipping mailer* under the line
   "no credit check… never touches your score" — accidentally the visual language
-  of a credit-card offer arriving in the mail, which is the exact opposite of the
-  claim. The audio was worth keeping, so only the picture was replaced, with a
-  designed full-bleed fact card (`03-reference/ep01-fact-card.jpg`, generated by
-  `04-build/factcard.py`).
+  of a credit-card offer in the mail, the exact opposite of the claim. The audio
+  was worth keeping, so only the picture was replaced with a designed fact card
+  (`03-reference/ep01-fact-card.jpg`, from `04-build/factcard.py`).
+
+### EP02's own new trap: the guitar wall
+
+EP01 kept the guitars soft and in the background. **EP02 clip 3 cut 4 walks the
+host straight to them and points** — and real guitar headstocks carry maker
+logos, which is exactly what the pipeline exists to avoid. The generic "no brand
+logos" line in the negative tail does *not* reliably catch it when the shot is
+*about* the guitars.
+
+That is why the cut text names it a second time, in the positive, inside the
+Dynamic Description: *"Every guitar headstock is completely plain and unbranded."*
+Keep that sentence, and check that cut at full resolution before assembling. If a
+headstock comes back legible it sits inside one beat bounded by two hard cuts, so
+it comes out or gets replaced for free.
+
+### EP02's new props
+
+Four props EP01 did not use. Three are trivial; all four must be textless.
+
+| Prop | Where | Rule |
+|---|---|---|
+| Plain gold-tone ring | C1 cuts 4–5, C2 cut 5, C3 cut 5 | No stone, no engraving, no markings |
+| Blank licence-size card | C2 cut 5 | No text, photo, numbers, barcode or lines |
+| Blank paper pad | C2 cut 5 | Same |
+| Jeweler's loupe | C3 cut 5 | Plain brass or black, unbranded |
+
+The blank card stands in for "a government photo ID" — the one prop in this
+episode that would normally carry text, which is why the prompt names its
+blankness five different ways.
 
 ### Check the pixels before paying
 
 A downscaled contact sheet is for spotting candidates, not judging them. Pull
 full-resolution frames, and for a colour question sample the region's mean RGB
-across the beat. One earlier build nearly paid for a re-render to fix what turned
+across the beat. One EP01 build nearly paid for a re-render to fix what turned
 out to be blown-out backlight that merely *looked* like a wardrobe break.
 
 ### QA checklist before stitching
@@ -449,77 +521,83 @@ Evenly spaced frames plus 2–3 mid-word frames, checked for: doubled lip edges,
 third hand, face drift between cuts, wardrobe changes, and baked-in text. Re-run
 only the failing clip index, never the batch.
 
+**For EP02, add two checks:** the last beat of clips 1 and 2 must read as a
+question (brows up, unresolved), and clip 3 cut 4's headstocks must be blank.
+
 ### Watch for a preset intercepting your submission
 
-On Higgsfield, a batch submission can come back `submission_failed` saying a
-preset "was recommended instead of submitting a job" — no job created, nothing
-charged. This run was offered a preset called "IN THE DARK", which would have
-thrown a moody night grade over a bright daylight pawn shop. **Never accept a
-preset you did not choose**; it silently overrides the entire Style & Mood block.
-If your platform has an equivalent auto-styling feature, turn it off.
+On Higgsfield a batch can come back `submission_failed` saying a preset "was
+recommended instead of submitting a job" — no job created, nothing charged. EP01
+was offered a preset called "IN THE DARK", which would have thrown a moody night
+grade over a bright daylight pawn shop. **Never accept a preset you did not
+choose**; it silently overrides the entire Style & Mood block. If your platform
+has an equivalent auto-styling feature, turn it off.
 
 ### Read what the API actually ran
 
 Reference-image roles get silently coerced (`role: "image"` → `image_references`).
-Harmless in itself, but it means the parameters you wrote are not always the
-parameters that ran. Read the response's adjustments rather than assuming.
+Harmless in itself, but the parameters you wrote are not always the parameters
+that ran. Read the response's adjustments rather than assuming.
 
 ---
 
-## 9. What EP01 actually is, as a file
+## 9. The reference build
 
-**`06-final-video/ep01-5-myths-720p.mp4`** — 43.5s · 720×1280 · h264 + AAC · 5.4 MB.
+**`06-reference-video/ep01-5-myths-720p.mp4`** — 43.5s · 720×1280 · h264 + AAC ·
+5.4 MB. A downscaled review copy; the delivered master is **1080×1920, 27.2 MB**,
+mean −18.6 dB, peak −1.4 dB, 37 caption events, zero caption overlaps.
 
-This is a **downscaled reference copy** for review. The delivered master is
-**1080×1920, 27.2 MB**, mean −18.6 dB, peak −1.4 dB, 37 caption events, zero
-caption overlaps, ready to post to TikTok, Reels and Shorts as-is.
-
-Watch it before rebuilding anything. It is the target.
+**Watch it before you generate anything.** It is the target: the host, the room,
+the pace, the card system, the caption rhythm, the closing card. EP02 should look
+like it was shot the same afternoon.
 
 ---
 
 ## 10. The commercial context
 
-`07-commercial/dicks-pawn-proposal-and-agreement.pdf` is the live proposal and
-agreement with the client. Relevant facts if you are producing against it:
+`07-commercial/dicks-pawn-proposal-and-agreement.pdf` is the live agreement.
+Relevant if you are producing against it:
 
 - **$5,000/month**, cancel any time, no term commitment, no notice period.
-- Cadence starts at **one video per week** while the pipeline is proven, with an
-  explicit stated goal of ramping to 2–4 per week as it stabilises.
+- Cadence starts at **one video per week** while the pipeline is proven, with a
+  stated goal of ramping to 2–4 per week as it stabilises.
 - Videos are **posted, maintained and analysed** across Instagram, Facebook and
   TikTok — production is not the whole job.
 - **AI generation is disclosed to the client in writing, on page 1.** Keep it
-  that way. Do not let anything in this pipeline become something the client did
-  not knowingly agree to.
-- There is a **$10,000/month** full-production tier (location crew, lighting,
-  sound, hired talent). The $5,000 tier is the AI-host pipeline in this packet
-  plus in-store filming with the client's own staff.
+  that way.
+- A **$10,000/month** full-production tier exists (location crew, lighting,
+  sound, hired talent). The $5,000 tier is this pipeline plus in-store filming
+  with the client's own staff.
 - **No results are guaranteed.** Nothing in any deliverable should imply a
   promised outcome, reach number, or revenue figure.
 
 ---
 
-## 11. If you are rebuilding EP01 from scratch
+## 11. Build order for EP02
 
-Shortest honest path:
-
-1. **Use `03-reference/super-dick-host-LOCKED.jpg` as-is.** Do not regenerate the
-   host. It already carries the real logo composited at the right size, and it is
-   the single point of continuity for the whole series.
-2. **Generate three storyboards sequentially** from `02-prompts/02-boards.md`,
-   each chaining the previous one. Check them against `03-reference/ep01-board1..3.jpg`
-   and against the real store photos.
-3. **Generate three 15s clips** from `02-prompts/03-clips.md`. Honour the six
-   rules in §7b exactly — they are the difference between eight hard cuts and one
-   mushy continuous shot.
-4. **Transcribe and triage before assembling.** §8. This is free and it is where
-   the defects are.
-5. **Assemble in one encode**, per-clip loudness normalisation, then re-transcribe
+1. **Watch `06-reference-video/ep01-5-myths-720p.mp4`.** Free, and it is the spec.
+2. **Use `03-reference/super-dick-host-LOCKED.jpg` as-is.** Do not regenerate the
+   host. It already carries the real logo at the right size and it is the single
+   point of continuity for the series.
+3. **Generate EP02's three storyboards sequentially** from `ep02-boards.md` —
+   board 1 chaining **EP01's** board 1, then 2 chaining 1, then 3 chaining 2.
+   Check against the real store photos and against EP01's boards. Verify the five
+   counting beats are tight or medium close-up.
+4. **De-slop each board** with the preservation prompt in `ep01-boards.md`.
+5. **Generate three 15s clips** from `ep02-clips.md`. Honour all eight rules in
+   §7b — rules 1–6 are the difference between eight hard cuts and one mushy shot,
+   and rules 7–8 are the difference between EP02 and a worse EP01.
+6. **Transcribe and triage before assembling** (§8). Free, and it is where the
+   defects are. Check the two EP02-specific items: held questions, blank
+   headstocks.
+7. **Assemble in one encode**, per-clip loudness normalisation, then re-transcribe
    the master at word level.
-6. **Burn the graphics** with `04-build/burn.py` against your new timings.
+8. **Burn the graphics** per `ep02-graphics.md` — new card texts, the fixed cue
+   detector, and the 2.7s bridge hold on badges 2 and 4. Sanity-check the five
+   printed cues against the predicted table before accepting the build.
 
-If your video model cannot do native synchronised speech, stop at step 3 and
-decide deliberately how you are handling voice — do not discover it at step 5.
+If your video model cannot do native synchronised speech, stop at step 5 and
+decide deliberately how you are handling voice — do not discover it at step 7.
 
 ---
 

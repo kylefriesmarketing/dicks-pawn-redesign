@@ -84,11 +84,15 @@ least and costs the thing people actually notice on a phone.
 **EP01 is fully produced.** Every step below was run; the locked IDs are here so
 EP02-05 reuse the same host and the same proven parameters.
 
+**EP02 is written but unproduced.** Its boards, clips and graphics spec are in
+`ep02-boards.md`, `ep02-clips.md` and `ep02-graphics.md`. Episode-specific prompts
+are named `epNN-*`; `00-runbook.md` and `01-character.md` are series-wide.
+
 1. **Host** — `soul_2`, prompt in `01-character.md`.
    Locked: `9024359d-0dd1-48a7-9665-e942806a4964`
    Never regenerate. This is the series' face.
 
-2. **Boards 1-3** — `gpt_image_2`, prompts in `02-boards.md`.
+2. **Boards 1-3** — `gpt_image_2`, prompts in `epNN-boards.md`.
    Locked: board 1 `fdf7972f-04ee-4e2f-a23d-a288505bc67d`,
    board 2 `18a1eb71-8a34-485e-b7c4-b4eeb723fc7d`,
    board 3 `bb0e989e-47fc-4733-9e8c-d88e60fb595c`
@@ -98,11 +102,12 @@ EP02-05 reuse the same host and the same proven parameters.
    still across cuts. Submitting them in parallel breaks continuity.
 
 4. **De-slop each board** — `seedream_v5_pro`, 21:9, 2k, the board's imported
-   URL as `image_references`, using the preservation prompt in `02-boards.md`.
+   URL as `image_references`, using the preservation prompt in `ep01-boards.md`
+   (it is shared by every episode).
    Skip only under budget pressure; `gpt_image_2` board 1 came back with
    convincing skin texture unaided, so this is polish rather than rescue.
 
-5. **Clips 1-3** — `seedance_2_5`, prompts in `03-clips.md`. Submit all three in
+5. **Clips 1-3** — `seedance_2_5`, prompts in `epNN-clips.md`. Submit all three in
    one `generate_video_batch` call once every prompt is written. Native speech
    comes from `mode: "omni_reference"` + `generate_audio: true`; never make a
    separate audio call.

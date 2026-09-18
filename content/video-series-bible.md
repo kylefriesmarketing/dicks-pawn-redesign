@@ -121,7 +121,14 @@ Density is tuned to the render: ~30-35 spoken words per 15-second clip.
 > you walk out with your ring than keep it. Family-owned since nineteen
 > eighty-seven. Five stores, Grand Strand.
 
-### EP02 — 5 Questions We Get Every Single Day
+### EP02 — 5 Questions We Get Every Single Day  ⏳ **NEXT UP** — prompts written,
+unproduced. Boards, clips and graphics spec in `content/prompts/ep02-*.md`.
+
+Structurally this is a **relay, not a countdown**: clips 1 and 2 each end on a
+question the next clip answers. That is a stronger retention device than EP01's
+straight count, and it costs nothing — but it puts real load on the last beat of
+clips 1 and 2, which must play as an unanswered question rather than a resolved
+one. See `ep02-clips.md` rule 7.
 
 > **Clip 1**
 > Five questions, every day, same five. One — what's the difference between
