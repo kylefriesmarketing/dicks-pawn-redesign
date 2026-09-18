@@ -6,8 +6,16 @@
 and Shorts as-is.
 
 "5 Myths About Pawn Shops", hosted by Super Dick behind the jewelry counter.
-Three 15-second Seedance 2.5 clips stitched with hard cuts, red brand badges
-burned on the numbers, and the real diamond-D logo composited top-right.
+Three 15-second Seedance 2.5 clips stitched with hard cuts, then the graphics
+burned on: a red numbered badge, a navy bar carrying a gold "MYTH" kicker and
+the myth in white, and the real diamond-D logo bottom-left.
+
+**The myths are labelled as myths on purpose.** "IT'S ALL STOLEN" in large type
+on a pawn shop's own video is a bad screenshot unless it is unmistakably framed
+as the claim being debunked. The gold kicker does that work; don't drop it.
+
+The label bar is a fixed 760px regardless of text length so the five cards read
+as one system rather than five different widths.
 
 ### How the numbers were placed
 
@@ -28,8 +36,28 @@ while he's holding up one finger, badge "5" while his hand is open with five.
 Timing them from the script would have drifted, because Seedance distributes the
 eight beats slightly differently from the plan every time.
 
-Graphics spec: red `#d63031` badge, 170×170 at (80, 220), white Montserrat
-ExtraBold numeral, ~1.9s hold. Logo scaled to 150px at top-right.
+Graphics spec: red `#d63031` badge 170×170 at (80, 220); navy `#133564` bar
+760×170 at (250, 220) at 90% opacity; gold `#c9a24b` "MYTH" kicker at 32px;
+white myth text at 42px; all Montserrat ExtraBold, ~1.9s hold. Logo scaled to
+140px, bottom-left — it moved down from top-right when the label bar took over
+the top strip.
+
+### ffmpeg gotcha that cost a render
+
+Myths 1 and 2 first came back with the badge and kicker but **no myth text**.
+Both contain an apostrophe ("IT'S"), and passing them through `text=` inside a
+`-filter_complex` string meant the quote had to survive both shell and ffmpeg
+filter parsing. It didn't — ffmpeg silently drew an empty string rather than
+erroring, so the render "succeeded" and only a frame check caught it.
+
+Use `textfile=` and write each label to its own file. It sidesteps filter
+escaping completely and any punctuation is then safe.
+
+Two smaller ones from the same pass: ffmpeg refuses to overwrite an existing
+output and will hang the script waiting on a prompt, so pass `-y`; and
+re-uploading to an already-fetched presigned URL serves the **stale** file from
+the CDN edge for a while, so reserve a fresh `media_upload` for each revision
+rather than reusing the slot.
 
 ## Measured QA — all three clips
 
