@@ -99,30 +99,28 @@ A(Paragraph("Prepared for Jill &nbsp;\u00b7&nbsp; %s" % TODAY, sub))
 A(Spacer(1, 14))
 
 A(Paragraph(
-  "Two ways to do this. Both target four videos a month, posted to your channels, "
-  "with the SEO work included. The difference is how they get made and how much of "
-  "your time it takes.", lead))
+  "Four videos a month on your channels, the SEO work included, and none of it run "
+  "by you. That is the target either way \u2014 the two plans differ on how the "
+  "videos get made and how much of your time it takes.", lead))
 A(Spacer(1, 10))
 
 def cell(t, st=tcell): return Paragraph(t, st)
 ROWS = [
   [cell("", tlabel), cell("Standard", thead), cell("Full production", thead)],
   [cell("Price", tlabel), cell("$5,000 / month", tprice), cell("$10,000 / month", tprice)],
-  [cell("Videos", tlabel), cell("Four a month (target)", tcellb),
-   cell("Four a month (target)", tcellb)],
-  [cell("How they<br/>get made", tlabel),
-   cell("AI-generated host pieces built from your own store photos, plus quick "
-        "in-store filming. I shoot and produce."),
-   cell("Professionally shot on location. Full crew, lighting and sound.")],
+  [cell("Best for", tlabel),
+   cell("Staying in front of people every week, month after month.", tcellb),
+   cell("A flagship piece \u2014 a launch, a new store, a campaign.", tcellb)],
+  [cell("How it<br/>is made", tlabel),
+   cell("AI host pieces built from your own store photos, plus in-store filming. "
+        "I shoot and produce."),
+   cell("Shot on location with a full crew, lighting and sound.")],
   [cell("On camera", tlabel),
-   cell("Your staff."),
-   cell("Professional talent. None of your people needed.")],
+   cell("You and your staff."),
+   cell("Hired talent.")],
   [cell("Your time", tlabel),
    cell("About half a day a month, when it suits you."),
    cell("None.")],
-  [cell("Also included", tlabel),
-   cell("SEO, posting to your channels, a dedicated editor."),
-   cell("Everything in Standard.")],
 ]
 CW = [1.15*inch, 2.75*inch, 2.75*inch]
 plan = Table(ROWS, colWidths=CW, repeatRows=1)
@@ -137,28 +135,31 @@ plan.setStyle(TableStyle([
     ("LINEAFTER",(0,0),(-2,-1),0.5,RULE),
 ]))
 A(plan)
-A(Spacer(1, 13))
+A(Spacer(1, 9))
+A(Paragraph(
+  "The five-myths video I sent you is a Standard piece \u2014 presenter and store "
+  "AI-generated from your own photos, which is what makes four a month possible at "
+  "this price.", body))
+A(Spacer(1, 4))
 
 A(KeepTogether([
   Paragraph("Where the $5,000 goes", h2),
   Paragraph(
     "I film and produce. A dedicated editor on my team cuts everything \u2014 $2,000 "
-    "of the $5,000 is his. The rest covers the AI production, SEO, posting and tools, "
-    "not a markup on someone else's work.", body),
+    "of the $5,000 is his. The rest covers the AI production, SEO, posting and tools.",
+    body),
 ]))
 
 A(KeepTogether([
   Paragraph("What I can and cannot promise", h2),
   Paragraph(
-    "I cannot promise results. Anything I have said about likely outcomes is an "
-    "informed expectation \u2014 from research, past work and experience \u2014 not a "
-    "guarantee. Nobody honest can guarantee views, calls or walk-ins.", body),
+    "I cannot promise results, and I cannot promise a fixed count \u2014 four is a "
+    "target, and what gets made depends on the time and resources available that "
+    "month. Clause 3 spells that out. Nobody honest can guarantee views, calls or "
+    "walk-ins.", body),
   Paragraph(
-    "I also cannot promise a fixed count. Four is the target; what gets made depends "
-    "on the time and resources available that month \u2014 staff who can be on "
-    "camera, a store we can film in, account access. What I will do is tell you "
-    "<b>before</b> the month ends, not after. And if a month does not work for you, "
-    "you stop. That is the whole of it, and it is open to you any time.", body),
+    "What I will do is tell you <b>before</b> a month falls short, not after. And if "
+    "it is not working for you, you stop \u2014 any month, no reason needed.", body),
 ]))
 
 A(Spacer(1, 3))
@@ -166,14 +167,13 @@ A(box([
     Paragraph("There is no contract term.", calloutH),
     Paragraph(
       "No minimum number of months. No notice period. No cancellation fee. Email me "
-      "and we stop \u2014 you are paid up through the month you are in, and that is "
-      "it.", callout),
+      "and we stop \u2014 you are paid up through the month you are in.", callout),
 ], edge=ACC))
 
 A(Spacer(1, 10))
 A(Paragraph(
-  "Sign the agreement overleaf and send it back. If you want to talk it through "
-  "first, call me any time on <b>806-544-8098</b>.",
+  "Sign the agreement overleaf and send it back. Any questions first, call me on "
+  "<b>806-544-8098</b>.",
   body))
 
 A(PageBreak())

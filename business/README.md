@@ -9,6 +9,20 @@ Three pages, for Jill at Dick's Pawn Superstore.
 - **Pages 2–3 — agreement.** Nine plain-language clauses, a plan tick-box and
   the signature block.
 
+### The plan table shows differences only
+
+Rows are Price, Best for, How it is made, On camera, Your time. Nothing that is
+true of both plans belongs in it — SEO, posting and the four-a-month target are
+all stated in the lead sentence directly above, and an "Also included" row
+repeating them was removed.
+
+**Describe the tiers by purpose, never by quality.** An earlier draft said
+"professionally shot" and "professional talent" in the $10,000 column and
+"quick in-store filming" with "your staff" in the $5,000 one. That does not
+anchor — it tells a cautious owner the thing she can afford is the lesser
+version, and she stops reading the table as a choice. Both columns now describe
+method and fit, and the judgement words are gone.
+
 ### Two plans
 
 | | Standard | Full production |
