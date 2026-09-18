@@ -4,3 +4,7 @@ node_modules/
 # Raw per-clip Seedance output. Dropped because the clean master below is the
 # same footage already assembled and level-matched.
 content/output/ep0*-clip*.mp4
+
+# Handoff packet build output. Every file in it is derived from tracked
+# sources by content/handoff/make-packet.sh, so the zip is not versioned.
+dist/
