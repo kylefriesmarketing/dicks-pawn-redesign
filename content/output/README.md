@@ -91,13 +91,20 @@ in the same pass, lifting the mean from −23.9 dB to −18.2 dB.
 | Hook card | 0 – 2.55s | DICK'S PAWN SUPERSTORE / 5 MYTHS, BUSTED |
 | Myth cards | on each cue | badge + MYTH kicker + the claim |
 | URL | persistent | dickspawn.com, top-right |
-| CTA card | 37.6s – end | FREE APPRAISAL - NO OBLIGATION / 5 STORES - (843) 646-7166 |
+| CTA card | 37.6s – end | FREE APPRAISAL - NO OBLIGATION / 5 STORES - (843) 646-7166 / SHIPS ANYWHERE IN THE US |
 | Captions | whole script | lower third, white on black outline |
 | Logo | persistent | bottom-left |
 
 The URL sits at y=112, above the y=220 card strip, so it never collides. The
 cards all share one geometry (170px tall, navy, gold kicker over white body) so
 the hook, the five myths and the CTA read as one system.
+
+## Claim check on the closing card
+
+"Ships anywhere in the US" was verified against the site before it went on
+screen — `index.html` and `services.html` both state nationwide shipping. Every
+on-screen claim traces to a page in this repo; see the allowlist in the series
+bible. **Nothing goes on a card that isn't already published.**
 
 ## Captions
 
