@@ -277,6 +277,10 @@ CL = [
   "of items, and it is earned when the month begins. We do not issue refunds, "
   "part-refunds, credits, discounts or make-good work, and unused work does not carry "
   "into another month.<br/><br/>"
+  "Before making any claim, you agree to raise the problem with us in writing and "
+  "give us 15 days to put it right. You also agree not to dispute or charge back any "
+  "payment with your bank or card issuer, and to bring any claim within six months of "
+  "the month it relates to.<br/><br/>"
   "Your only remedy, if you are unhappy for any reason, is the one in clause 4: stop, "
   "at any time. Our total liability to you for anything arising out of this agreement "
   "is limited to the fees you paid for the month in which the issue arose, and "
@@ -284,10 +288,13 @@ CL = [
   "or any other indirect loss."),
  ("10. Privacy, and the rest",
   "Anything you share with us that is not already public stays between us, and "
-  "account logins are used only to post your videos and handed back when we stop. "
-  "This is the whole agreement and it replaces anything discussed before it. South "
-  "Carolina law governs it, and it can only be changed in writing, signed by both "
-  "of us."),
+  "account logins are used only to post your videos and handed back when we "
+  "stop.<br/><br/>"
+  "By signing, you confirm you have read this agreement, that you are not relying on "
+  "anything said outside it, and that you have had the chance to take advice on it. "
+  "This is the whole agreement and it replaces anything discussed before it. If any "
+  "part of it is found unenforceable the rest still stands. South Carolina law "
+  "governs it, and it can only be changed in writing, signed by both of us."),
 ]
 # Deliberate break: clauses 1-6 on page 2, the rest with the signature on
 # page 3. Left to flow, everything lands on page 2 and the signature block is

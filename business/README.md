@@ -124,6 +124,19 @@ fee **reserves capacity in the schedule and is earned when the month begins** â€
 that is what makes non-refundability defensible, because the thing being bought
 is availability rather than a fixed number of items.
 
+Four further bars were added because they block the routes money actually
+leaves by, which a lawsuit rarely is:
+
+- **Notice and cure.** She must raise a problem in writing and allow 15 days to
+  fix it before any claim. Most disputes die here, which is the point.
+- **No chargebacks.** She agrees not to dispute or charge back a payment with
+  her bank or card issuer. A chargeback is far more likely than litigation over
+  a sum this size, and is the one route a no-refund clause alone does not touch.
+- **Six-month claims window** from the month a claim relates to.
+- **Acknowledgement and severability** in clause 10 â€” she confirms she read it
+  and relies on nothing outside it, and a court striking one clause leaves the
+  rest standing.
+
 **It does not cover doing nothing at all.** A no-refund clause protects against
 a client being unhappy with work that was delivered. Courts generally treat
 total non-performance as a failure of consideration and will not enforce
