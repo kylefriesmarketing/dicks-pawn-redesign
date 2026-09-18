@@ -98,14 +98,39 @@ publishing without review safe; that list is the claim allowlist already in
 `content/video-series-bible.md`. Get it confirmed before the first video goes
 up.
 
-### The $2,000 editor line
+### Where the money goes
 
-Page 1 states that $2,000 of the $5,000 goes to the editor. This was a
-deliberate client decision, made after the trade-off was raised: it shows the
-money going into real production, at the cost of anchoring the conversation to
-input costs rather than results. The surrounding sentence is written to frame
-the remainder as covered work — AI production, SEO, posting, tools — rather
-than margin.
+Page 1 lists what the fee covers — filmer and producer, a dedicated editor, the
+AI production platform and its render time, editing and design software,
+scheduling and analytics tools, the SEO work, posting and tracking — and says a
+good share is spent before anything reaches her channels.
+
+**No figure is attached to any line, deliberately.** An earlier draft named
+$2,000 as the editor's share. Publishing one input cost invites the arithmetic
+("so what is the other $3,000 for?") and anchors the conversation to costs
+rather than the result. Listing the inputs without pricing them makes the same
+point — real money goes out — without handing over a number to negotiate
+against. Do not put figures back on individual lines.
+
+The wording is "a good share," not "all" or "most," because only the first is
+verifiable.
+
+### What clause 9 can and cannot do
+
+Clause 9 makes payments non-refundable, rules out credits, part-refunds,
+discounts and make-good work, caps total liability at the fees paid for the
+month in question, and excludes indirect losses. The key sentence is that the
+fee **reserves capacity in the schedule and is earned when the month begins** —
+that is what makes non-refundability defensible, because the thing being bought
+is availability rather than a fixed number of items.
+
+**It does not cover doing nothing at all.** A no-refund clause protects against
+a client being unhappy with work that was delivered. Courts generally treat
+total non-performance as a failure of consideration and will not enforce
+"non-refundable" over the top of it, whatever the contract says. The practical
+protection against that scenario is clause 3's commitment to say so before the
+month ends and let her decide whether to continue — which is exactly why that
+sentence should not be cut.
 
 ### Before sending
 

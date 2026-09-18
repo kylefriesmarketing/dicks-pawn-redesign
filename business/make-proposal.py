@@ -100,8 +100,8 @@ A(Spacer(1, 14))
 
 A(Paragraph(
   "Four videos a month to start, run on your channels for you, with the SEO work "
-  "included. That is the target either way \u2014 the two plans differ on how the "
-  "videos get made and how much of your time it takes.", lead))
+  "included. That is the target either way \u2014 the plans differ on how the videos "
+  "get made and how much of your time it takes.", lead))
 A(Spacer(1, 10))
 
 def cell(t, st=tcell): return Paragraph(t, st)
@@ -109,8 +109,8 @@ ROWS = [
   [cell("", tlabel), cell("Standard", thead), cell("Full production", thead)],
   [cell("Price", tlabel), cell("$5,000 / month", tprice), cell("$10,000 / month", tprice)],
   [cell("Best for", tlabel),
-   cell("Staying in front of people every week, month after month.", tcellb),
-   cell("A flagship piece \u2014 a launch, a new store, a campaign.", tcellb)],
+   cell("Staying in front of people every week.", tcellb),
+   cell("A flagship piece: a launch or a campaign.", tcellb)],
   [cell("How it<br/>is made", tlabel),
    cell("AI host pieces built from your own store photos, plus in-store filming. "
         "I shoot and produce."),
@@ -154,9 +154,11 @@ A(KeepTogether([
 ]))
 
 A(Paragraph(
-  "<b>Where the money goes:</b> I film and produce, a dedicated editor on my team "
-  "cuts everything \u2014 $2,000 of the $5,000 is his \u2014 and the rest covers the "
-  "AI production, SEO, posting and tools.", body))
+  "<b>Where the money goes:</b> me as filmer and producer, a dedicated editor on my "
+  "team, the AI production platform and its render time, editing and design software, "
+  "scheduling and analytics tools, the SEO work, and the hours spent posting and "
+  "tracking what lands. A good share is spent before anything reaches your "
+  "channels.", body))
 
 A(KeepTogether([
   Paragraph("What I can and cannot promise", h2),
@@ -175,7 +177,7 @@ A(box([
       "\u2014 you are paid up through the month you are in.", callout),
 ], edge=ACC))
 
-A(Spacer(1, 8))
+A(Spacer(1, 5))
 A(Paragraph(
   "Sign the agreement overleaf and send it back. Any questions first, call me on "
   "<b>806-544-8098</b>.",
@@ -242,11 +244,9 @@ CL = [
   "resources available \u2014 including your staff for filming, a location we can "
   "film in, and access to the accounts. Where those fall short, the month's output "
   "falls short with them.<br/><br/>"
-  "What we commit to is telling you before the month ends rather than after. "
-  "Payments are not refundable, and we do not issue credits or make-good work for a "
-  "month that falls short. If you are not happy with what a month produced, your "
-  "remedy is to stop: you can do that at any time under clause 4, and you will not be "
-  "invoiced again."),
+  "What we commit to is telling you before the month ends rather than after. If you "
+  "are not happy with what a month produced, your remedy is to stop under clause 4. "
+  "Clause 9 covers refunds."),
  ("4. Stopping",
   "You can stop at any time, for any reason, by email. No minimum term, no notice "
   "period, no cancellation fee. We stop posting, hand back your account access and "
@@ -271,7 +271,18 @@ CL = [
  ("8. What we need from you",
   "Photos of the stores, access to the accounts we post to, one pass over the facts "
   "list in clause 5, and staff for filming as described in clause 6."),
- ("9. Privacy, and the rest",
+ ("9. Refunds and liability",
+  "Monthly payments are not refundable under any circumstances. The fee reserves "
+  "capacity in our schedule for that month. It is not the purchase of a fixed number "
+  "of items, and it is earned when the month begins. We do not issue refunds, "
+  "part-refunds, credits, discounts or make-good work, and unused work does not carry "
+  "into another month.<br/><br/>"
+  "Your only remedy, if you are unhappy for any reason, is the one in clause 4: stop, "
+  "at any time. Our total liability to you for anything arising out of this agreement "
+  "is limited to the fees you paid for the month in which the issue arose, and "
+  "neither of us is liable to the other for lost profits, lost revenue, lost goodwill "
+  "or any other indirect loss."),
+ ("10. Privacy, and the rest",
   "Anything you share with us that is not already public stays between us, and "
   "account logins are used only to post your videos and handed back when we stop. "
   "This is the whole agreement and it replaces anything discussed before it. South "
