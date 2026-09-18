@@ -2,46 +2,64 @@
 
 ## `dicks-pawn-proposal-and-agreement.pdf`
 
-Two pages, for Jill at Dick's Pawn Superstore.
+Three pages, for Jill at Dick's Pawn Superstore.
 
-- **Page 1 — proposal.** What she gets, what it costs, and the no-lock-in promise.
-- **Page 2 — agreement.** Eight plain-language clauses and the signature block.
+- **Page 1 — proposal.** Two plans side by side, where the money goes, and what
+  is and is not being promised.
+- **Pages 2–3 — agreement.** Nine plain-language clauses, a plan tick-box and
+  the signature block.
 
-$5,000 per month, month-to-month, cancel any time by email. No minimum term,
-no notice period, no cancellation fee.
+### Two plans
 
-**Fully hands-off.** We write, produce *and post* to her channels. She approves
-nothing — no drafts, no emails, no uploading. That is the product, not a
-side effect: she asked to pay and not think about it again.
+| | Standard | Full production |
+|---|---|---|
+| Price | $5,000 / month | $10,000 / month |
+| How | AI host pieces + quick in-store filming | Professionally shot, full crew |
+| On camera | Her staff | Professional talent |
+| Her time | ~half a day a month | None |
 
-### The facts list is what makes the autonomy safe
+Both are month-to-month, cancel any time by email, and both include SEO and
+posting to her channels.
 
-Clause 4 gives up the approval gate and replaces it with a one-time
-confirmation: a short list of facts we are allowed to state on camera, signed
-off once at the start, and nothing goes on screen that is not on it.
+### The two things this document is careful about
 
-That list already exists — it is the claim allowlist in
-`content/video-series-bible.md`. Get it confirmed by someone at Dick's before
-the first video goes up, because with no per-video approval it is the only
-thing standing between an unverified claim and a published video about a
-regulated business. Clause 4 also gives her a same-day takedown on request,
-which is the release valve for anything the list did not anticipate.
+**No results are guaranteed.** Clause 3 says so plainly, and page 1 says it in
+Kyle's voice. The wording is deliberately two-sided: the *outcome* is an
+informed expectation from research, past work and experience; the *work* is
+guaranteed, and an undelivered month is not invoiced. A disclaimer that only
+protects one side reads like a disclaimer. This one reads like a standard.
 
-### Before sending — two placeholders to fill
+**Her staff are on camera, which is not free for her.** The earlier draft
+promised "nothing for you to do." That cannot survive a shoot, so clause 6
+names the cost honestly — about half a day a month, at a time she picks, worked
+around opening hours — and adds the escape hatch: a month she cannot spare the
+time still gets its videos, made without filming, at the same price. The AI
+pipeline is what makes that promise keepable.
 
-Page 1 ends with **[ your phone ]** and **[ your email ]**. Set them in
-`make-proposal.py` and rebuild, or fill them in a PDF editor.
+Approvals are still gone. Clause 5 keeps the one-time facts list that makes
+publishing without review safe; that list is the claim allowlist already in
+`content/video-series-bible.md`. Get it confirmed before the first video goes
+up.
 
-There is deliberately no website on the letterhead. `kylefriesmarketing.com`
-was inferred from the GitHub handle and never verified, and a made-up address
-on a contract is worse than none.
+### The $2,000 editor line
 
-### Also needs sorting before the first invoice
+Page 1 states that $2,000 of the $5,000 goes to the editor. This was a
+deliberate client decision, made after the trade-off was raised: it shows the
+money going into real production, at the cost of anchoring the conversation to
+input costs rather than results. The surrounding sentence is written to frame
+the remainder as covered work — AI production, SEO, posting, tools — rather
+than margin.
 
-Clause 1 promises posting and clause 6 asks for account access. Decide how the
-logins are actually handled — ideally a delegated business account rather than
-her personal passwords — and make sure clause 7's "handed back when we stop"
-is something you can actually do.
+### Before sending
+
+- **Fill the placeholders.** Page 1 ends with **[ your phone ]** and
+  **[ your email ]**.
+- **No website on the letterhead.** `kylefriesmarketing.com` was inferred from
+  the GitHub handle and never verified. A made-up address on a contract is
+  worse than none.
+- **Sort out account access.** Clause 1 promises posting and clause 6 asks for
+  logins. Use delegated business accounts, not her personal passwords, so
+  clause 9's "handed back when we stop" is something you can actually do.
 
 ### Rebuilding
 
@@ -50,30 +68,30 @@ pip install reportlab
 python3 business/make-proposal.py
 ```
 
-It writes straight over the PDF. Everything is in one file: the clause text is
-the `CL` list, the price appears in three places (the opening line, "What it
-costs", and clause 2), and the date is generated at build time.
+Everything is in one file: the plan table is `ROWS`, the clause text is `CL`,
+and the date is generated at build time.
 
-### Why it is exactly two pages
+### Layout notes, all of them paid for the hard way
 
-Both pages are near-full: 0.30in of slack on page 1 and 0.05in on page 2.
-Adding a sentence anywhere will push the signature block onto a third page on
-its own, which looks like an afterthought. If you add something, cut something,
-and re-check the page count before sending.
+Page slack: 0.10in on page 1, 2.26in on page 2, 5.87in on page 3. Re-check the
+page count after any edit.
 
-Two traps, both already paid for:
-
-- Reportlab over-estimates the height of a table whose cells contain lists of
-  flowables, which is enough on its own to bump the signature block to a new
-  page. It is built as a plain grid with explicit `rowHeights` for that reason —
-  don't refactor it back into nested flowables.
-- The source contains literal em dashes. Patching it with `—` in a match
-  pattern silently matches nothing and the edit disappears without an error.
+- **The clause break after clause 6 is deliberate.** Left to flow, all nine
+  clauses land on page 2 and the signature block is stranded alone on page 3.
+- **Reportlab over-estimates a table whose cells hold lists of flowables**,
+  which alone is enough to bump the signature block to a new page. It is a
+  plain grid with explicit `rowHeights` for that reason — don't refactor it
+  back into nested flowables.
+- **Table padding is expensive.** The plan table's vertical padding was costing
+  1.36in at 7pt; it is 5pt now.
+- **The source contains literal em dashes.** Patching it with `—` in a
+  match pattern silently matches nothing and the edit vanishes with no error.
   Assert on every replacement.
 
 ### Not legal advice
 
 This is a plain-language business agreement, not a lawyer-drafted contract. At
-$60k a year it is worth an attorney's eye before it becomes the template for
-other clients — particularly clause 4 (publishing without client review),
-clause 5 (IP transfer) and clause 8 (governing law).
+$60k–$120k a year it is worth an attorney's eye before it becomes the template
+for other clients — particularly clause 3 (the guarantee wording), clause 5
+(publishing without client review), clause 7 (IP transfer) and clause 9
+(governing law).

@@ -39,11 +39,16 @@ bullet    = S("bullet", fontSize=10, leading=14.4, spaceAfter=4,
               leftIndent=15, bulletIndent=2, firstLineIndent=0)
 callout   = S("callout", fontSize=10.6, leading=15.6, spaceAfter=0)
 calloutH  = S("calloutH", fontName="Sans-B", fontSize=12.2, leading=16, textColor=ACC, spaceAfter=5)
-clause    = S("clause", fontSize=9.5, leading=13.4, spaceAfter=5)
+clause    = S("clause", fontSize=9.5, leading=13.2, spaceAfter=4)
 clauseH   = S("clauseH", fontName="Sans-B", fontSize=10.2, leading=13, textColor=INK,
-              spaceBefore=7, spaceAfter=3)
+              spaceBefore=5, spaceAfter=3)
 sigLbl    = S("sigLbl", fontSize=8.4, leading=11, textColor=MUTED)
 fine      = S("fine", fontSize=8.6, leading=12.6, textColor=MUTED)
+tcell     = S("tcell", fontSize=9.2, leading=12.6)
+tcellb    = S("tcellb", fontName="Sans-B", fontSize=9.2, leading=12.6)
+thead     = S("thead", fontName="Sans-B", fontSize=10.4, leading=13, textColor=colors.white)
+tlabel    = S("tlabel", fontName="Sans-B", fontSize=9.2, leading=12.6, textColor=MUTED)
+tprice    = S("tprice", fontName="Sans-B", fontSize=13, leading=16, textColor=INK)
 
 TODAY = datetime.date.today().strftime("%B %-d, %Y")
 
@@ -56,7 +61,7 @@ def header_footer(canvas, doc):
     canvas.line(M, PH - M + 18, PW - M, PH - M + 18)
     # footer
     canvas.setFont("Sans", 8.2); canvas.setFillColor(MUTED)
-    canvas.drawString(M, M - 34, "Dick's Pawn Superstore · Social video · %s" % TODAY)
+    canvas.drawString(M, M - 34, "Dick's Pawn Superstore · Video and SEO · %s" % TODAY)
     canvas.drawRightString(PW - M, M - 34, "Page %d" % doc.page)
     canvas.restoreState()
 
@@ -80,139 +85,191 @@ def bullets(items):
 
 story = []
 A = story.append
+from reportlab.platypus import PageBreak
 
 # ---------------------------------------------------------------- PROPOSAL
 A(Paragraph("PROPOSAL", kicker))
 A(Spacer(1, 5))
-A(Paragraph("Short-form video for Dick's Pawn Superstore", h1))
+A(Paragraph("Video and SEO for Dick's Pawn Superstore", h1))
 A(Spacer(1, 3))
-A(Paragraph("Prepared for Jill &nbsp;·&nbsp; %s" % TODAY, sub))
-A(Spacer(1, 16))
+A(Paragraph("Prepared for Jill &nbsp;\u00b7&nbsp; %s" % TODAY, sub))
+A(Spacer(1, 14))
 
 A(Paragraph(
-  "Here is the whole thing in three lines. You get four videos a month, written, "
-  "made and posted for you. It costs $5,000 a month. You can stop any time you "
-  "want, and there is nothing to get out of.", lead))
+  "Two ways to do this. Both get you four videos a month, posted to your channels, "
+  "with the SEO work included. The difference is how they get made and how much of "
+  "your time it takes.", lead))
+A(Spacer(1, 10))
 
-A(Spacer(1, 6))
+def cell(t, st=tcell): return Paragraph(t, st)
+ROWS = [
+  [cell("", tlabel), cell("Standard", thead), cell("Full production", thead)],
+  [cell("Price", tlabel), cell("$5,000 / month", tprice), cell("$10,000 / month", tprice)],
+  [cell("Videos", tlabel), cell("Four a month", tcellb), cell("Four a month", tcellb)],
+  [cell("How they<br/>get made", tlabel),
+   cell("AI-generated host pieces built from your own store photos, plus quick "
+        "in-store filming. I shoot and produce."),
+   cell("Professionally shot on location. Full crew, lighting and sound.")],
+  [cell("On camera", tlabel),
+   cell("Your staff."),
+   cell("Professional talent. None of your people needed.")],
+  [cell("Your time", tlabel),
+   cell("About half a day a month, when it suits you."),
+   cell("None.")],
+  [cell("Also included", tlabel),
+   cell("SEO, posting to your channels, a dedicated editor."),
+   cell("Everything in Standard.")],
+]
+CW = [1.15*inch, 2.75*inch, 2.75*inch]
+plan = Table(ROWS, colWidths=CW, repeatRows=1)
+plan.setStyle(TableStyle([
+    ("BACKGROUND",(1,0),(-1,0), ACC),
+    ("BACKGROUND",(0,0),(0,0), colors.white),
+    ("ROWBACKGROUNDS",(0,1),(-1,-1), [colors.white, TINT]),
+    ("VALIGN",(0,0),(-1,-1),"TOP"),
+    ("LEFTPADDING",(0,0),(-1,-1),9), ("RIGHTPADDING",(0,0),(-1,-1),9),
+    ("TOPPADDING",(0,0),(-1,-1),5),  ("BOTTOMPADDING",(0,0),(-1,-1),5),
+    ("LINEBELOW",(0,0),(-1,-2),0.5,RULE),
+    ("LINEAFTER",(0,0),(-2,-1),0.5,RULE),
+]))
+A(plan)
+A(Spacer(1, 13))
+
+A(KeepTogether([
+  Paragraph("Where the $5,000 goes", h2),
+  Paragraph(
+    "I film and produce. A dedicated editor on my team cuts everything, and $2,000 of "
+    "the $5,000 is his. The rest covers the AI production, the SEO work, the "
+    "posting and the tools behind it. It is not a markup on someone else's work.", body),
+]))
+
+A(KeepTogether([
+  Paragraph("What I can and cannot promise", h2),
+  Paragraph(
+    "I can promise the work. Four videos a month, made, posted and on time, every "
+    "month. If that does not happen, you do not pay for that month.", body),
+  Paragraph(
+    "I cannot promise what they will do. Anything I have said about likely results is "
+    "an informed expectation \u2014 based on research, on past work and on experience "
+    "\u2014 not a guarantee. Nobody honest can guarantee views, calls or walk-ins.",
+    body),
+]))
+
+A(Spacer(1, 3))
 A(box([
     Paragraph("There is no contract term.", calloutH),
     Paragraph(
-      "No minimum number of months. No notice period. No cancellation fee. "
-      "If you want to stop, send me an email and we stop — you are paid up "
-      "through the month you are in, and that is the end of it.<br/><br/>"
-      "If the first month doesn't convince you, you have spent one month.", callout),
+      "No minimum number of months. No notice period. No cancellation fee. Email me "
+      "and we stop \u2014 you are paid up through the month you are in, and that is "
+      "the end of it.", callout),
 ], edge=ACC))
 
-A(Paragraph("What you get each month", h2))
+A(Spacer(1, 10))
 A(Paragraph(
-  "Four videos a month, on your channels, without you touching any of it.", body))
-for f in bullets([
-    "<b>Four videos a month</b> \u2014 30 to 60 seconds each, vertical, posted to "
-    "TikTok, Instagram Reels and YouTube Shorts.",
-    "<b>Everything included</b> \u2014 idea, script, production, editing, graphics, "
-    "captions and the posting itself.",
-    "<b>Nothing for you to do</b> \u2014 no drafts to approve, no emails to answer, "
-    "nothing to upload.",
-    "<b>Pull anything, any time.</b> You never have to look, but one message takes a "
-    "video down the same day.",
-]): A(f)
-
-A(Paragraph("What it costs", h2))
-A(Paragraph(
-  "<b>$5,000 a month.</b> That is the full cost \u2014 production, posting, captions "
-  "and graphics are all in it. No setup fee, no per-video charges, and nothing gets "
-  "added to an invoice without asking you first.", body))
-
-A(Paragraph("How the videos get made", h2))
-A(Paragraph(
-  "The presenter and the store around him are generated, built to match your real "
-  "stores from your own photos. No shoot days, no crew in your stores, no working "
-  "around business hours. Telling you up front so it is never a surprise later.",
+  "Sign the agreement overleaf and send it back. If you want to talk it through "
+  "first, call me any time \u2014 <b>[ your phone ]</b> or <b>[ your email ]</b>.",
   body))
 
-A(KeepTogether([
-  Paragraph("The one thing we need up front", h2),
-  Paragraph(
-    "So we can run without checking in, you confirm a short list of facts we are "
-    "allowed to state on camera \u2014 policies, licensing, store count. One sitting, "
-    "at the start, and nothing goes on screen that is not on it.", body),
-]))
-
-A(KeepTogether([
-  Paragraph("Getting started", h2),
-  Paragraph(
-    "Sign the agreement on the next page and send it back. First invoice goes out the "
-    "day we start, first videos go up within ten business days.", body),
-  Paragraph(
-    "If you want to talk anything through first, call me any time \u2014 "
-    "<b>[ your phone ]</b> or <b>[ your email ]</b>.", body),
-]))
-
-from reportlab.platypus import PageBreak
 A(PageBreak())
 
 # --------------------------------------------------------------- AGREEMENT
 A(Paragraph("AGREEMENT", kicker))
 A(Spacer(1, 5))
-A(Paragraph("Video production agreement", h1))
+A(Paragraph("Video and SEO agreement", h1))
 A(Spacer(1, 3))
 A(Paragraph(
-  "Between <b>Kyle Fries Marketing</b> (“we”) and <b>Dick's Pawn Superstore</b> "
-  "(“you”) · %s" % TODAY, sub))
+  "Between <b>Kyle Fries Marketing</b> (\u201cwe\u201d) and <b>Dick's Pawn Superstore</b> "
+  "(\u201cyou\u201d) \u00b7 %s" % TODAY, sub))
+A(Spacer(1, 9))
+
+BOXSIDE = 11
+def tick(label):
+    sq = Table([[""]], colWidths=[BOXSIDE], rowHeights=[BOXSIDE])
+    sq.setStyle(TableStyle([("BOX",(0,0),(-1,-1),0.9,INK),
+                            ("LEFTPADDING",(0,0),(-1,-1),0),
+                            ("RIGHTPADDING",(0,0),(-1,-1),0),
+                            ("TOPPADDING",(0,0),(-1,-1),0),
+                            ("BOTTOMPADDING",(0,0),(-1,-1),0)]))
+    return sq, Paragraph(label, clause)
+
+sq1, l1 = tick("<b>Standard</b> \u2014 $5,000 per month")
+sq2, l2 = tick("<b>Full production</b> \u2014 $10,000 per month")
+sel = Table([[Paragraph("Plan (tick one)", tlabel), sq1, l1, sq2, l2]],
+            colWidths=[1.02*inch, BOXSIDE+4, 2.16*inch, BOXSIDE+4, 2.4*inch],
+            rowHeights=[16])
+sel.setStyle(TableStyle([("VALIGN",(0,0),(-1,-1),"MIDDLE"),
+                         ("LEFTPADDING",(0,0),(-1,-1),0),
+                         ("RIGHTPADDING",(0,0),(-1,-1),0),
+                         ("TOPPADDING",(0,0),(-1,-1),0),
+                         ("BOTTOMPADDING",(0,0),(-1,-1),0)]))
+A(sel)
 A(Spacer(1, 4))
-for f in rule(): A(f)
+for f in rule(space_before=0, space_after=2): A(f)
 
 CL = [
  ("1. What we do",
-  "Four finished short-form videos each month, posted to your social accounts. Each "
-  "runs 30 to 60 seconds, vertical and captioned. That covers the idea, the script, "
-  "the production, the editing, the graphics, the captions and the posting."),
+  "Four finished short-form videos each month, posted to your social accounts, plus "
+  "ongoing SEO work on your website and your Google Business Profiles for all five "
+  "stores. Each runs 30 to 60 seconds, vertical and captioned, covering idea, "
+  "script, production, editing, graphics and posting."),
  ("2. What it costs",
-  "$5,000 per month, invoiced on the first and due within 15 days. That is the whole "
-  "cost \u2014 we will not invoice you for anything else unless we ask you first and "
-  "you say yes in writing."),
- ("3. Stopping",
+  "The monthly price of the plan ticked above, invoiced on the first and due within "
+  "15 days. That is the whole cost \u2014 we will not invoice you for anything else "
+  "unless we ask you first and you say yes in writing."),
+ ("3. What we do not guarantee",
+  "We do not guarantee any particular result: views, followers, calls, walk-ins, "
+  "search ranking or sales. Anything we have said about likely outcomes is an "
+  "informed expectation based on research, past work and experience \u2014 not a "
+  "promise.<br/><br/>"
+  "What we do guarantee is the work: videos made, posted and delivered on time every "
+  "month, and the SEO work done. If a month's work is not delivered, you are not "
+  "invoiced for it."),
+ ("4. Stopping",
   "You can stop at any time, for any reason, by email. No minimum term, no notice "
-  "period, no cancellation fee.<br/><br/>"
-  "We stop posting, hand back your account access and hand over everything you have "
-  "paid for. We do not invoice you again \u2014 you are never billed for a month you "
-  "did not want. If we ever need to stop, we will give you 30 days' notice."),
- ("4. Running it without you",
+  "period, no cancellation fee. We stop posting, hand back your account access and "
+  "hand over everything you have paid for. You are never billed for a month you did "
+  "not want. If we ever need to stop, you get 30 days' notice."),
+ ("5. Running it without you",
   "You approve nothing. We write, produce and post on our own \u2014 no drafts to "
-  "review and no emails to answer.<br/><br/>"
-  "Two things keep that safe. Every claim we put on screen comes from a short list of "
-  "facts you confirm once at the start, and nothing goes on screen that is not on it. "
-  "And if you ever see something you do not want up, tell us and it comes down the "
-  "same day, no reason needed."),
- ("5. Who owns the videos",
+  "review and no emails to answer. Every claim we put on screen comes from a short "
+  "list of facts you confirm once at the start. If you ever see something you do not "
+  "want up, tell us and it comes down the same day."),
+ ("6. Filming, on the Standard plan",
+  "Some of each month's videos are filmed in your stores with your staff on camera. "
+  "That needs about half a day a month, at a time you pick, worked around your "
+  "opening hours. We bring everything else.<br/><br/>"
+  "If a month comes when you cannot spare the time, we make that month's videos "
+  "without filming and the invoice does not change. Full production uses our own "
+  "talent and needs none of your people."),
+ ("7. Who owns the videos",
   "You do. Once a month's invoice is paid, that month's videos are yours outright, to "
-  "use however and for as long as you want, including after you stop. We would like to "
-  "show the work in our portfolio, but we will ask you first."),
- ("6. What we need from you",
-  "Three things, all at the start: photos of the stores, access to the accounts we "
-  "post to, and one pass over the facts list in clause 4. After that we do not need "
-  "anything from you."),
- ("7. Keeping things private",
-  "Anything you share with us that is not already public stays between us. Account "
-  "logins are used only to post your videos and are handed back when we stop."),
- ("8. The rest",
+  "use however and for as long as you want, including after you stop. We would like "
+  "to show the work in our portfolio, but we will ask you first."),
+ ("8. What we need from you",
+  "Photos of the stores, access to the accounts we post to, one pass over the facts "
+  "list in clause 5, and staff for filming as described in clause 6."),
+ ("9. Privacy, and the rest",
+  "Anything you share with us that is not already public stays between us, and "
+  "account logins are used only to post your videos and handed back when we stop. "
   "This is the whole agreement and it replaces anything discussed before it. South "
-  "Carolina law governs it. It can only be changed in writing, signed by both of us."),
+  "Carolina law governs it, and it can only be changed in writing, signed by both "
+  "of us."),
 ]
-for h, t in CL:
+# Deliberate break: clauses 1-6 on page 2, the rest with the signature on
+# page 3. Left to flow, everything lands on page 2 and the signature block is
+# stranded alone on a third page.
+for i, (h, t) in enumerate(CL):
     A(KeepTogether([Paragraph(h, clauseH), Paragraph(t, clause)]))
+    if i == 5:
+        A(PageBreak())
 
 A(Spacer(1, 6))
 for f in rule(space_before=0, space_after=9): A(f)
 
-# Signature grid with explicit row heights — nested flowable cells make
-# reportlab over-estimate the block and bump it to its own page.
 role = S("role", fontName="Sans-B", fontSize=10.2, leading=13, textColor=INK)
 LINE = colors.HexColor("#8b9aa8")
 COL  = 3.05*inch
 GUT  = (PW - 2*M) - 2*COL
-
 sig = Table(
     [[Paragraph("Dick's Pawn Superstore", role), "", Paragraph("Kyle Fries Marketing", role)],
      ["", "", ""],
@@ -220,7 +277,7 @@ sig = Table(
      ["", "", ""],
      [Paragraph("Name and date", sigLbl), "", Paragraph("Name and date", sigLbl)]],
     colWidths=[COL, GUT, COL],
-    rowHeights=[14, 28, 11, 26, 11])
+    rowHeights=[13, 24, 10, 22, 10])
 sig.setStyle(TableStyle([
     ("VALIGN",(0,0),(-1,-1),"TOP"),
     ("LEFTPADDING",(0,0),(-1,-1),0), ("RIGHTPADDING",(0,0),(-1,-1),0),
