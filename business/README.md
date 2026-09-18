@@ -76,9 +76,14 @@ than margin.
 
 ### Before sending
 
-- **No website on the letterhead.** `kylefriesmarketing.com` was inferred from
-  the GitHub handle and never verified, so the letterhead carries the email and
-  phone instead. Add the domain only once it resolves.
+- **No website, on purpose.** Kyle Fries Marketing does not have one. The
+  letterhead carries the email and phone and nothing else. Do not add a domain
+  here — an address that does not resolve is worse on a contract than none, and
+  `kylefriesmarketing.com` in particular was only ever an inference from the
+  GitHub handle.
+
+  The one "website" in the document is in clause 1: the SEO work covers *Dick's
+  Pawn's* site. That is correct and stays.
 - **Sort out account access.** Clause 1 promises posting and clause 6 asks for
   logins. Use delegated business accounts, not her personal passwords, so
   clause 9's "handed back when we stop" is something you can actually do.
