@@ -31,9 +31,23 @@ including her staff, a location to film in and account access.
 
 That leaves the document with no hard promise about output, which is a real
 cost — so the one commitment that remains is a communication one: **we tell you
-before the month ends, not after**, and an undelivered month is not invoiced.
-Without that line the whole page reads as "we promise nothing." Do not delete
-it while trimming for space.
+before the month ends, not after**. Without that line the whole page reads as
+"we promise nothing." Do not delete it while trimming for space.
+
+**There is no money remedy anywhere in this document, by design.** Clause 3
+states that payments are not refundable and that no credits or make-good work
+are issued for a short month; the client's sole remedy is to stop, which
+clause 4 lets her do any time. Two earlier lines created payment consequences
+and were removed: "you are not invoiced for a month whose work is not
+delivered", and clause 4's "hand over everything you have paid for" (which
+implied entitlement to a count) — now "everything we have made for you".
+
+If you edit this file, do not reintroduce any phrasing that ties payment to
+delivery. That was a deliberate client decision, not an oversight.
+
+The one specific operational promise left is clause 5's same-day takedown. It
+is not a payment trigger, and it is doing real work for trust — but it is a
+commitment, so it is there on purpose.
 
 "Four a month" is written as a *target* in all four places it appears — the
 opening line, the plan table, clause 1 and clause 3. If you change one, change
@@ -62,11 +76,9 @@ than margin.
 
 ### Before sending
 
-- **Fill the placeholders.** Page 1 ends with **[ your phone ]** and
-  **[ your email ]**.
 - **No website on the letterhead.** `kylefriesmarketing.com` was inferred from
-  the GitHub handle and never verified. A made-up address on a contract is
-  worse than none.
+  the GitHub handle and never verified, so the letterhead carries the email and
+  phone instead. Add the domain only once it resolves.
 - **Sort out account access.** Clause 1 promises posting and clause 6 asks for
   logins. Use delegated business accounts, not her personal passwords, so
   clause 9's "handed back when we stop" is something you can actually do.

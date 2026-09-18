@@ -57,6 +57,9 @@ def header_footer(canvas, doc):
     # letterhead
     canvas.setFont("Sans-B", 10.6); canvas.setFillColor(INK)
     canvas.drawString(M, PH - M + 26, "KYLE FRIES MARKETING")
+    canvas.setFont("Sans", 8.4); canvas.setFillColor(MUTED)
+    canvas.drawRightString(PW - M, PH - M + 26,
+                           "Kylefriesmarketing@gmail.com \u00b7 806-544-8098")
     canvas.setStrokeColor(RULE); canvas.setLineWidth(0.7)
     canvas.line(M, PH - M + 18, PW - M, PH - M + 18)
     # footer
@@ -154,8 +157,8 @@ A(KeepTogether([
     "I also cannot promise a fixed count. Four is the target; what gets made depends "
     "on the time and resources available that month \u2014 staff who can be on "
     "camera, a store we can film in, account access. What I will do is tell you "
-    "<b>before</b> the month ends, not after, and you are not invoiced for a month "
-    "whose work is not delivered.", body),
+    "<b>before</b> the month ends, not after. And if a month does not work for you, "
+    "you stop. That is the whole of it, and it is open to you any time.", body),
 ]))
 
 A(Spacer(1, 3))
@@ -170,7 +173,7 @@ A(box([
 A(Spacer(1, 10))
 A(Paragraph(
   "Sign the agreement overleaf and send it back. If you want to talk it through "
-  "first, call me any time \u2014 <b>[ your phone ]</b> or <b>[ your email ]</b>.",
+  "first, call me any time on <b>806-544-8098</b>.",
   body))
 
 A(PageBreak())
@@ -230,13 +233,16 @@ CL = [
   "resources available \u2014 including your staff for filming, a location we can "
   "film in, and access to the accounts. Where those fall short, the month's output "
   "falls short with them.<br/><br/>"
-  "What we commit to is telling you before the month ends rather than after, and not "
-  "invoicing you for a month whose work is not delivered."),
+  "What we commit to is telling you before the month ends rather than after. "
+  "Payments are not refundable, and we do not issue credits or make-good work for a "
+  "month that falls short. If you are not happy with what a month produced, your "
+  "remedy is to stop: you can do that at any time under clause 4, and you will not be "
+  "invoiced again."),
  ("4. Stopping",
   "You can stop at any time, for any reason, by email. No minimum term, no notice "
   "period, no cancellation fee. We stop posting, hand back your account access and "
-  "hand over everything you have paid for. You are never billed for a month you did "
-  "not want. If we ever need to stop, you get 30 days' notice."),
+  "hand over everything we have made for you. We do not invoice you again. If we ever "
+  "need to stop, you get 30 days' notice."),
  ("5. Running it without you",
   "You approve nothing. We write, produce and post on our own \u2014 no drafts to "
   "review and no emails to answer. Every claim we put on screen comes from a short "
