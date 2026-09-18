@@ -96,7 +96,7 @@ A(Paragraph("Prepared for Jill &nbsp;\u00b7&nbsp; %s" % TODAY, sub))
 A(Spacer(1, 14))
 
 A(Paragraph(
-  "Two ways to do this. Both get you four videos a month, posted to your channels, "
+  "Two ways to do this. Both target four videos a month, posted to your channels, "
   "with the SEO work included. The difference is how they get made and how much of "
   "your time it takes.", lead))
 A(Spacer(1, 10))
@@ -105,7 +105,8 @@ def cell(t, st=tcell): return Paragraph(t, st)
 ROWS = [
   [cell("", tlabel), cell("Standard", thead), cell("Full production", thead)],
   [cell("Price", tlabel), cell("$5,000 / month", tprice), cell("$10,000 / month", tprice)],
-  [cell("Videos", tlabel), cell("Four a month", tcellb), cell("Four a month", tcellb)],
+  [cell("Videos", tlabel), cell("Four a month (target)", tcellb),
+   cell("Four a month (target)", tcellb)],
   [cell("How they<br/>get made", tlabel),
    cell("AI-generated host pieces built from your own store photos, plus quick "
         "in-store filming. I shoot and produce."),
@@ -138,21 +139,23 @@ A(Spacer(1, 13))
 A(KeepTogether([
   Paragraph("Where the $5,000 goes", h2),
   Paragraph(
-    "I film and produce. A dedicated editor on my team cuts everything, and $2,000 of "
-    "the $5,000 is his. The rest covers the AI production, the SEO work, the "
-    "posting and the tools behind it. It is not a markup on someone else's work.", body),
+    "I film and produce. A dedicated editor on my team cuts everything \u2014 $2,000 "
+    "of the $5,000 is his. The rest covers the AI production, SEO, posting and tools, "
+    "not a markup on someone else's work.", body),
 ]))
 
 A(KeepTogether([
   Paragraph("What I can and cannot promise", h2),
   Paragraph(
-    "I can promise the work. Four videos a month, made, posted and on time, every "
-    "month. If that does not happen, you do not pay for that month.", body),
+    "I cannot promise results. Anything I have said about likely outcomes is an "
+    "informed expectation \u2014 from research, past work and experience \u2014 not a "
+    "guarantee. Nobody honest can guarantee views, calls or walk-ins.", body),
   Paragraph(
-    "I cannot promise what they will do. Anything I have said about likely results is "
-    "an informed expectation \u2014 based on research, on past work and on experience "
-    "\u2014 not a guarantee. Nobody honest can guarantee views, calls or walk-ins.",
-    body),
+    "I also cannot promise a fixed count. Four is the target; what gets made depends "
+    "on the time and resources available that month \u2014 staff who can be on "
+    "camera, a store we can film in, account access. What I will do is tell you "
+    "<b>before</b> the month ends, not after, and you are not invoiced for a month "
+    "whose work is not delivered.", body),
 ]))
 
 A(Spacer(1, 3))
@@ -161,7 +164,7 @@ A(box([
     Paragraph(
       "No minimum number of months. No notice period. No cancellation fee. Email me "
       "and we stop \u2014 you are paid up through the month you are in, and that is "
-      "the end of it.", callout),
+      "it.", callout),
 ], edge=ACC))
 
 A(Spacer(1, 10))
@@ -208,8 +211,9 @@ for f in rule(space_before=0, space_after=2): A(f)
 
 CL = [
  ("1. What we do",
-  "Four finished short-form videos each month, posted to your social accounts, plus "
-  "ongoing SEO work on your website and your Google Business Profiles for all five "
+  "A target of four finished short-form videos each month, posted to your social "
+  "accounts, plus ongoing SEO work on your website and your Google Business Profiles "
+  "for all five "
   "stores. Each runs 30 to 60 seconds, vertical and captioned, covering idea, "
   "script, production, editing, graphics and posting."),
  ("2. What it costs",
@@ -221,9 +225,13 @@ CL = [
   "search ranking or sales. Anything we have said about likely outcomes is an "
   "informed expectation based on research, past work and experience \u2014 not a "
   "promise.<br/><br/>"
-  "What we do guarantee is the work: videos made, posted and delivered on time every "
-  "month, and the SEO work done. If a month's work is not delivered, you are not "
-  "invoiced for it."),
+  "We also do not guarantee a fixed number of deliverables. Four videos a month is a "
+  "target. What actually gets made in a given month depends on the time and the "
+  "resources available \u2014 including your staff for filming, a location we can "
+  "film in, and access to the accounts. Where those fall short, the month's output "
+  "falls short with them.<br/><br/>"
+  "What we commit to is telling you before the month ends rather than after, and not "
+  "invoicing you for a month whose work is not delivered."),
  ("4. Stopping",
   "You can stop at any time, for any reason, by email. No minimum term, no notice "
   "period, no cancellation fee. We stop posting, hand back your account access and "

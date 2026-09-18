@@ -23,11 +23,21 @@ posting to her channels.
 
 ### The two things this document is careful about
 
-**No results are guaranteed.** Clause 3 says so plainly, and page 1 says it in
-Kyle's voice. The wording is deliberately two-sided: the *outcome* is an
-informed expectation from research, past work and experience; the *work* is
-guaranteed, and an undelivered month is not invoiced. A disclaimer that only
-protects one side reads like a disclaimer. This one reads like a standard.
+**Nothing is guaranteed — not results, and not the deliverables.** Clause 3
+covers both, and page 1 says the same in Kyle's voice. Results are an informed
+expectation from research, past work and experience. The count is a target:
+four a month, depending on the time and resources available that month,
+including her staff, a location to film in and account access.
+
+That leaves the document with no hard promise about output, which is a real
+cost — so the one commitment that remains is a communication one: **we tell you
+before the month ends, not after**, and an undelivered month is not invoiced.
+Without that line the whole page reads as "we promise nothing." Do not delete
+it while trimming for space.
+
+"Four a month" is written as a *target* in all four places it appears — the
+opening line, the plan table, clause 1 and clause 3. If you change one, change
+all four.
 
 **Her staff are on camera, which is not free for her.** The earlier draft
 promised "nothing for you to do." That cannot survive a shoot, so clause 6
