@@ -2,7 +2,7 @@
 
 ## `ep01-5-myths-FINAL.mp4` — the deliverable
 
-**45.2s · 1080×1920 · h264 + AAC · 28.8 MB** — ready to post to TikTok, Reels
+**43.4s · 1080×1920 · h264 + AAC · 27.7 MB** — ready to post to TikTok, Reels
 and Shorts as-is.
 
 "5 Myths About Pawn Shops", hosted by Super Dick behind the jewelry counter.
@@ -24,11 +24,16 @@ audio**. The badge appears on the frame where the word is actually spoken:
 
 | Badge | Spoken at |
 |---|---|
-| 1 | 2.72s |
-| 2 | 10.75s |
-| 3 | 15.68s |
-| 4 | 23.22s |
-| 5 | 30.12s |
+| 1 | 2.78s |
+| 2 | 8.96s |
+| 3 | 13.58s |
+| 4 | 21.30s |
+| 5 | 28.14s |
+
+These are the **post-cut** cues. When the ad-lib beat was removed the whole
+timeline shifted, so the audio was re-transcribed rather than the old numbers
+being shifted by arithmetic. Measure, don't offset — it is the same discipline
+that put the badges on the spoken word in the first place.
 
 This matters more than it sounds. Because the timings came from the real audio,
 each badge also lands in sync with the host's counting hand — badge "1" appears
@@ -58,6 +63,40 @@ output and will hang the script waiting on a prompt, so pass `-y`; and
 re-uploading to an already-fetched presigned URL serves the **stale** file from
 the CDN edge for a while, so reserve a fresh `media_upload` for each revision
 rather than reusing the slot.
+
+## The ad-lib cut
+
+Seedance improvised a line at ~4.9s that Whisper read as *"Come on, it's Olin"* —
+almost certainly a slurred re-emphasis of "it's stolen". It was the weakest
+second in the video.
+
+It was removed for free, with no visual seam, by cutting **4.500 → 6.375s**.
+That span is exactly one beat, bounded on both sides by hard cuts the model had
+already made (scene detection put them at 4.5 and 6.375), and the transcript
+confirmed it contained the ad-lib and nothing else — "stolen" ends at 4.38,
+"South" begins at 6.60.
+
+**When generated speech goes wrong, look for the beat boundaries before paying
+to re-render.** An eight-cut clip gives you eight places to cut losslessly. The
+re-roll would have been 135 credits and non-deterministic — it might have
+produced a different ad-lib.
+
+The audio was also loudness-normalised to −14 LUFS (the social platform target)
+in the same pass, lifting the mean from −23.9 dB to −18.2 dB.
+
+## On-screen graphics
+
+| Element | Timing | Content |
+|---|---|---|
+| Hook card | 0 – 2.55s | DICK'S PAWN SUPERSTORE / 5 MYTHS, BUSTED |
+| Myth cards | on each cue | badge + MYTH kicker + the claim |
+| URL | persistent | dickspawn.com, top-right |
+| CTA card | 37.6s – end | FREE APPRAISAL - NO OBLIGATION / 5 STORES - (843) 646-7166 |
+| Logo | persistent | bottom-left |
+
+The URL sits at y=112, above the y=220 card strip, so it never collides. The
+cards all share one geometry (170px tall, navy, gold kicker over white body) so
+the hook, the five myths and the CTA read as one system.
 
 ## Measured QA — all three clips
 
