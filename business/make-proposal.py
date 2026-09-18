@@ -21,7 +21,7 @@ RULE  = colors.HexColor("#d4dce4")
 TINT  = colors.HexColor("#eef3f7")
 
 PW, PH = LETTER
-M = 0.85*inch
+M = 0.8*inch
 
 def S(name, **kw):
     base = dict(fontName="Sans", fontSize=10.2, leading=15.4, textColor=INK,
@@ -75,7 +75,7 @@ def rule(space_before=4, space_after=10, col=RULE):
                            ("BOTTOMPADDING",(0,0),(-1,-1),0)]))
     return [Spacer(1, space_before), t, Spacer(1, space_after)]
 
-def box(flows, pad=12, bg=TINT, edge=None):
+def box(flows, pad=10, bg=TINT, edge=None):
     t = Table([[flows]], colWidths=[PW - 2*M])
     st = [("BACKGROUND",(0,0),(-1,-1),bg),
           ("LEFTPADDING",(0,0),(-1,-1),pad), ("RIGHTPADDING",(0,0),(-1,-1),pad),
@@ -99,8 +99,8 @@ A(Paragraph("Prepared for Jill &nbsp;\u00b7&nbsp; %s" % TODAY, sub))
 A(Spacer(1, 14))
 
 A(Paragraph(
-  "Four videos a month on your channels, the SEO work included, and none of it run "
-  "by you. That is the target either way \u2014 the two plans differ on how the "
+  "Four videos a month to start, run on your channels for you, with the SEO work "
+  "included. That is the target either way \u2014 the two plans differ on how the "
   "videos get made and how much of your time it takes.", lead))
 A(Spacer(1, 10))
 
@@ -137,40 +137,45 @@ plan.setStyle(TableStyle([
 A(plan)
 A(Spacer(1, 9))
 A(Paragraph(
-  "The five-myths video I sent you is a Standard piece \u2014 presenter and store "
-  "AI-generated from your own photos, which is what makes four a month possible at "
-  "this price.", body))
+  "The five-myths video I sent you is a Standard piece: presenter and store "
+  "AI-generated from your own photos.", body))
 A(Spacer(1, 4))
 
 A(KeepTogether([
-  Paragraph("Where the $5,000 goes", h2),
+  Paragraph("More than four videos", h2),
   Paragraph(
-    "I film and produce. A dedicated editor on my team cuts everything \u2014 $2,000 "
-    "of the $5,000 is his. The rest covers the AI production, SEO, posting and tools.",
+    "They get posted and managed across Instagram, Facebook and TikTok, and I watch "
+    "what each one does \u2014 what works shapes the next batch. That is the point of "
+    "running this every month rather than shooting a one-off.", body),
+  Paragraph(
+    "Four a month is where we start, while we work out what your audience responds "
+    "to. Once the pipeline is running, the goal is two, three, even four a week.",
     body),
 ]))
+
+A(Paragraph(
+  "<b>Where the money goes:</b> I film and produce, a dedicated editor on my team "
+  "cuts everything \u2014 $2,000 of the $5,000 is his \u2014 and the rest covers the "
+  "AI production, SEO, posting and tools.", body))
 
 A(KeepTogether([
   Paragraph("What I can and cannot promise", h2),
   Paragraph(
-    "I cannot promise results, and I cannot promise a fixed count \u2014 four is a "
-    "target, and what gets made depends on the time and resources available that "
-    "month. Clause 3 spells that out. Nobody honest can guarantee views, calls or "
-    "walk-ins.", body),
-  Paragraph(
-    "What I will do is tell you <b>before</b> a month falls short, not after. And if "
-    "it is not working for you, you stop \u2014 any month, no reason needed.", body),
+    "I cannot promise results, and four a month is a target rather than a fixed count "
+    "\u2014 clause 3 spells that out. What I will do is tell you <b>before</b> a month "
+    "falls short, not after. And if it is not working, you stop \u2014 any month, no "
+    "reason needed.", body),
 ]))
 
 A(Spacer(1, 3))
 A(box([
     Paragraph("There is no contract term.", calloutH),
     Paragraph(
-      "No minimum number of months. No notice period. No cancellation fee. Email me "
-      "and we stop \u2014 you are paid up through the month you are in.", callout),
+      "No minimum term, no notice period, no cancellation fee. Email me and we stop "
+      "\u2014 you are paid up through the month you are in.", callout),
 ], edge=ACC))
 
-A(Spacer(1, 10))
+A(Spacer(1, 8))
 A(Paragraph(
   "Sign the agreement overleaf and send it back. Any questions first, call me on "
   "<b>806-544-8098</b>.",
@@ -214,11 +219,15 @@ for f in rule(space_before=0, space_after=2): A(f)
 
 CL = [
  ("1. What we do",
-  "A target of four finished short-form videos each month, posted to your social "
-  "accounts, plus ongoing SEO work on your website and your Google Business Profiles "
-  "for all five "
-  "stores. Each runs 30 to 60 seconds, vertical and captioned, covering idea, "
-  "script, production, editing, graphics and posting."),
+  "A target of four finished short-form videos each month, posted and managed across "
+  "your Instagram, Facebook and TikTok accounts, with how they perform reviewed to "
+  "steer what gets made next. Plus ongoing SEO work on your website and your Google "
+  "Business Profiles for all five stores. Each video runs 30 to 60 seconds, vertical "
+  "and captioned, covering idea, script, production, editing, graphics and posting."
+  "<br/><br/>"
+  "Four a month is a starting point while the pipeline is built. If more becomes "
+  "realistic we will agree the new number, and any change to the price, in writing "
+  "before it takes effect. Neither of us owes the other a higher number until then."),
  ("2. What it costs",
   "The monthly price of the plan ticked above, invoiced on the first and due within "
   "15 days. That is the whole cost \u2014 we will not invoice you for anything else "

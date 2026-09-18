@@ -9,6 +9,25 @@ Three pages, for Jill at Dick's Pawn Superstore.
 - **Pages 2–3 — agreement.** Nine plain-language clauses, a plan tick-box and
   the signature block.
 
+### Four a month is a floor, not the offer
+
+Two things the proposal has to carry, because without them $5,000 for four
+videos looks like bad arithmetic:
+
+- **The videos are not the whole job.** They are posted and managed across
+  Instagram, Facebook and TikTok, and performance feeds back into what gets
+  made next. That is in clause 1 as a deliverable and in the "More than four
+  videos" section on page 1.
+- **Four a month is a starting point.** The goal is two, three, even four a
+  week once the pipeline is running.
+
+**The ramp is written as intent, never as a commitment.** Page 1 says "the
+goal is"; clause 1 says any higher number, and any price change with it, gets
+agreed in writing first, and that "neither of us owes the other a higher number
+until then." That sentence is the whole point — it lets Kyle sell the ambition
+without her being able to hold him to four a week later. Do not soften it into
+a promise.
+
 ### The plan table shows differences only
 
 Rows are Price, Best for, How it is made, On camera, Your time. Nothing that is
