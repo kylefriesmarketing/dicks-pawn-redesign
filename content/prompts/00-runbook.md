@@ -111,13 +111,54 @@ EP02-05 reuse the same host and the same proven parameters.
    for: doubled lip edges, a third hand, face drift between cuts, wardrobe
    changes, baked-in text. Re-run only the failing clip index.
 
-7. **Concat** — `ffmpeg -f concat -safe 0 -i clips.txt -c copy final.mp4`.
-   Stream copy, hard cuts, no transitions.
+7. **Triage the clips before assembling.** Transcribe each one and list its
+   scene cuts. Do this *first* — it is free, and it is where the defects are.
+   See "Triaging a bad beat" below.
 
-8. **Burn the numbers** — red `#d63031` numerals on the counting beats, then the
-   logo from `assets/dp-logo.png` in a corner. `ffmpeg drawtext` + `overlay`.
-   Never bake text at generation time; it renders as gibberish and cannot be
-   edited afterwards.
+8. **Assemble** — trim, concat and loudness-normalise in a single encode to the
+   clean master. Normalise each clip's audio to −14 LUFS **before** the concat,
+   not once at the end: clips come back up to 3 dB apart and a global pass
+   leaves that step audible.
+
+9. **Re-transcribe the master.** Every cue in the burn is timed from the
+   assembled audio, never from a pre-edit timing shifted by arithmetic.
+
+10. **Burn the graphics** — red `#d63031` numerals on the counting beats, cards,
+    captions and the logo from `assets/dp-logo.png`. `ffmpeg drawtext` +
+    `overlay` + an ASS subtitle track. Never bake text at generation time; it
+    renders as gibberish and cannot be edited afterwards.
+
+## Triaging a bad beat
+
+Seedance ships defects at a fairly steady rate — an ad-lib, a repeated line, a
+cutaway to something irrelevant. **Almost none of them need a re-render.** A
+1080p 15s re-roll is 135 credits and non-deterministic: it may hand you a
+different defect, and it will certainly hand you different timings.
+
+The eight-slot storyboard is the thing that makes them cheap to fix. Eight beats
+means eight hard cuts the model has already made, and a defect that sits inside
+one beat can be removed or replaced on those boundaries with no visible seam.
+
+Work it in this order:
+
+1. **Transcribe the raw clip** and read it against the script. This catches
+   repeated lines, ad-libs and dropped words that a contact sheet never will.
+2. **List the scene cuts** (`select=gt(scene,0.35)`).
+3. **Is the defect bounded by two cuts?** If the bad audio sits entirely inside
+   one beat, cut that beat out. Free, seamless.
+4. **Is the audio over it worth keeping?** If the picture is bad but the line is
+   a claim you want, keep the track and replace the *picture* for that beat with
+   a designed full-bleed card. Free, and usually better than what it replaced.
+5. **Only then consider a re-render.** By this point you will rarely need one.
+
+Episode 1 hit cases 3 and 4 in the same build — a duplicated line and a cutaway
+to a shipping mailer — and shipped without re-rendering either. See
+`content/output/README.md` for both.
+
+**Check the pixels before paying.** A downscaled contact sheet is for spotting
+candidates, not judging them. Pull full-resolution frames and, for a colour
+question, sample the region's mean RGB across the beat. One earlier build nearly
+paid 135 credits to fix blown-out backlight that looked like a wardrobe break.
 
 ## Three things that will bite you
 

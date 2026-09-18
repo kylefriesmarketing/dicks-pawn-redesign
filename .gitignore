@@ -1,7 +1,6 @@
 prod*.json
 node_modules/
 
-# Video intermediates — regenerate from content/prompts/, or pull the CDN URLs
-# recorded in content/output/README.md. Only the finished episode is versioned.
-content/output/*-clean-master.mp4
+# Raw per-clip Seedance output. Dropped because the clean master below is the
+# same footage already assembled and level-matched.
 content/output/ep0*-clip*.mp4
