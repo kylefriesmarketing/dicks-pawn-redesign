@@ -90,9 +90,9 @@ A(Paragraph("Prepared for Jill &nbsp;·&nbsp; %s" % TODAY, sub))
 A(Spacer(1, 16))
 
 A(Paragraph(
-  "Here is the whole thing in three lines. You get four finished videos a month, "
-  "ready to post. It costs $5,000 a month. You can stop any time you want, and "
-  "there is nothing to get out of.", lead))
+  "Here is the whole thing in three lines. You get four videos a month, written, "
+  "made and posted for you. It costs $5,000 a month. You can stop any time you "
+  "want, and there is nothing to get out of.", lead))
 
 A(Spacer(1, 6))
 A(box([
@@ -106,37 +106,44 @@ A(box([
 
 A(Paragraph("What you get each month", h2))
 A(Paragraph(
-  "Four finished videos, delivered ready to post. Nothing half-done and nothing "
-  "you have to edit yourself.", body))
+  "Four videos a month, on your channels, without you touching any of it.", body))
 for f in bullets([
-    "<b>Four videos a month</b> — 30 to 60 seconds each, vertical, built for "
+    "<b>Four videos a month</b> \u2014 30 to 60 seconds each, vertical, posted to "
     "TikTok, Instagram Reels and YouTube Shorts.",
-    "<b>Everything included</b> — idea, script, production, editing, on-screen "
-    "graphics and captions. You get a finished file.",
-    "<b>Two rounds of changes</b> on each video, so you are not stuck with a first draft.",
-    "<b>Your approval on everything.</b> Nothing gets posted or shown to anyone "
-    "until you have said yes.",
+    "<b>Everything included</b> \u2014 idea, script, production, editing, graphics, "
+    "captions and the posting itself.",
+    "<b>Nothing for you to do</b> \u2014 no drafts to approve, no emails to answer, "
+    "nothing to upload.",
+    "<b>Pull anything, any time.</b> You never have to look, but one message takes a "
+    "video down the same day.",
 ]): A(f)
 
 A(Paragraph("What it costs", h2))
 A(Paragraph(
-  "<b>$5,000 a month.</b> That is the full cost — production, revisions, captions "
+  "<b>$5,000 a month.</b> That is the full cost \u2014 production, posting, captions "
   "and graphics are all in it. No setup fee, no per-video charges, and nothing gets "
   "added to an invoice without asking you first.", body))
 
 A(Paragraph("How the videos get made", h2))
 A(Paragraph(
   "The presenter and the store around him are generated, built to match your real "
-  "stores from your own photos. That means no shoot days, no crew in your stores and "
-  "no working around business hours — which is what makes four videos a month "
-  "possible at this price. I am telling you up front so it is never a surprise later.",
+  "stores from your own photos. No shoot days, no crew in your stores, no working "
+  "around business hours. Telling you up front so it is never a surprise later.",
   body))
+
+A(KeepTogether([
+  Paragraph("The one thing we need up front", h2),
+  Paragraph(
+    "So we can run without checking in, you confirm a short list of facts we are "
+    "allowed to state on camera \u2014 policies, licensing, store count. One sitting, "
+    "at the start, and nothing goes on screen that is not on it.", body),
+]))
 
 A(KeepTogether([
   Paragraph("Getting started", h2),
   Paragraph(
-    "Sign the agreement on the next page and send it back. The first invoice goes out "
-    "the day we start, and the first videos are with you within ten business days.", body),
+    "Sign the agreement on the next page and send it back. First invoice goes out the "
+    "day we start, first videos go up within ten business days.", body),
   Paragraph(
     "If you want to talk anything through first, call me any time \u2014 "
     "<b>[ your phone ]</b> or <b>[ your email ]</b>.", body),
@@ -158,10 +165,9 @@ for f in rule(): A(f)
 
 CL = [
  ("1. What we do",
-  "Four finished short-form videos each month. Each one runs 30 to 60 seconds, is "
-  "vertical, and is captioned and delivered ready to post. That covers the idea, the "
-  "script, the production, the editing, the graphics and the captions, plus up to two "
-  "rounds of changes on each video."),
+  "Four finished short-form videos each month, posted to your social accounts. Each "
+  "runs 30 to 60 seconds, vertical and captioned. That covers the idea, the script, "
+  "the production, the editing, the graphics, the captions and the posting."),
  ("2. What it costs",
   "$5,000 per month, invoiced on the first and due within 15 days. That is the whole "
   "cost \u2014 we will not invoice you for anything else unless we ask you first and "
@@ -169,23 +175,27 @@ CL = [
  ("3. Stopping",
   "You can stop at any time, for any reason, by email. No minimum term, no notice "
   "period, no cancellation fee.<br/><br/>"
-  "We finish and hand over anything you have already paid for, and we do not invoice "
-  "you again \u2014 you are never billed for a month you did not want. If we ever need "
-  "to stop, we will give you 30 days' notice."),
- ("4. Your approval",
-  "Nothing is published or shown to anyone else without your written okay. If you do "
-  "not like something, say so and we will change it or drop it. We will only put a "
-  "claim on screen that you have confirmed is accurate \u2014 you are the final word on "
-  "your prices, policies and licensing."),
+  "We stop posting, hand back your account access and hand over everything you have "
+  "paid for. We do not invoice you again \u2014 you are never billed for a month you "
+  "did not want. If we ever need to stop, we will give you 30 days' notice."),
+ ("4. Running it without you",
+  "You approve nothing. We write, produce and post on our own \u2014 no drafts to "
+  "review and no emails to answer.<br/><br/>"
+  "Two things keep that safe. Every claim we put on screen comes from a short list of "
+  "facts you confirm once at the start, and nothing goes on screen that is not on it. "
+  "And if you ever see something you do not want up, tell us and it comes down the "
+  "same day, no reason needed."),
  ("5. Who owns the videos",
   "You do. Once a month's invoice is paid, that month's videos are yours outright, to "
   "use however and for as long as you want, including after you stop. We would like to "
   "show the work in our portfolio, but we will ask you first."),
  ("6. What we need from you",
-  "Photos of the stores, and one person who can approve drafts. If a draft is not "
-  "approved within ten business days, we carry that video into the next batch."),
+  "Three things, all at the start: photos of the stores, access to the accounts we "
+  "post to, and one pass over the facts list in clause 4. After that we do not need "
+  "anything from you."),
  ("7. Keeping things private",
-  "Anything you share with us that is not already public stays between us."),
+  "Anything you share with us that is not already public stays between us. Account "
+  "logins are used only to post your videos and are handed back when we stop."),
  ("8. The rest",
   "This is the whole agreement and it replaces anything discussed before it. South "
   "Carolina law governs it. It can only be changed in writing, signed by both of us."),
