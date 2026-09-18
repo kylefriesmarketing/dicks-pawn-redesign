@@ -2,8 +2,8 @@
 
 ## `ep01-5-myths-FINAL.mp4` — the deliverable
 
-**43.4s · 1080×1920 · h264 + AAC · 27.7 MB** — ready to post to TikTok, Reels
-and Shorts as-is.
+**43.4s · 1080×1920 · h264 + AAC · 28.6 MB** — ready to post to TikTok, Reels
+and Shorts as-is. Fully captioned.
 
 "5 Myths About Pawn Shops", hosted by Super Dick behind the jewelry counter.
 Three 15-second Seedance 2.5 clips stitched with hard cuts, then the graphics
@@ -92,11 +92,36 @@ in the same pass, lifting the mean from −23.9 dB to −18.2 dB.
 | Myth cards | on each cue | badge + MYTH kicker + the claim |
 | URL | persistent | dickspawn.com, top-right |
 | CTA card | 37.6s – end | FREE APPRAISAL - NO OBLIGATION / 5 STORES - (843) 646-7166 |
+| Captions | whole script | lower third, white on black outline |
 | Logo | persistent | bottom-left |
 
 The URL sits at y=112, above the y=220 card strip, so it never collides. The
 cards all share one geometry (170px tall, navy, gold kicker over white body) so
 the hook, the five myths and the CTA read as one system.
+
+## Captions
+
+Burned from the same word-level Whisper transcript, as an **ASS subtitle track**
+rather than ~37 stacked `drawtext` filters. libass handles timing, wrapping and
+escaping natively — which is exactly where the apostrophe bug bit — and the
+style lives in one place instead of being repeated per line.
+
+Chunking: at most 3 words or 22 characters, broken early on a sentence end or a
+gap over 0.55s. The sentence-end rule matters — without it lines ran across
+sentences ("ALL STOLEN. SOUTH"), which reads badly at speed.
+
+Two corrections the transcript needed before burning:
+
+- **Whisper heard "Grand Strand" as "grand strad."** Burned in, that would have
+  misspelled the region the whole business is named around. A `FIX` map in the
+  build corrects local proper nouns; add to it per episode.
+- **37 chunks produced 20 overlapping pairs** once end times were padded by
+  0.06s for readability. Overlapping ASS events stack on screen. Each end time
+  is now clamped to the next start minus 0.01s.
+
+**Never burn a machine transcript without reading it first.** It will be right
+about the common words and wrong about exactly the proper nouns that matter to
+a local advertiser.
 
 ## Measured QA — all three clips
 
