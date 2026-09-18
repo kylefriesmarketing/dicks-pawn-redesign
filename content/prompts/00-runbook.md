@@ -81,14 +81,17 @@ least and costs the thing people actually notice on a phone.
 
 ## Run order
 
-Steps 1-2 are already done and committed; their IDs are below.
+**EP01 is fully produced.** Every step below was run; the locked IDs are here so
+EP02-05 reuse the same host and the same proven parameters.
 
 1. **Host** — `soul_2`, prompt in `01-character.md`.
    Locked: `9024359d-0dd1-48a7-9665-e942806a4964`
    Never regenerate. This is the series' face.
 
-2. **Board 1** — `gpt_image_2`, prompt in `02-boards.md`.
-   Locked: `fdf7972f-04ee-4e2f-a23d-a288505bc67d`
+2. **Boards 1-3** — `gpt_image_2`, prompts in `02-boards.md`.
+   Locked: board 1 `fdf7972f-04ee-4e2f-a23d-a288505bc67d`,
+   board 2 `18a1eb71-8a34-485e-b7c4-b4eeb723fc7d`,
+   board 3 `bb0e989e-47fc-4733-9e8c-d88e60fb595c`
 
 3. **Boards 2-3** — sequential, not parallel. Board K takes board K-1 as a
    trailing reference image so the counter, the light and the guitar wall hold

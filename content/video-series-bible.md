@@ -104,7 +104,7 @@ a pawn shop making a financial claim it cannot support is a real problem, and
 Density is tuned to the render: ~30-35 spoken words per 15-second clip.
 `CAPS` marks a volume spike. Em-dash marks a hard beat, not a pause.
 
-### EP01 — 5 Myths About Pawn Shops  *(produced)*
+### EP01 — 5 Myths About Pawn Shops  ✅ **PRODUCED** — `content/output/ep01-5-myths-FINAL.mp4`
 
 > **Clip 1 · myths 1-2**
 > Five myths about pawn shops. Number one — it's ALL stolen. South Carolina law:
