@@ -193,3 +193,88 @@ $60k–$120k a year it is worth an attorney's eye before it becomes the template
 for other clients — particularly clause 3 (the guarantee wording), clause 5
 (publishing without client review), clause 7 (IP transfer) and clause 9
 (governing law).
+
+---
+
+## `dicks-pawn-per-video-proposal.pdf`
+
+Three pages, same client, a different shape of deal: **$300 a finished video,
+minimum order of ten, production only.** Built by
+`make-per-video-proposal.py`. It stands alone — it is not a third tier bolted
+onto the monthly proposal, and the two are meant to be sent separately.
+
+- **Page 1 — proposal.** The price band, what $300 buys, what it explicitly
+  does not, and the deposit promise.
+- **Pages 2–3 — agreement.** Ten clauses, an order line to fill in, signatures.
+
+### Why the terms are the opposite of the monthly agreement's
+
+The monthly agreement says payments are never refundable, because the fee
+reserves capacity rather than buying a fixed number of items. This one says the
+deposit balance comes straight back, because here the count *is* the deal.
+
+That is not an inconsistency to tidy up. They are different products and the
+protection has to sit in a different place:
+
+| | Monthly | Per video |
+|---|---|---|
+| What is sold | Capacity for a month | A fixed number of videos |
+| Deliverable count | Explicitly not guaranteed (clause 3) | Explicitly guaranteed (clause 6) |
+| Refunds | None, ever | Undelivered balance returned in 14 days |
+| Where the risk sits | Volume disputes | Scope disputes |
+
+**This structure removes the non-performance exposure entirely.** Under the
+monthly agreement, a month where nothing ships is money held for no work, and
+no clause survives that. Here, money is only earned per delivered file, so the
+scenario cannot arise. It is the stronger position of the two, by a distance.
+
+### The three clauses doing the real work
+
+Per-unit pricing lives or dies on definitions, so:
+
+- **Clause 1 defines a video** — up to 60 seconds, vertical, captioned, idea
+  through graphics, delivered as an MP4. Without a ceiling, $300 buys a
+  three-minute documentary.
+- **Clause 4 caps revisions at one round**, and draws the line: changes to
+  script, captions, graphics, music, pace and cut are free; *starting again* —
+  new topic, new script, re-generated footage — is a new video at $300. Without
+  that sentence, one dissatisfied client makes $300 unbounded.
+- **Clause 5 puts a date on delivery** (21 days for the first ten) and gives
+  her a clean exit if it slips by 14 days. Open-ended delivery is what turns a
+  per-unit deal sour.
+
+### Numbers to re-check before this goes out
+
+Both are placeholders set to sensible defaults, not measured facts:
+
+- **21 days for the first ten.** Set from the EP01 build, which took one
+  episode. Ten is not ten times one, but it is not one either — confirm against
+  real throughput before signing anything.
+- **Blocks of ten above the minimum.** Keeps ordering tidy; nothing depends on it.
+
+Also worth pricing properly: at ten videos the order is $3,000, against $5,000
+a month for four plus posting, SEO and analytics. Per video that is $300
+against roughly $1,250. Whether that clears cost depends on the editor
+arrangement and the per-episode render spend, neither of which is recorded
+here.
+
+### Chrome is duplicated on purpose
+
+`make-per-video-proposal.py` carries its own copy of the fonts, letterhead,
+styles and the `box`/`rule`/`bullets` helpers rather than importing them from
+`make-proposal.py`. Importing would re-run and re-date that document, which is
+already with the client.
+
+**If a third document appears, extract `business/letterhead.py` first.** Two
+copies is tolerable; three is a drift problem.
+
+### Layout traps, again
+
+Both documents hit the same two:
+
+- Page 1 overflowed by exactly one line on the first build and pushed a
+  near-empty page 2 into the file. Always check the page count after editing
+  page 1 — a 4-page file where 3 was intended is the tell.
+- **Last-ink measurement reads the footer, not the body.** Any script checking
+  free space has to exclude the bottom ~0.55in or every page reports the same
+  number. The check in this repo's verification pass does.
