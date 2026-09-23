@@ -84,9 +84,12 @@ least and costs the thing people actually notice on a phone.
 **EP01 is fully produced.** Every step below was run; the locked IDs are here so
 EP02-05 reuse the same host and the same proven parameters.
 
-**EP02 ("Only One's Real") is in production; EP03 ("5 Questions") is written but
-unproduced.** Boards, clips and graphics specs are in `ep02-*.md` and `ep03-*.md`. Episode-specific prompts
-are named `epNN-*`; `00-runbook.md` and `01-character.md` are series-wide.
+**EP01 and EP02 ("Only One's Real") are fully produced; EP03 ("5 Questions") is
+written but unproduced.** Boards, clips and graphics specs are in `ep02-*.md` and
+`ep03-*.md`. Episode-specific prompts are named `epNN-*`; `00-runbook.md` and
+`01-character.md` are series-wide. EP02's boards were chained *raw* (board K
+references the un-de-slopped board K-1, board 1 references EP01's raw board 1)
+and de-slopped afterwards — drift between boards stayed at 3-8/255.
 
 1. **Host** — `soul_2`, prompt in `01-character.md`.
    Locked: `9024359d-0dd1-48a7-9665-e942806a4964`
@@ -154,11 +157,25 @@ Work it in this order:
 4. **Is the audio over it worth keeping?** If the picture is bad but the line is
    a claim you want, keep the track and replace the *picture* for that beat with
    a designed full-bleed card. Free, and usually better than what it replaced.
-5. **Only then consider a re-render.** By this point you will rarely need one.
+5. **Picture wrong, line right, and a card would feel like a card?** Replace the
+   beat with a *still insert*: a 9:16 `gpt_image_2` cutaway of the prop the line
+   is about, given a 3% `zoompan` push and faint temporal `noise` so it reads as
+   a locked-off shot. EP02's "three — the loupe" beat came back with four, then
+   five, fingers up; the storyboard's own macro loupe cutaway went in for 6.5
+   credits and reads as the shot the model skipped.
+6. **A silent gesture beat that starts wrong** (EP02's "four" opened on five
+   fingers for nine frames) can simply lose its first frames — cut both audio
+   and video at the same frame so nothing drifts.
+7. **A truncated closing line** does not need the clip re-rolled: cut the clip
+   after its last clean word and render a 5-second tail from the clip's own last
+   frame (`omni_reference`, same character), carrying the missing words. EP02's
+   tail cost 60 credits instead of 180.
+8. **Only then consider a re-render.** By this point you will rarely need one.
 
 Episode 1 hit cases 3 and 4 in the same build — a duplicated line and a cutaway
-to a shipping mailer — and shipped without re-rendering either. See
-`content/output/README.md` for both.
+to a shipping mailer — and shipped without re-rendering either. Episode 2 hit
+cases 5, 6 and 7 and also shipped with zero re-rolls. See
+`content/output/README.md` for all of them.
 
 **Check the pixels before paying.** A downscaled contact sheet is for spotting
 candidates, not judging them. Pull full-resolution frames and, for a colour

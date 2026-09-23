@@ -121,7 +121,7 @@ Density is tuned to the render: ~30-35 spoken words per 15-second clip.
 > you walk out with your ring than keep it. Family-owned since nineteen
 > eighty-seven. Five stores, Grand Strand.
 
-### EP02 — Only One's Real  🔨 **IN PRODUCTION** — two chains, one fake, five tests
+### EP02 — Only One's Real  ✅ **PRODUCED** — `content/output/ep02-only-ones-real-FINAL.mp4`
 
 The first non-list episode, chosen from the research in
 `content/research/ep02-viral-research.md`: a live authenticity test, the one pawn
@@ -130,6 +130,13 @@ shops. Stakes in the first line, five escalating tests that each fail to resolve
 it, the reveal withheld to the last beat, cut on the last word. Prompts in
 `content/prompts/ep02-*.md`. The acid beat — the hardest render — passed a
 15-credit smoke test before anything else was spent.
+
+Produced 23 September 2026: 46.6s, three 15s clips plus a 5s tail, cut 0.45s
+after the last word, zero re-rolls, 648.5 credits all in. The raw clips shipped
+three defects — a wrong finger count on "three", a five-finger flash on "four",
+and a closing line that broke after "Free look" — and every one was fixed on the
+beat boundaries (a still insert, a nine-frame trim, a rendered tail). The full
+record is in `content/output/README.md`.
 
 > **Clip 1 · tests 1-2**
 > Two chains. Only one's real. Five tests to find it. One — the magnet. Real

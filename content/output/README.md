@@ -1,6 +1,88 @@
 # Output
 
-## `ep01-5-myths-FINAL.mp4` — the deliverable
+## `ep02-only-ones-real-FINAL.mp4` — the newest deliverable
+
+**46.6s · 1080×1920 · h264 + AAC · 41.4 MB** — ready to post to TikTok, Reels
+and Shorts as-is. Fully captioned. Beside it: `ep02-only-ones-real-720p.mp4`
+(9.1 MB, sized for Discord and messaging) and `ep02-clean-master.mp4`
+(43.0 MB, no graphics, for re-edits).
+
+"Only One's Real": two gold chains on the counter, one plated brass, five tests
+that each fail to settle it, the reveal held to the last beat. Three 15-second
+Seedance 2.5 clips plus a 5-second tail, stitched with hard cuts, then the
+graphics burned on: five red numbered `TEST` badges (THE MAGNET · THE WEIGHT ·
+THE LOUPE · THE ACID · THE JEWELER), the series CTA card rising on the cut to
+the closing wide, captions, `dickspawn.com` top-right and the diamond-D logo
+bottom-left. The master is cut 0.45s after "Strand".
+
+### Three defects the raw clips shipped with — zero re-rolls
+
+1. **Clip 2, "Three — the loupe."** The counting beat (3.83–5.21s) came back
+   with four fingers up, then five. The storyboard had asked for a macro loupe
+   cutaway in that slot and the model skipped it, so the cutaway went in
+   instead: a 9:16 `gpt_image_2` still of the loupe over the chain on the glass
+   (6.5 credits), given a 3% `zoompan` push and faint temporal `noise` so it
+   reads as a locked-off shot, over the untouched audio ("Close. Not enough.").
+2. **Clip 2, "Four — the acid."** The four-finger beat (8.58–9.46s) opened on
+   five fingers for nine silent frames. Those nine frames (8.583–8.958s) were
+   dropped from picture and sound together, so nothing drifts.
+3. **Clip 3, the close.** "Free look." landed at 12.1s, then 2.6s of dead air;
+   "no obligation, five stores, Grand Strand" was never spoken. The clip is cut
+   at 12.625s (0.2s after "look."), and a 5-second tail rendered from the clip's
+   own beat-8 frame (`omni_reference` plus the locked host, 60 credits) carries
+   "No obligation. Five stores, Grand Strand." on the same wide.
+
+### Badge timing — new rule in EP02
+
+Seedance placed the counting gestures one to four beats *after* the spoken
+numbers ("Two" lands on the cancelling wave, the fingers come up on the next
+cut). A flat 1.9s hold would drop the badge before the fingers appear. So every
+badge starts on its spoken word and ends at the end of the beat that carries
+the gesture — read off the raw clips, offset to the master timeline, snapped to
+the nearest detected cut in the master — and never runs shorter than 1.9s. The
+hints live in `GESTURE_END_HINT` in `content/build/burn-ep02.py`.
+
+### Transcript corrections
+
+`looch` → LOUPE, `strength` → STRAND, `looks` → LOOK, digits → words, and the
+homophone "drop weight" → "drop wait" (positional: WEIGHT directly after DROP,
+because "the weight" in test 2 is a real word). The cue detector now accepts a
+comma as a sentence boundary: on the assembled master whisper wrote "Under the
+glass, three, the loupe" and the strict full-stop rule found no cue for test 3.
+
+### Cost
+
+Boards 3 × 6.5 + de-slop 3 × 2.5 = 27 · acid smoke test 15 · three clips at
+1080p 3 × 180 = 540 · tail 60 · loupe insert 6.5 → **648.5 credits**. The
+per-second rate for a 1080p Seedance clip with audio is 12, not the 9 the
+earlier notes assumed; the numbers above are what the account was charged.
+
+### One trap worth keeping on record
+
+Re-PUTting a file to an upload slot you already used lands in S3, but CloudFront
+keeps serving the first object, and a `?cb=` cache-buster does not get past it.
+Anything that will be fetched or imported again goes to a fresh slot.
+
+### Reproducing the burn
+
+`content/build/burn-ep02.py` runs in the Higgsfield sandbox next to `master.mp4`
+and writes `cards.txt`, `caps.ass` and `meta.json` (cues, badge ends, CTA, DUR).
+The master is one encode — per-clip `loudnorm` before the concat, the loupe
+insert and the two trims done as `trim`/`atrim` at the same frame — and the
+final is one more:
+
+```
+ffmpeg -i master.mp4 -i logo.png \
+  -filter_complex "[0:v]$(cat cards.txt),ass=caps.ass[v1];[1:v]scale=140:-1[lg];[v1][lg]overlay=70:1710[v]" \
+  -map "[v]" -map 0:a -t $DUR -c:v libx264 -crf 16 -preset medium -pix_fmt yuv420p -r 24 \
+  -c:a aac -b:a 192k -movflags +faststart final.mp4
+```
+
+Everything below this line is EP01's production record.
+
+---
+
+## `ep01-5-myths-FINAL.mp4` — the first deliverable
 
 **43.5s · 1080×1920 · h264 + AAC · 27.2 MB** — ready to post to TikTok, Reels
 and Shorts as-is. Fully captioned.

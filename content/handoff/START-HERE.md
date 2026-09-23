@@ -1,13 +1,15 @@
 # Dick's Pawn Superstore — "Behind the Counter"
-## Build brief: **Episode 2 — "5 Questions We Get Every Single Day"**
+## Build brief: **Episode 3 — "5 Questions We Get Every Single Day"**
 
 **Prepared by:** Kyle Fries Marketing — Kyle Fries · Kylefriesmarketing@gmail.com · 806-544-8098
 **Client:** Dick's Pawn Superstore, Grand Strand, South Carolina (contact: Jill)
-**Date:** 18 September 2026
+**Date:** 23 September 2026
 
-**Your job is EP02.** Episode 1 is already produced and delivered — it ships in
-this packet as the reference build, so you can see exactly what the target looks
-like before you spend anything. Do not rebuild it. Match it.
+**Your job is EP03.** Episodes 1 and 2 are already produced and delivered — EP01
+ships in this packet as the reference build, so you can see exactly what the
+target looks like before you spend anything. Do not rebuild either. Match them.
+(EP02, "Only One's Real", was produced in-house after this packet was first
+written; its prompts ride along in `02-prompts/ep02-*.md` for reference only.)
 
 ---
 
@@ -48,9 +50,9 @@ worth making, but do not present it as the same thing.
 02-prompts/
   00-runbook.md               Costs, run order, defect triage, the things that bite
   01-character.md             The locked host + why the logo cannot be prompted
-  ep02-boards.md              ★ BUILD THIS — EP02's three 8-slot storyboards
-  ep02-clips.md               ★ BUILD THIS — EP02's three 15s clip prompts
-  ep02-graphics.md            ★ BUILD THIS — what changes in the burn for EP02
+  ep03-boards.md              ★ BUILD THIS — EP03's three 8-slot storyboards
+  ep03-clips.md               ★ BUILD THIS — EP03's three 15s clip prompts
+  ep03-graphics.md            ★ BUILD THIS — what changes in the burn for EP03
   ep01-boards.md              Reference: the produced episode's boards
   ep01-clips.md               Reference: the produced episode's clips
   post-production-notes.md    How EP01 was assembled, its two defects, its graphics
@@ -58,7 +60,7 @@ worth making, but do not present it as the same thing.
 03-reference/
   super-dick-host-LOCKED.jpg  THE host. Every frame of the series derives from this
   dicks-pawn-logo.png         The real diamond-D. Composite it; never prompt it
-  ep01-board1..3.jpg          EP01's boards — EP02 board 1 chains board 1 of these
+  ep01-board1..3.jpg          EP01's boards — EP03 board 1 chains board 1 of these
   ep01-final-frames.jpg       Contact sheet of the finished EP01
   ep01-clips-raw.jpg          Contact sheet of EP01's raw clips, before edit
   ep01-fact-card.jpg          The designed card that replaced one bad beat
@@ -98,9 +100,9 @@ It works for three reasons, and all three are worth preserving:
 3. **It costs nothing to repeat.** Same host, same counter, same light. Only the
    list changes. Episode 12 is as cheap as episode 2.
 
-### What makes EP02 different from EP01
+### What makes EP03 different from EP01
 
-EP01 was a **countdown**. EP02 is a **relay**: each clip ends on a question the
+EP01 was a **countdown**. EP03 is a **relay**: each clip ends on a question the
 *next* clip answers.
 
 | | ends on | next clip opens on |
@@ -119,7 +121,7 @@ episode is worse than EP01 rather than better:
 - **The first beat of clips 2 and 3 is an answer landing on frame one.** No
   windup, no breath, no re-introduction. Already mid-gesture as the frame opens.
 
-The prompts in `ep02-clips.md` say this explicitly, in the cut text. Don't trim
+The prompts in `ep03-clips.md` say this explicitly, in the cut text. Don't trim
 those sentences to save prompt length — they are the episode's whole structure.
 
 ---
@@ -157,7 +159,7 @@ counter who happens to be wearing a cape is funnier, warmer, and renders cleanly
 `03-reference/super-dick-host-LOCKED.jpg` already carries the real logo
 composited at the right size. One image, referenced by every board and every
 clip in every episode. Regenerating it mid-series is how a series quietly loses
-its face between episodes — and EP02's whole job is to look like it was shot the
+its face between episodes — and EP03's whole job is to look like it was shot the
 same afternoon as EP01.
 
 If you rebuild the host on a different model anyway, you have to rebuild **EP01
@@ -237,8 +239,8 @@ not a showroom"* and it lands.
 `03-reference/store-photos/` holds four real photographs of the actual store.
 Check every render against them.
 
-**EP02 anchors to EP01's room, not to a fresh reading of the photos.** Board 1 of
-EP02 takes EP01's board 1 as a reference image, so the counter, the light
+**EP03 anchors to EP01's room, not to a fresh reading of the photos.** Board 1 of
+EP03 takes EP01's board 1 as a reference image, so the counter, the light
 direction and the guitar wall land where they already are. Two episodes shot in
 visibly different rooms is the failure mode this avoids.
 
@@ -266,7 +268,7 @@ shop making a financial claim it cannot support is a real regulatory problem.
 | Layaway available with no credit needed | services.html |
 | 14-day returns, nationwide shipping | services.html |
 
-**EP02 leans on this list harder than EP01 did.** Four of its five answers are
+**EP03 leans on this list harder than EP01 did.** Four of its five answers are
 direct claims: no credit check, ID required by state law, stored safe and
 insured, free no-obligation appraisal. All four are on the list. Do not let a
 rewrite drift them — "no credit check" must not become "bad credit OK", and
@@ -281,7 +283,7 @@ rewrite drift them — "no credit check" must not become "bad credit OK", and
   financial product and short-form video is the wrong venue. Website only.
 - **Interest rates, loan terms, APR, or any "better than a bank" comparison.**
 - **Any specific payout figure, percentage, or "we pay X% of value."**
-  EP02's fifth answer is about *how* value is decided — brand, model, condition,
+  EP03's fifth answer is about *how* value is decided — brand, model, condition,
   resale. It must never become *how much*.
 - **Invented staff history.** He is a **host**, not a testimonial. He never says
   "in my fifteen years here" — he presents facts, not memories.
@@ -290,7 +292,7 @@ rewrite drift them — "no credit check" must not become "bad credit OK", and
 
 ---
 
-## 6. The EP02 script
+## 6. The EP03 script
 
 Density is tuned to the render: **~30–35 spoken words per 15-second clip.** More
 and the model rushes; less and it ad-libs to fill. `CAPS` marks a volume spike.
@@ -317,7 +319,7 @@ rule"*, leaving "That's South Carolina law." That keeps the claim, the
 attribution and the cliffhanger, and buys back three words. Make that call by
 listening to the render, not by pre-emptively cutting it.
 
-EP03–EP05 are written in `01-series-bible.md` §4 and ready when you are.
+EP04–EP06 are written in `01-series-bible.md` §4 and ready when you are.
 
 ---
 
@@ -333,13 +335,13 @@ eight internal hard cuts of one 15-second clip.
 K−1 as a trailing reference, so the counter, the light and the guitar wall stay
 put. Parallel submission breaks continuity and you will see the room change.
 
-EP02's chain, from `ep02-boards.md`:
+EP03's chain, from `ep03-boards.md`:
 
 | Board | medias (in order) |
 |---|---|
 | 1 | character, **EP01 board 1 (de-slopped)** |
-| 2 | character, EP02 board 1 |
-| 3 | character, EP02 board 2 |
+| 2 | character, EP03 board 1 |
+| 3 | character, EP03 board 2 |
 
 **Every adjacent pair of slots must differ in both POV and distance band** — a
 different camera setup (selfie vs. locked-off static), a different distance
@@ -351,7 +353,7 @@ five of EP01's numerals landed tight or medium-close, which is why each badge
 reads in sync with the counting hand — badge "1" while one finger is up, badge
 "5" while the hand is open. Stage a count wide and the fingers are a few pixels
 across; the badge then looks pasted on, and there is no fixing it in post.
-EP02's counting beats are board 1 slots 2 and 8, board 2 slots 4 and 8, and
+EP03's counting beats are board 1 slots 2 and 8, board 2 slots 4 and 8, and
 board 3 slot 3.
 
 The header and footer blocks are shared across every episode and are byte-
@@ -380,13 +382,13 @@ Six rules carried from EP01:
    a third arm — this happens constantly and is entirely preventable.
 6. **Clips 2 and 3 open mid-thought.** No greeting, no re-introduction.
 
-Two that EP02 adds:
+Two that EP03 adds:
 
 7. **Clips 1 and 2 end on a raised, held question.** Brows up and staying up.
    See §2. This is in the cut text; keep it.
 8. **Every counting beat is tight or medium close-up.** As above.
 
-The three complete clip prompts are in `ep02-clips.md`, cut by cut, ready to
+The three complete clip prompts are in `ep03-clips.md`, cut by cut, ready to
 paste.
 
 ### 7c. Post-production — fully portable
@@ -419,25 +421,25 @@ individual `drawtext` filters that is unmanageable and slow. One `.ass` file
 through `subtitles=caps.ass:fontsdir=...` is clean, fast and editable. Captions
 are burned for the full script — most of these views are sound-off.
 
-**`ep02-graphics.md` has the complete EP02 burn spec.** Three things there are
+**`ep03-graphics.md` has the complete EP03 burn spec.** Three things there are
 not optional:
 
 - **The card texts and the `QUESTION` kicker** replace EP01's `MYTH` system.
   Geometry, colours and the fixed 760px bar stay exactly as they are — that fixed
   width is what makes five cards read as one system rather than five widths.
 - **The cue detector must change or the build dies.** EP01 counted with "Number
-  one"; EP02 counts with bare ordinals. The existing matcher finds nothing and
+  one"; EP03 counts with bare ordinals. The existing matcher finds nothing and
   exits on badge 1 — verified, all five fail. A bare-ordinal match is not the fix
-  either, because EP02 says "five" three extra times ("Five questions", "same
+  either, because EP03 says "five" three extra times ("Five questions", "same
   five", "Five stores"). The working version requires the ordinal to start a
-  sentence. Code and verification output are in `ep02-graphics.md`.
+  sentence. Code and verification output are in `ep03-graphics.md`.
 - **Badges 2 and 4 hold across the clip cut on purpose** (2.7s rather than 1.9s),
   so the question card is still on screen when the answer lands. That is the
   relay structure made visible.
 
 **Fix the transcriber's proper nouns.** Whisper reliably mangles *"pawning"* →
 "ponching" and *"Grand Strand"* → "grand strain"/"grand strad". `burn.py` carries
-a `FIX` dict for exactly this. EP02 says both words too.
+a `FIX` dict for exactly this. EP03 says both words too.
 
 ---
 
@@ -479,9 +481,9 @@ or replaced on those boundaries with no visible seam.
   was worth keeping, so only the picture was replaced with a designed fact card
   (`03-reference/ep01-fact-card.jpg`, from `04-build/factcard.py`).
 
-### EP02's own new trap: the guitar wall
+### EP03's own new trap: the guitar wall
 
-EP01 kept the guitars soft and in the background. **EP02 clip 3 cut 4 walks the
+EP01 kept the guitars soft and in the background. **EP03 clip 3 cut 4 walks the
 host straight to them and points** — and real guitar headstocks carry maker
 logos, which is exactly what the pipeline exists to avoid. The generic "no brand
 logos" line in the negative tail does *not* reliably catch it when the shot is
@@ -493,7 +495,7 @@ Keep that sentence, and check that cut at full resolution before assembling. If 
 headstock comes back legible it sits inside one beat bounded by two hard cuts, so
 it comes out or gets replaced for free.
 
-### EP02's new props
+### EP03's new props
 
 Four props EP01 did not use. Three are trivial; all four must be textless.
 
@@ -521,7 +523,7 @@ Evenly spaced frames plus 2–3 mid-word frames, checked for: doubled lip edges,
 third hand, face drift between cuts, wardrobe changes, and baked-in text. Re-run
 only the failing clip index, never the batch.
 
-**For EP02, add two checks:** the last beat of clips 1 and 2 must read as a
+**For EP03, add two checks:** the last beat of clips 1 and 2 must read as a
 question (brows up, unresolved), and clip 3 cut 4's headstocks must be blank.
 
 ### Watch for a preset intercepting your submission
@@ -548,7 +550,7 @@ that ran. Read the response's adjustments rather than assuming.
 mean −18.6 dB, peak −1.4 dB, 37 caption events, zero caption overlaps.
 
 **Watch it before you generate anything.** It is the target: the host, the room,
-the pace, the card system, the caption rhythm, the closing card. EP02 should look
+the pace, the card system, the caption rhythm, the closing card. EP03 should look
 like it was shot the same afternoon.
 
 ---
@@ -573,26 +575,26 @@ Relevant if you are producing against it:
 
 ---
 
-## 11. Build order for EP02
+## 11. Build order for EP03
 
 1. **Watch `06-reference-video/ep01-5-myths-720p.mp4`.** Free, and it is the spec.
 2. **Use `03-reference/super-dick-host-LOCKED.jpg` as-is.** Do not regenerate the
    host. It already carries the real logo at the right size and it is the single
    point of continuity for the series.
-3. **Generate EP02's three storyboards sequentially** from `ep02-boards.md` —
+3. **Generate EP03's three storyboards sequentially** from `ep03-boards.md` —
    board 1 chaining **EP01's** board 1, then 2 chaining 1, then 3 chaining 2.
    Check against the real store photos and against EP01's boards. Verify the five
    counting beats are tight or medium close-up.
 4. **De-slop each board** with the preservation prompt in `ep01-boards.md`.
-5. **Generate three 15s clips** from `ep02-clips.md`. Honour all eight rules in
+5. **Generate three 15s clips** from `ep03-clips.md`. Honour all eight rules in
    §7b — rules 1–6 are the difference between eight hard cuts and one mushy shot,
-   and rules 7–8 are the difference between EP02 and a worse EP01.
+   and rules 7–8 are the difference between EP03 and a worse EP01.
 6. **Transcribe and triage before assembling** (§8). Free, and it is where the
-   defects are. Check the two EP02-specific items: held questions, blank
+   defects are. Check the two EP03-specific items: held questions, blank
    headstocks.
 7. **Assemble in one encode**, per-clip loudness normalisation, then re-transcribe
    the master at word level.
-8. **Burn the graphics** per `ep02-graphics.md` — new card texts, the fixed cue
+8. **Burn the graphics** per `ep03-graphics.md` — new card texts, the fixed cue
    detector, and the 2.7s bridge hold on badges 2 and 4. Sanity-check the five
    printed cues against the predicted table before accepting the build.
 
