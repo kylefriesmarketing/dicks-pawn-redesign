@@ -1,4 +1,4 @@
-# Clip prompts — EP02 "5 Questions We Get Every Single Day"
+# Clip prompts — EP03 "5 Questions We Get Every Single Day"
 
 Model `seedance_2_5` · `9:16` · `1080p` · `duration: 15` · `mode: omni_reference`
 · `generate_audio: true` · **135 credits each**.
@@ -7,7 +7,7 @@ Speech renders natively from the `Audio:` line — never make a separate
 `generate_audio` call. Write nothing new at submit time: these three prompts go
 out as one `generate_video_batch`.
 
-`medias` per clip, in order: the **de-slopped EP02 board** for that clip, then
+`medias` per clip, in order: the **de-slopped EP03 board** for that clip, then
 the character reference `9024359d-0dd1-48a7-9665-e942806a4964`.
 
 Cut timings are fixed for 15s and must sum exactly:
@@ -27,7 +27,7 @@ Cut timings are fixed for 15s and must sum exactly:
    third arm.
 6. Clips 2 and 3 open mid-thought. No greeting, no re-introduction.
 
-## Two rules EP02 adds
+## Two rules EP03 adds
 
 7. **Cuts 1-8 of clips 1 and 2 end on a raised, held question.** The last line
    of each of those clips is a question the next clip answers, and the face has
@@ -343,9 +343,9 @@ hands, no duplicated limbs, no deformed hands.
 
 ---
 
-## Props introduced in EP02, and the one new trap
+## Props introduced in EP03, and the one new trap
 
-EP02 needs four props EP01 did not use. Three are trivial; one is not.
+EP03 needs four props EP01 did not use. Three are trivial; one is not.
 
 | Prop | Where | Rule |
 |---|---|---|
@@ -355,7 +355,7 @@ EP02 needs four props EP01 did not use. Three are trivial; one is not.
 | Jeweler's loupe | C3 cut 5 | Plain brass or black, unbranded |
 
 **The new trap is the guitar wall.** EP01 kept the guitars soft and in the
-background. EP02 cut 4 of clip 3 walks the host straight to them and points, and
+background. EP03 cut 4 of clip 3 walks the host straight to them and points, and
 real guitar headstocks carry maker logos — which is exactly the thing the whole
 pipeline is built to avoid, and which the generic "no brand logos" line in the
 negative tail does not reliably catch when the shot is *about* the guitars.

@@ -84,8 +84,8 @@ least and costs the thing people actually notice on a phone.
 **EP01 is fully produced.** Every step below was run; the locked IDs are here so
 EP02-05 reuse the same host and the same proven parameters.
 
-**EP02 is written but unproduced.** Its boards, clips and graphics spec are in
-`ep02-boards.md`, `ep02-clips.md` and `ep02-graphics.md`. Episode-specific prompts
+**EP02 ("Only One's Real") is in production; EP03 ("5 Questions") is written but
+unproduced.** Boards, clips and graphics specs are in `ep02-*.md` and `ep03-*.md`. Episode-specific prompts
 are named `epNN-*`; `00-runbook.md` and `01-character.md` are series-wide.
 
 1. **Host** — `soul_2`, prompt in `01-character.md`.

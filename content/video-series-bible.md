@@ -121,14 +121,39 @@ Density is tuned to the render: ~30-35 spoken words per 15-second clip.
 > you walk out with your ring than keep it. Family-owned since nineteen
 > eighty-seven. Five stores, Grand Strand.
 
-### EP02 — 5 Questions We Get Every Single Day  ⏳ **NEXT UP** — prompts written,
-unproduced. Boards, clips and graphics spec in `content/prompts/ep02-*.md`.
+### EP02 — Only One's Real  🔨 **IN PRODUCTION** — two chains, one fake, five tests
+
+The first non-list episode, chosen from the research in
+`content/research/ep02-viral-research.md`: a live authenticity test, the one pawn
+format an AI host can perform that reliably clears a million views for real
+shops. Stakes in the first line, five escalating tests that each fail to resolve
+it, the reveal withheld to the last beat, cut on the last word. Prompts in
+`content/prompts/ep02-*.md`. The acid beat — the hardest render — passed a
+15-credit smoke test before anything else was spent.
+
+> **Clip 1 · tests 1-2**
+> Two chains. Only one's real. Five tests to find it. One — the magnet. Real
+> gold ignores it. Both pass. Two — the weight. Gold is heavy. Hollow feels
+> wrong. Still can't tell.
+>
+> **Clip 2 · tests 3-4**
+> Under the glass. Three — the loupe. Clasp, wear, colour. Close. Not enough.
+> Four — the acid. Scratch, drop, wait. Real gold sits there. Fake fizzes and
+> fades. One of these is fading.
+>
+> **Clip 3 · test 5, the reveal, the invitation**
+> Last test. Five — the jeweler. Real ones, every store, every day. Ten
+> seconds. This one's real. This one's plated brass. Yours? Bring it in. Free
+> look, no obligation. Five stores, Grand Strand.
+
+### EP03 — 5 Questions We Get Every Single Day  — prompts written, unproduced.
+Boards, clips and graphics spec in `content/prompts/ep03-*.md`.
 
 Structurally this is a **relay, not a countdown**: clips 1 and 2 each end on a
 question the next clip answers. That is a stronger retention device than EP01's
 straight count, and it costs nothing — but it puts real load on the last beat of
 clips 1 and 2, which must play as an unanswered question rather than a resolved
-one. See `ep02-clips.md` rule 7.
+one. See `ep03-clips.md` rule 7.
 
 > **Clip 1**
 > Five questions, every day, same five. One — what's the difference between
@@ -145,7 +170,7 @@ one. See `ep02-clips.md` rule 7.
 > Brand, model, condition, and what it actually resells for. Free look, no
 > obligation. Five stores, Grand Strand.
 
-### EP03 — 5 Things You Didn't Know We Take
+### EP04 — 5 Things You Didn't Know We Take
 
 > **Clip 1**
 > Five things people never think to bring us. One — power tools. Working drills,
@@ -161,7 +186,7 @@ one. See `ep02-clips.md` rule 7.
 > If it's got value, bring it in. Free appraisal, no obligation, five stores on
 > the Grand Strand.
 
-### EP04 — 5 Things We Do That Aren't Pawn
+### EP05 — 5 Things We Do That Aren't Pawn
 
 > **Clip 1**
 > Everybody calls us a pawn shop. Here's five things we do that aren't pawn.
@@ -178,7 +203,7 @@ one. See `ep02-clips.md` rule 7.
 > premiums. So call us a pawn shop if you want. Just know what's actually behind
 > the counter. Five stores, Grand Strand.
 
-### EP05 — 5 Mistakes People Make Before Walking In
+### EP06 — 5 Mistakes People Make Before Walking In
 
 > **Clip 1**
 > Five mistakes people make before they walk in here. One — cleaning it. Stop.

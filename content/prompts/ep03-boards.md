@@ -1,4 +1,4 @@
-# Storyboard prompts — EP02 "5 Questions We Get Every Single Day"
+# Storyboard prompts — EP03 "5 Questions We Get Every Single Day"
 
 Model `gpt_image_2` · `21:9` · `2k` · `quality: high` · 6.5 credits each.
 
@@ -8,7 +8,7 @@ horizontal row. Those eight slots become the eight internal hard cuts of one
 
 ## What is different from EP01, and why it matters to the boards
 
-EP01 was a countdown. EP02 is a **relay**. Each clip ends on a question the
+EP01 was a countdown. EP03 is a **relay**. Each clip ends on a question the
 *next* clip answers:
 
 | | ends on | next clip opens on |
@@ -32,14 +32,14 @@ hand rules, the de-slop pass — is EP01's, unchanged.
 ## Reference chain
 
 Board 1 anchors to **EP01's board 1** so the room matches the episode already
-shipped. Within EP02, board K chains board K−1 as usual. Sequential, never
+shipped. Within EP03, board K chains board K−1 as usual. Sequential, never
 parallel.
 
 | Board | Role | Questions | medias (in order) |
 |---|---|---|---|
 | 1 | HOOK | Q1 + Q2 asked | character, **EP01 board 1 (de-slopped)** |
-| 2 | MAIN | Q2 answered, Q3, Q4 asked | character, EP02 board 1 |
-| 3 | CLOSER | Q4 answered, Q5 + CTA | character, EP02 board 2 |
+| 2 | MAIN | Q2 answered, Q3, Q4 asked | character, EP03 board 1 |
+| 3 | CLOSER | Q4 answered, Q5 + CTA | character, EP03 board 2 |
 
 Shared IDs:
 - character `9024359d-0dd1-48a7-9665-e942806a4964` — **never regenerate**
@@ -56,7 +56,7 @@ Shared IDs:
 keep the sheet from collapsing into a grid or growing a tenth panel, and they
 are the most drift-prone text in the whole pipeline.
 
-All three EP02 boards use the **K>1 header variant** (two reference images), so
+All three EP03 boards use the **K>1 header variant** (two reference images), so
 `@Image1` is the character and `@Image2` is the chained board. Board 1's
 `@Image2` sentence needs one word changed, because its chain reaches back an
 episode rather than a slot:
@@ -73,7 +73,7 @@ this same video...`).
 
 ---
 
-## One rule EP01 established that EP02 must not break
+## One rule EP01 established that EP03 must not break
 
 **Every counting beat is TIGHT or MEDIUM CLOSE-UP. Never wide, never macro.**
 
@@ -83,7 +83,7 @@ finger is up, badge "5" while the hand is open. Stage a count at wide distance
 and the fingers are four pixels across; the badge then looks pasted on rather
 than counted out, and there is no fixing it in post.
 
-EP02's counting beats are board 1 slots 2 and 8, board 2 slots 4 and 8, and
+EP03's counting beats are board 1 slots 2 and 8, board 2 slots 4 and 8, and
 board 3 slot 3. Check them before you submit.
 
 ---

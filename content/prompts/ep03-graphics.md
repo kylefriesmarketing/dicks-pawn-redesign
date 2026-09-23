@@ -1,10 +1,10 @@
-# Graphics spec — EP02 "5 Questions We Get Every Single Day"
+# Graphics spec — EP03 "5 Questions We Get Every Single Day"
 
 The burn is EP01's, with four changes. Geometry, colours, fonts, the caption
 system and the closing card are all untouched — that is what makes five episodes
 look like a series instead of five videos.
 
-Run `content/build/burn.py` against the **re-transcribed EP02 master**. Never
+Run `content/build/burn.py` against the **re-transcribed EP03 master**. Never
 reuse EP01's timings; never shift a timing by arithmetic. Measure, don't offset.
 
 ---
@@ -34,13 +34,13 @@ for n in range(1,6):
 EP01 the gold kicker was load-bearing: "ALL STOLEN" in 42px white on a pawn
 shop's own video is a bad screenshot unless something on screen frames it as the
 claim being debunked. A question mark does that job by itself. The kicker stays
-because the series needs one card system, not because EP02 needs defending.
+because the series needs one card system, not because EP03 needs defending.
 
 ---
 
 ## Change 2 — the cue detector, which will otherwise fail outright
 
-EP01 counted with *"Number one"*, *"Number two"*. EP02 counts with bare ordinals:
+EP01 counted with *"Number one"*, *"Number two"*. EP03 counts with bare ordinals:
 *"One — what's the difference…"*. So this line in `burn.py`:
 
 ```python
@@ -48,9 +48,9 @@ if w["t"].strip(".,!?-")==NUM[n] and i and words[i-1]["t"].strip(".,!?-")=="NUMB
 ```
 
 finds nothing, and the build dies on `no spoken cue for myth 1`. Verified
-against EP02's script: **all five badges fail.**
+against EP03's script: **all five badges fail.**
 
-A bare-ordinal match is not the fix either, because EP02 says "five" three extra
+A bare-ordinal match is not the fix either, because EP03 says "five" three extra
 times — *"**Five** questions"* in the first breath, *"same **five**"* four words
 later, and *"**Five** stores, Grand Strand"* in the CTA. Match the ordinal alone
 and badge 1 fires on word one.
@@ -72,7 +72,7 @@ for n in range(1,6):
         raise SystemExit(f"no spoken cue for question {n}")
 ```
 
-Run against EP02's script this lands all five correctly and skips all three
+Run against EP03's script this lands all five correctly and skips all three
 decoys — the sequential `used` guard is what keeps badge 5 on *"Five — how do you
 decide"* rather than on the CTA's *"Five stores"*:
 
@@ -104,7 +104,7 @@ distributes its eight beats slightly differently on every render.
 
 ## Change 3 — badges 2 and 4 hold across the clip cut, on purpose
 
-EP02's structure puts the second and fourth questions in the **last beat of a
+EP03's structure puts the second and fourth questions in the **last beat of a
 clip**, with the answer opening the next one. At a flat 1.9s hold the card would
 vanish within a frame or two of the cut, right as the viewer most needs to know
 what is being answered.
@@ -117,7 +117,7 @@ BRIDGE = 2.7                      # badges 2 and 4 span the clip boundary
 def hold(n): return BRIDGE if n in (2,4) else HOLD
 ```
 
-This is the one place EP02's graphics genuinely differ in behaviour rather than
+This is the one place EP03's graphics genuinely differ in behaviour rather than
 in text, and it exists because the episode is a relay rather than a countdown.
 Check it on the finished file: the card for "DO I NEED CREDIT?" should still be
 up as he says "You need NO credit."
@@ -126,11 +126,11 @@ up as he says "You need NO credit."
 
 ## Change 4 — the constants to re-measure
 
-| Constant | EP01 | EP02 |
+| Constant | EP01 | EP03 |
 |---|---|---|
 | `DUR` | 43.466 | re-measure from the assembled master |
 | `CTA` | 38.458 | re-detect — the cut before "Five stores, Grand Strand" |
-| `INSERT` | (19.542, 21.458) | **delete unless EP02 hits its own defect** |
+| `INSERT` | (19.542, 21.458) | **delete unless EP03 hits its own defect** |
 
 `INSERT` was EP01's fact-card patch over a bad beat. It is not a standing
 feature; it only exists if triage finds something to replace.
@@ -158,18 +158,18 @@ Everything else, deliberately:
 | Closing card | `FREE APPRAISAL - NO OBLIGATION` / `5 STORES - (843) 646-7166` / `SHIPS ANYWHERE IN THE US` |
 
 The closing card is identical to EP01's on purpose. It is the series' signature,
-it matches EP02's spoken close ("Free look, no obligation. Five stores, Grand
+it matches EP03's spoken close ("Free look, no obligation. Five stores, Grand
 Strand"), and a viewer who sees two episodes should see the same card twice.
 
 ## Transcription fixes
 
-Keep EP01's `FIX` dict — EP02 says "pawning" and "Grand Strand" too, and Whisper
+Keep EP01's `FIX` dict — EP03 says "pawning" and "Grand Strand" too, and Whisper
 mangles both the same way every time:
 
 ```python
 FIX = {"PONCHING":"PAWNING", "STRAIN":"STRAND", "STRAD":"STRAND"}
 ```
 
-Read the printed captions before accepting the build. EP02 adds "resells" and
+Read the printed captions before accepting the build. EP03 adds "resells" and
 "insured", neither of which has misfired yet, but neither of which has been
 through this transcriber either.
